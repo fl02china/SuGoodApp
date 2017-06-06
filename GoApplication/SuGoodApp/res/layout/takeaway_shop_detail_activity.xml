@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/takeaway_shop_detail_header"
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/red"
+        android:minHeight="40dp">
+
+
+        <ImageView
+            android:id="@+id/takeaway_shop_detail_header_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_icon" />
+
+
+        <TextView
+            android:id="@+id/takeaway_shop_detail_text_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_middle"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/takeaway_shop_detail_report_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/report_icon"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/takeaway_shop_detail_farvorite_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_toLeftOf="@+id/takeaway_shop_detail_report_img"
+            android:src="@drawable/farvorite_icon" />
+
+        <ImageView
+            android:id="@+id/takeaway_shop_detail_search"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/takeaway_shop_detail_farvorite_img"
+            android:src="@drawable/search_white_icon"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/takeaway_shop_description_rl"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/takeaway_shop_detail_header"
+        android:background="@drawable/bg"
+        android:gravity="center"
+        android:padding="5dp">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/takeaway_shop_detail_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+
+
+            />
+
+        <TextView
+            android:id="@+id/takeaway_shop_description_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/takeaway_shop_detail_img"
+
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_middle"
+
+            />
+
+        <TextView
+            android:id="@+id/takeaway_shop_delivary_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/takeaway_shop_description_tv"
+            android:layout_marginLeft="20dp"
+
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/takeaway_shop_detail_img"
+
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_middle"
+
+            />
+
+        <TextView
+            android:id="@+id/takeaway_shop_work_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/takeaway_shop_delivary_price_tv"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+
+            android:layout_toRightOf="@id/takeaway_shop_detail_img"
+
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small"
+
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/takeaway_shop_detail_product_coupon_lv"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/takeaway_shop_description_rl"
+        android:background="@drawable/market_detail_product_ly_bg"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="2dp"
+            android:background="@color/white"
+            android:scaleType="fitXY"
+            android:src="@drawable/coupon_icon" />
+
+
+        <TextView
+            android:id="@+id/takeaway_shop_detail_product_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            android:text="支持使用代金券"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_middle" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/takeaway_shop_description_vp_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/takeaway_shop_tabs">
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/takeaway_shop_description_vp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="3" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/takeaway_shopcar_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/takeaway_shop_description_vp_ll"
+        android:layout_below="@+id/takeaway_shop_detail_header"
+        android:background="#66000000"
+        android:visibility="gone"
+
+        />
+
+    <android.support.design.widget.TabLayout
+
+        android:id="@+id/takeaway_shop_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/takeaway_shop_detail_product_coupon_lv"
+        app:tabGravity="fill"
+
+        app:tabIndicatorColor="#F97217"
+
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="#F97217"
+        app:tabTextColor="@color/grey" />
+</RelativeLayout>

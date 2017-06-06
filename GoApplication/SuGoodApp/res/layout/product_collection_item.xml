@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+    <ImageView android:id="@+id/product_collection_img" android:layout_width="80dp"
+               android:layout_height="80dp"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentTop="true"
+               android:layout_margin="10dp"
+               android:src="@drawable/market_detail_food_img"
+    />
+    <TextView android:id="@+id/product_collection_title"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_marginTop="10dp"
+
+              android:layout_toRightOf="@+id/product_collection_img"
+              android:text="最高价格111.96元刺身拼盘套餐"
+              android:textColor="@color/black_de"
+
+              android:textSize="18sp"
+    />
+    <TextView android:id="@+id/product_collection_desc" android:layout_width="match_parent"
+
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/product_collection_title"
+
+              android:layout_marginTop="3dp"
+              android:layout_toRightOf="@+id/product_collection_img"
+              android:text="建议3-4人使用，可免费使用包间"
+              android:textColor="@color/grey"
+
+              android:textSize="14sp"
+    />
+    <TextView android:id="@+id/product_collection_price"
+              android:layout_width="wrap_content"
+
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/product_collection_desc"
+
+              android:layout_marginTop="10dp"
+              android:layout_toRightOf="@+id/product_collection_img"
+              android:text="￥9.9"
+              android:textColor="@color/text_red"
+
+              android:textSize="20sp"
+    />
+
+    <TextView android:id="@+id/product_collection_market_price"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignBottom="@+id/product_collection_price"
+
+              android:layout_marginLeft="10dp"
+              android:layout_toRightOf="@+id/product_collection_price"
+
+              android:text="门市价：29.9"
+              android:textColor="@color/text_grey"
+
+              android:textSize="14sp"
+    />
+
+
+</RelativeLayout>

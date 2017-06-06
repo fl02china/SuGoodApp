@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout android:id="@+id/market_detail_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/red"
+                        android:minHeight="40dp">
+
+
+            <ImageView android:id="@+id/market_detail_header_back"
+                       android:layout_width="30dp"
+                       android:layout_height="30dp"
+                       android:layout_centerVertical="true"
+                       android:layout_marginLeft="10dp"
+                       android:src="@drawable/back_icon"/>
+
+
+            <TextView android:id="@+id/market_detail_text_tv" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_centerInParent="true"
+                      android:text="超市特供"
+                      android:textColor="@color/white"
+                      android:textSize="@dimen/text_middle"
+                      android:textStyle="bold"/>
+
+            <ImageView android:id="@+id/market_detail_report_img" android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:layout_alignParentRight="true"
+                       android:layout_centerVertical="true"
+                       android:layout_marginRight="10dp"
+                       android:src="@drawable/report_icon"
+                       android:visibility="gone"
+            />
+            <ImageView android:id="@+id/market_detail_farvorite_img"
+                       android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:layout_alignParentRight="true"
+                       android:layout_centerVertical="true"
+                       android:layout_marginRight="5dp"
+
+                       android:src="@drawable/farvorite_icon"
+            />
+
+            <ImageView android:id="@+id/market_detail_shared"
+                       android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:layout_centerVertical="true"
+                       android:layout_marginRight="5dp"
+                       android:layout_toLeftOf="@+id/market_detail_farvorite_img"
+
+                       android:src="@drawable/share_icon"
+            />
+
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/market_detail_product_img"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@+id/market_detail_header"
+            android:scaleType="centerCrop"
+            android:src="@drawable/market_product_name_img"
+        />
+
+        <LinearLayout android:id="@+id/market_detail_product_name_lv"
+                      android:layout_width="match_parent"
+                      android:layout_height="30dp"
+                      android:layout_below="@+id/market_detail_product_img"
+                      android:background="@drawable/market_detail_product_ly_bg">
+            <TextView android:id="@+id/market_detail_product_name_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:layout_marginLeft="10dp"
+                      android:gravity="center"
+                      android:paddingBottom="2dp"
+                      android:paddingTop="2dp"
+                      android:text="超市商品名称"
+                      android:textColor="@color/white"
+                      android:textSize="@dimen/text_middle"/>
+
+
+        </LinearLayout>
+        <RelativeLayout android:id="@+id/market_detail_product_price_rl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/market_detail_product_name_lv"
+                        android:padding="5dp"
+        >
+
+            <TextView android:id="@+id/market_detail_product_group_price_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="5dp"
+                      android:text="￥49 "
+                      android:textColor="@color/text_red"
+                      android:textSize="@dimen/text_middle"/>
+
+            <TextView android:id="@+id/market_detail_product_group_price"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignBottom="@+id/market_detail_product_group_price_tv"
+                      android:layout_marginLeft="2dp"
+                      android:layout_toRightOf="@id/market_detail_product_group_price_tv"
+                      android:text="团购价  "/>
+
+
+            <TextView android:id="@+id/market_detail_product_market_price"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignBottom="@+id/market_detail_product_group_price_tv"
+                      android:layout_marginLeft="2dp"
+                      android:layout_toRightOf="@id/market_detail_product_group_price"
+                      android:text="市场价："/>
+
+
+            <TextView android:id="@+id/market_detail_product_market_price_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignBottom="@+id/market_detail_product_group_price_tv"
+                      android:layout_marginLeft="2dp"
+
+                      android:layout_toRightOf="@id/market_detail_product_market_price"
+                      android:text="￥79"/>
+
+
+            <ImageView android:id="@+id/market_detail_location_img"
+                       android:layout_width="15dp"
+                       android:layout_height="20dp"
+                       android:layout_alignParentLeft="true"
+                       android:layout_below="@+id/market_detail_product_market_price_tv"
+                       android:layout_marginTop="15dp"
+                       android:src="@drawable/set_location_icon"
+
+
+            />
+            <TextView android:id="@+id/market_detail_location_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/market_detail_product_market_price_tv"
+                      android:layout_marginTop="20dp"
+                      android:layout_toRightOf="@+id/market_detail_location_img"
+                      android:text="雷州市樟树湾大道8号樟树湾酒店2楼"
+            />
+
+            <CheckBox android:id="@+id/market_detail_open_panoramicmap_cb"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentRight="true"
+                      android:layout_alignParentTop="true"
+                      android:layout_marginRight="5dp"
+                      android:text="打开全景地图"
+                      android:textSize="@dimen/text_small"
+
+
+            />
+            <TextView android:id="@+id/market_datile_market_detail_panoramicmap_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentRight="true"
+                      android:layout_below="@+id/market_detail_open_panoramicmap_cb"
+                      android:layout_marginRight="5dp"
+                      android:text=""
+                      android:textColor="@color/text_red"
+
+            />
+
+            <Button android:layout_width="80dp"
+                    android:layout_height="25dp"
+                    android:layout_alignRight="@+id/market_datile_market_detail_panoramicmap_tv"
+                    android:layout_below="@+id/market_datile_market_detail_panoramicmap_tv"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/market_detail_enter_shop_bg"
+                    android:text="进入导航"
+            />
+        </RelativeLayout>
+
+        <View android:id="@+id/makret_detail_line" android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_below="@+id/market_detail_product_price_rl"
+              android:background="@color/text_grey"/>
+
+        <RelativeLayout android:id="@+id/market_detail_comment_rl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/makret_detail_line"
+                        android:padding="5dp">
+            <TextView android:id="@+id/market_detail_comment_num_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="评论（657）"
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"/>
+
+            <TextView android:id="@+id/market_detail_all_comment_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentRight="true"
+                      android:layout_alignParentTop="true"
+                      android:text="查看全部评论"
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"
+
+            />
+            <!--第1个评论-->
+            <RelativeLayout android:id="@+id/market_detail_comment_tv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_below="@+id/market_detail_comment_num_tv"
+                            android:padding="3dp">
+
+
+                <ImageView android:id="@+id/market_detail_use_img"
+                           android:layout_width="50dp" android:layout_height="50dp"
+                           android:layout_marginTop="2dp"
+                           android:src="@drawable/market_default_circle_photo"
+                />
+                <TextView android:id="@+id/market_detail_use_tv" android:layout_width="wrap_content"
+                          android:layout_height="50dp"
+                          android:layout_marginLeft="2dp"
+                          android:layout_toRightOf="@+id/market_detail_use_img"
+                          android:gravity="center"
+                          android:text="我叫霍华德"
+                          android:textColor="@color/text_grey"
+                          android:textSize="@dimen/text_middle"/>
+
+                <TextView android:id="@+id/market_detail_comment_value1"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_alignParentRight="true"
+                          android:layout_alignParentTop="true"
+                          android:layout_marginTop="5dp"
+
+                          android:text="4.1"
+                          android:textColor="@color/text_yellow"
+                />
+                <android.support.v7.widget.AppCompatRatingBar
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_alignTop="@+id/market_detail_comment_value1"
+                    android:layout_toLeftOf="@+id/market_detail_comment_value1"
+                    android:numStars="5"
+                    android:rating="4"
+                />
+
+                <TextView android:id="@+id/market_detail_comment_tv"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/market_detail_use_tv"
+                          android:layout_marginTop="3dp"
+                          android:text="第一次来这家店，分量很足，店家生意很好，叫了2次服务员才能来，建议老板多请2个服务员"
+                          android:textColor="@color/text_grey"
+                          android:textSize="@dimen/text_small"/>
+
+
+                <LinearLayout android:id="@+id/market_detail_comment_imgs_ll1"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_alignParentLeft="true"
+                              android:layout_alignParentStart="true"
+                              android:layout_below="@+id/market_detail_comment_tv"
+                              android:orientation="horizontal">
+                    <ImageView android:id="@+id/market_detail_comment_imgs1_1"
+                               android:layout_width="50dp"
+                               android:layout_height="50dp"
+
+                               android:layout_marginTop="2dp"
+                               android:src="@drawable/market_detail_comment_img_default"
+
+                    />
+                    <ImageView android:id="@+id/market_detail_comment_imgs1_2"
+                               android:layout_width="50dp"
+                               android:layout_height="50dp"
+
+                               android:layout_marginLeft="15dp"
+                               android:layout_marginTop="2dp"
+
+                               android:src="@drawable/market_detail_comment_img_default"
+
+                    />
+                    <ImageView android:id="@+id/market_detail_comment_imgs1_3"
+                               android:layout_width="50dp"
+                               android:layout_height="50dp"
+
+                               android:layout_marginLeft="15dp"
+                               android:layout_marginTop="2dp"
+
+                               android:src="@drawable/market_detail_comment_img_default"
+
+                    />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+            <!--第二个评论-->
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_below="@+id/market_detail_comment_tv1"
+                            android:layout_marginTop="2dp">
+
+
+                <ImageView android:id="@+id/market_detail_use_img2"
+                           android:layout_width="50dp" android:layout_height="50dp"
+                           android:layout_marginTop="2dp"
+                           android:src="@drawable/market_default_circle_photo"
+                />
+                <TextView android:id="@+id/market_detail_use_tv2"
+                          android:layout_width="wrap_content"
+                          android:layout_height="50dp"
+                          android:layout_marginLeft="2dp"
+                          android:layout_toRightOf="@+id/market_detail_use_img2"
+                          android:gravity="center"
+                          android:text="我叫霍华德"
+                          android:textColor="@color/text_grey"
+                          android:textSize="@dimen/text_middle"/>
+
+                <TextView android:id="@+id/market_detail_comment_value2"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_alignParentRight="true"
+                          android:layout_alignParentTop="true"
+                          android:layout_marginTop="5dp"
+
+                          android:text="4.1"
+                          android:textColor="@color/text_yellow"
+                />
+                <android.support.v7.widget.AppCompatRatingBar
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_alignTop="@+id/market_detail_comment_value2"
+                    android:layout_toLeftOf="@+id/market_detail_comment_value2"
+                    android:numStars="5"
+                    android:rating="4"
+                />
+
+                <TextView android:id="@+id/market_detail_comment_tv2"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/market_detail_use_tv2"
+                          android:layout_marginTop="3dp"
+                          android:text="第一次来这家店，分量很足，店家生意很好，叫了2次服务员才能来，建议老板多请2个服务员"
+                          android:textColor="@color/text_grey"
+                          android:textSize="@dimen/text_small"/>
+
+
+                <LinearLayout android:id="@+id/market_detail_comment_imgs_ll2"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_below="@id/market_detail_comment_tv2"
+                              android:layout_marginTop="2dp"
+                              android:orientation="horizontal"
+                >
+
+                    <ImageView android:id="@+id/market_detail_comment_imgs2_1"
+                               android:layout_width="50dp"
+                               android:layout_height="50dp"
+
+
+                               android:src="@drawable/market_detail_comment_img_default"
+
+                    />
+                    <ImageView android:id="@+id/market_detail_comment_imgs2_2"
+                               android:layout_width="50dp"
+                               android:layout_height="50dp"
+
+                               android:layout_marginLeft="15dp"
+
+
+                               android:src="@drawable/market_detail_comment_img_default"
+
+                    />
+                    <ImageView android:id="@+id/market_detail_comment_imgs2_3"
+                               android:layout_width="50dp"
+                               android:layout_height="50dp"
+
+                               android:layout_marginLeft="15dp"
+
+
+                               android:src="@drawable/market_detail_comment_img_default"
+
+                    />
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+        <View android:id="@+id/market_detail_line2"
+              android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_below="@+id/market_detail_comment_rl"
+              android:layout_marginTop="5dp"
+              android:background="@color/text_grey"
+        />
+        <!--产品描述-->
+        <RelativeLayout android:id="@+id/market_detail_product_description_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/market_detail_line2"
+                        android:padding="3dp">
+            <TextView android:id="@+id/market_detaile_product_description"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentLeft="true"
+                      android:layout_alignParentTop="true"
+                      android:text="产品描述："
+                      android:textColor="@color/green"
+                      android:textSize="@dimen/text_middle"
+            />
+            <Button android:id="@+id/market_detail_enter_shop_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/market_detail_enter_shop_bg"
+                    android:text="进店逛逛"
+
+                    android:textColor="#FE7B7B"
+                    android:textSize="@dimen/text_middle"
+                    android:textStyle="bold"
+
+            />
+            <TextView android:id="@+id/market_detaile_product_description_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentLeft="true"
+                      android:layout_below="@+id/market_detaile_product_description"
+                      android:layout_marginTop="2dp"
+                      android:layout_toLeftOf="@+id/market_detail_enter_shop_btn"
+                      android:text="昌大昌超市，限量提供50份大米，低价促销活动时间2016-12-5至2017-1-1日先到先得"
+                      android:textColor="@color/text_grey"
+                      android:textSize="@dimen/text_small"
+            />
+            <View android:id="@+id/market_detail_line3" android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:layout_below="@+id/market_detaile_product_description_tv"
+                  android:layout_marginTop="18dp"
+                  android:background="@color/text_grey"
+            />
+            <TextView android:id="@+id/market_detail_phone" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/market_detail_line3"
+                      android:layout_marginLeft="5dp"
+                      android:layout_marginTop="12dp"
+                      android:text="135432506350"
+                      android:textColor="@color/text_grey"
+                      android:textSize="@dimen/text_middle"
+                      android:textStyle="bold"
+
+            />
+            <ImageView android:layout_width="30dp" android:layout_height="30dp"
+                       android:layout_alignBottom="@+id/market_detail_phone"
+
+                       android:layout_alignParentRight="true"
+                       android:layout_marginRight="5dp"
+
+                       android:src="@drawable/phone_icon"/>
+
+        </RelativeLayout>
+        <View android:id="@+id/market_detail_line4" android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_below="@+id/market_detail_product_description_ll"
+              android:layout_marginTop="5dp"
+              android:background="@color/text_grey"
+        />
+
+        <RelativeLayout android:id="@+id/market_detail_text_message_rl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/market_detail_line4"
+                        android:padding="5dp">
+
+
+            <ImageView android:id="@+id/market_detail_right_img"
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:layout_alignParentRight="true"
+                       android:layout_alignParentTop="true"
+                       android:src="@drawable/right_icon"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/market_detail_right_img"
+
+                android:text="查看更多"
+                android:textColor="@color/green"
+
+                android:textSize="@dimen/text_middle"/>
+
+
+            <HorizontalScrollView android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_alignParentLeft="true"
+                                  android:layout_below="@+id/market_detail_text_message_tv"
+                                  android:layout_marginTop="5dp"
+            >
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal">
+                    <com.sugood.app.view.MyImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="25dp"/>
+                    <com.sugood.app.view.MyImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="25dp"/>
+                    <com.sugood.app.view.MyImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="25dp"/>
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+            <TextView
+                android:id="@+id/market_detail_text_message_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" android:text="图文信息："
+                android:textColor="@color/green" android:textSize="@dimen/text_middle"/>
+        </RelativeLayout>
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/market_detail_text_message_rl"
+                        android:layout_marginTop="1dp"
+                        android:padding="5dp">
+
+            <TextView android:id="@+id/market_detail_find_more_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentLeft="true"
+                      android:layout_alignParentTop="true"
+                      android:text="查看更多店"
+                      android:textColor="@color/green"
+                      android:textSize="@dimen/text_middle"
+
+            />
+            <ImageView android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:layout_alignBottom="@+id/market_detail_find_more_tv"
+                       android:layout_alignParentTop="true"
+                       android:layout_toRightOf="@+id/market_detail_find_more_tv"
+                       android:src="@drawable/right_icon"
+            />
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="30dp"
+                          android:layout_alignParentLeft="true"
+                          android:layout_below="@+id/market_detail_find_more_tv"
+                          android:layout_marginBottom="5dp"
+                          android:layout_marginTop="5dp">
+
+
+                <Button android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/market_detail_add_showcar_bg"
+                        android:text="加入购物车"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_middle"/>
+                <Button android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/market_detail_buy_bg"
+                        android:text="立即购买"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_middle"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</ScrollView>

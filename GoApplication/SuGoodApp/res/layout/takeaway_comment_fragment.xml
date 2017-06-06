@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/takeaway_comment_score_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/takeaway_shop_bg"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">
+
+                <TextView
+                    android:id="@+id/takeaway_shop_comment_score_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="4.6"
+
+                    android:textColor="@color/text_yellow"
+
+
+                    android:textSize="@dimen/text_middle" />
+
+                <TextView
+                    android:id="@+id/takeaway_shop_comment_score_all_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/takeaway_shop_comment_score_all"
+                    android:layout_centerHorizontal="true"
+                    android:text="综合得分"
+                    android:textColor="@color/text_black"
+
+                    android:textSize="@dimen/text_middle" />
+
+                <TextView
+                    android:id="@+id/takeaway_shop_comment_score_rate_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/takeaway_shop_comment_score_all_tv"
+                    android:layout_centerHorizontal="true"
+                    android:text="商家好评率76%"
+                    android:textColor="@color/text_black"
+
+                    android:textSize="@dimen/text_middle" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/takeaway_shop_delivary_score_all_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="配送评分"
+                    android:textColor="@color/text_black"
+
+                    android:textSize="@dimen/text_middle" />
+
+                <TextView
+                    android:id="@+id/takeaway_shop_comment_score_all_tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/takeaway_shop_delivary_score_all_tv"
+                    android:text="商家评分"
+
+                    android:textColor="@color/text_black"
+
+                    android:textSize="@dimen/text_middle" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">
+
+                <RatingBar
+                    android:id="@+id/takeaway_shop_comment_ratingbar1"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/takeaway_shop_desc_name"
+                    android:layout_centerHorizontal="true"
+                    android:numStars="5"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+
+                    android:rating="4" />
+
+                <TextView
+                    android:id="@+id/takeaway_shop_comment_ratingbar_num1"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/takeaway_shop_comment_ratingbar1"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="4.7"
+                    android:textColor="@color/text_yellow" />
+
+                <RatingBar
+                    android:id="@+id/takeaway_shop_comment_ratingbar2"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/takeaway_shop_comment_ratingbar1"
+                    android:layout_centerHorizontal="true"
+                    android:numStars="5"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:rating="4" />
+
+                <TextView
+                    android:id="@+id/takeaway_shop_comment_ratingbar_num2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/takeaway_shop_comment_ratingbar_num1"
+                    android:layout_toRightOf="@+id/takeaway_shop_comment_ratingbar2"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="4.7"
+                    android:textColor="@color/text_yellow" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/takeaway_shop_comment_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/takeaway_comment_score_ll"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/takeaway_shop_bg">
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/takeaway_shop_comment_tagflowlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <CheckBox
+                android:id="@+id/takeaway_comment_tag_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/takeaway_shop_comment_tagflowlayout"
+                android:text="只看有内容的评论" />
+
+
+        </RelativeLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_below="@+id/takeaway_shop_comment_rl"
+            android:layout_marginTop="10dp">
+
+            <com.jcodecraeer.xrecyclerview.XRecyclerView
+                android:id="@+id/takeaway_shop_comment_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

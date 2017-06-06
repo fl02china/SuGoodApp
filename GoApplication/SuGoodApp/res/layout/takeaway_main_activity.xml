@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:id="@+id/takeaway_main_rv_header"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+>
+
+    <RelativeLayout android:id="@+id/takeaway_main_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/red"
+                    android:minHeight="50dp">
+
+        <ImageView android:id="@+id/takeaway_main_header_back"
+                   android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:layout_centerVertical="true"
+                   android:layout_marginLeft="10dp"
+                   android:src="@drawable/back_icon"/>
+
+
+        <LinearLayout android:id="@+id/takeaway_search_layout"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_centerInParent="true"
+                      android:background="@drawable/rectangle_bg"
+                      android:minWidth="200dp"
+                      android:orientation="horizontal">
+
+            <ImageView android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:layout_gravity="center_vertical"
+                       android:src="@drawable/search_icon"/>
+
+            <EditText android:id="@+id/takeaway_search_editText"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:background="@null"
+                      android:hint="@string/supermaker_search_tips"
+                      android:inputType="text"
+                      android:minWidth="180dp"
+                      android:imeOptions="actionSearch"
+                      android:textColor="@color/grey"
+                      android:textColorHint="@color/text_black"
+
+                      android:textSize="@dimen/text_middle"/>
+        </LinearLayout>
+
+        <ImageView android:id="@+id/takeaway_map"
+                   android:layout_width="30dp"
+                   android:layout_height="30dp"
+
+                   android:layout_alignParentRight="true"
+                   android:layout_centerVertical="true"
+                   android:layout_marginRight="5dp"
+                   android:src="@drawable/map_icon"
+        />
+
+
+    </RelativeLayout>
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/takeaway_main_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/takeaway_main_header"
+
+    />
+
+</RelativeLayout>
+

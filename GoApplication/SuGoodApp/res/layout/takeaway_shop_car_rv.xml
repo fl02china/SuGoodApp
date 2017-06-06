@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/takeaway_shop_car_productname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/takeaway_shop_car_item_ll"
+            android:layout_alignParentLeft="true"
+
+            android:layout_alignParentTop="true"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_middle" />
+
+        <LinearLayout
+            android:id="@+id/takeaway_shop_car_item_ll"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="11dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/takeaway_shop_car_reduce"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/circle_bg"
+                android:text="一"
+                android:textSize="@dimen/text_middle" />
+
+            <TextView
+                android:id="@+id/takeaway_shop_car_productamount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="1"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/text_middle" />
+
+            <Button
+                android:id="@+id/takeaway_shop_car_add"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/circle_bg"
+                android:text="十"
+                android:textSize="@dimen/text_middle" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/takeaway_shop_car_productprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/takeaway_shop_car_item_ll"
+            android:layout_toLeftOf="@+id/takeaway_shop_car_item_ll"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+
+            android:textColor="@color/text_yellow"
+            android:textSize="@dimen/text_middle" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/takeaway_shop_car_item_ll"
+        android:background="@color/text_grey" />
+</LinearLayout>

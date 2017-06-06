@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/user_add_address_header"
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/red"
+        android:minHeight="40dp">
+
+
+        <ImageView
+            android:id="@+id/user_add_address_header_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+
+            android:src="@drawable/back_icon" />
+
+
+        <TextView
+            android:id="@+id/user_add_address_text_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="新建收货地址"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/user_add_address_save_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <!--姓名-->
+    <TextView
+        android:id="@+id/user_add_address_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/user_add_address_name_ed"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/user_add_address_header"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="姓名"
+        android:textColor="#7A7A7A"
+        android:textSize="@dimen/text_middle" />
+
+    <EditText
+        android:id="@+id/user_add_address_name_ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_add_address_header"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/user_add_address_name_tv"
+        android:background="@null"
+        android:hint="最少2个字"
+        android:minHeight="40dp"
+        android:textColorHint="#E4E4E8"
+
+        />
+
+    <View
+        android:id="@+id/user_add_address_name_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/user_add_address_name_ed"
+        android:background="#F6F6F6" />
+
+    <!--电话-->
+    <TextView
+        android:id="@+id/user_add_address_phone_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+        android:layout_alignBottom="@+id/user_add_address_phone_ed"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/user_add_address_name_line"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="电话"
+        android:textColor="#7A7A7A"
+        android:textSize="@dimen/text_middle" />
+
+
+    <EditText
+        android:id="@+id/user_add_address_phone_ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_add_address_name_line"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/user_add_address_phone_tv"
+        android:background="@null"
+        android:hint="不少于7位"
+        android:minHeight="40dp"
+        android:textColorHint="#E4E4E8" />
+
+    <View
+        android:id="@+id/user_add_address_phone_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/user_add_address_phone_ed"
+        android:background="#F6F6F6" />
+
+    <!--地区-->
+    <TextView
+        android:id="@+id/user_add_address_district_text_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+        android:layout_alignBottom="@+id/user_add_address_district_tv"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/user_add_address_phone_line"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="地区"
+        android:textColor="#7A7A7A"
+        android:textSize="@dimen/text_middle" />
+
+
+    <TextView
+        android:id="@+id/user_add_address_district_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_add_address_phone_line"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/user_add_address_phone_tv"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:minHeight="40dp"
+        android:text="省份 城市 区县"
+        android:textColor="#E4E4E8"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/user_add_address_district_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/user_add_address_district_tv"
+        android:background="#F6F6F6" />
+
+    <!--地址-->
+
+
+    <TextView
+        android:id="@+id/user_add_address_this_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+        android:layout_alignBottom="@+id/user_add_address_this_ed"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/user_add_address_district_line"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="地址"
+        android:textColor="#7A7A7A"
+        android:textSize="@dimen/text_middle" />
+
+
+    <EditText
+        android:id="@+id/user_add_address_this_ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_add_address_district_line"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/user_add_address_phone_tv"
+        android:background="@null"
+        android:hint="5~60个字，且不能全部为数字"
+        android:minHeight="40dp"
+        android:textColorHint="#E4E4E8"
+
+        />
+
+    <View
+        android:id="@+id/user_add_address_this_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/user_add_address_this_ed"
+        android:background="#F6F6F6" />
+
+    <!--邮编-->
+
+    <TextView
+        android:id="@+id/user_add_address_postcode_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+        android:layout_alignBottom="@+id/user_add_address_postcode_ed"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/user_add_address_this_line"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="邮编"
+        android:textColor="#7A7A7A"
+        android:textSize="@dimen/text_middle" />
+
+
+    <EditText
+        android:id="@+id/user_add_address_postcode_ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/user_add_address_this_line"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/user_add_address_postcode_tv"
+        android:background="@null"
+        android:hint="6~60个字，且不能全部为数字"
+        android:minHeight="40dp"
+        android:textColorHint="#E4E4E8"
+
+
+        />
+
+    <View
+        android:id="@+id/user_add_address_postcode_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/user_add_address_postcode_ed"
+        android:background="#F6F6F6" />
+
+
+    <CheckBox
+        android:id="@+id/cb_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_add_address_postcode_line"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="设置成默认收获地址"
+android:textSize="@dimen/text_small"
+
+        />
+</RelativeLayout>

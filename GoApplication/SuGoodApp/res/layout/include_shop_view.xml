@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/takeaway_market_main_vp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@+id/takeaway_market_header"
+
+    />
+
+    <LinearLayout
+        android:id="@+id/takeaway_market_dot_ll1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignBottom="@+id/takeaway_market_main_vp"
+        android:background="@color/grey"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/takeaway_market_dot_ll"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/takeaway_market_main_vp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/takeaway_market_dot1"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_check_bg"/>
+
+        <ImageView
+            android:id="@+id/takeaway_market_dot2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_uncheck_bg"/>
+
+        <ImageView
+            android:id="@+id/takeaway_market_dot3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_uncheck_bg"/>
+
+        <ImageView
+            android:id="@+id/takeaway_market_dot4"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_uncheck_bg"/>
+
+        <ImageView
+            android:id="@+id/takeaway_market_dot5"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_uncheck_bg"/>
+
+        <ImageView
+            android:id="@+id/takeaway_market_dot6"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_uncheck_bg"/>
+    </LinearLayout>
+
+
+    <com.sugood.app.view.MyViewPager
+        android:id="@+id/vp_takeaway"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/takeaway_market_dot_ll1"/>
+
+    <LinearLayout
+        android:id="@+id/takeaway_market_band_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vp_takeaway"
+        android:background="#FEE045"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="品牌店入驻，登录领取红包"
+            android:textColor="@color/text_red"
+            android:textSize="@dimen/text_middle"
+            android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_car_ll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_car_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_office_ll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_office_image"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_goods_ll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_goods_image"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_study_ll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_study_image"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_digital_ll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_digital_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_famer_market_ll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_famer_market_image"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_newyear_goods_ll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_newyear_goods_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_house_machine_ll"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_house_machine_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F1F1F1"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

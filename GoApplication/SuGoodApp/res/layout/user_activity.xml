@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0EFED">
+
+
+    <RelativeLayout
+        android:id="@+id/user_header"
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/red"
+        android:minHeight="40dp">
+
+
+        <ImageView
+            android:id="@+id/user_header_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+
+            android:src="@drawable/back_icon" />
+
+
+        <TextView
+            android:id="@+id/user_text_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="个人信息"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_middle"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/user_header_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_header"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="头像"
+            android:textColor="@color/black_de"
+            android:textSize="@dimen/text_middle"
+
+
+            />
+
+
+        <ImageView
+            android:id="@+id/user_icon_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/right_icon" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdv_avatar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_toLeftOf="@+id/user_icon_right"
+            android:src="@drawable/market_detail_food_img" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/user_header_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/user_header_rl"
+        android:background="#F0EFED" />
+
+    <RelativeLayout
+        android:id="@+id/user_nickname_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_header_line"
+
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="昵称"
+            android:textColor="@color/black_de"
+            android:textSize="@dimen/text_middle"
+
+
+            />
+
+
+        <ImageView
+            android:id="@+id/user_nickname_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/right_icon" />
+
+        <TextView
+            android:id="@+id/tv_nickName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/user_nickname_right"
+            android:text="Masdasdssa"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_middle"
+
+            />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/user_nickname_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/user_nickname_rl"
+        android:background="#F0EFED" />
+
+
+    <RelativeLayout
+        android:id="@+id/user_address_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_nickname_line"
+
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="收货地址"
+            android:textColor="@color/black_de"
+            android:textSize="@dimen/text_middle"
+
+
+            />
+
+
+        <ImageView
+            android:id="@+id/user_address_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/right_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/user_address_right"
+            android:text="修改/添加"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_middle"
+
+            />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/user_header_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/user_header"
+        android:background="#66000000"
+        android:visibility="gone" />
+</RelativeLayout>

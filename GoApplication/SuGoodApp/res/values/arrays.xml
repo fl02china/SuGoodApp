@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="shop_type">
+        <item>ic_category_0</item>
+        <item>ic_category_1</item>
+        <item>评价最高</item>
+        <item>最新发布</item>
+        <item>人气最高</item>
+        <item>价格最低</item>
+        <item>价格最高</item>
+    </string-array>
+
+
+    <string-array name="takeaway_type_list">
+        <item>正    餐</item>
+        <item>小    吃</item>
+        <item>甜    品</item>
+        <item>水    果</item>
+        <item>宵    夜</item>
+        <item>下 午 茶</item>
+        <item>鲜    花</item>
+        <item>烧    烤</item>
+
+
+    </string-array>
+
+
+    <string-array name="takeaway_soldnum_type">
+
+        <item>销量最高</item>
+        <item>销量最低</item>
+
+    </string-array>
+    <string-array name="takeaway_remarknum_type">
+
+        <item>评论最多</item>
+        <item>评论最少</item>
+
+    </string-array>
+
+    <string-array name="takeaway_pay_way">
+
+        <item>支付宝支付</item>
+        <item>微信支付</item>
+
+    </string-array>
+</resources>

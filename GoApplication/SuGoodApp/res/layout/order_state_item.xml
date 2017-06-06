@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+    <TextView android:id="@+id/order_item_state" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_marginLeft="20dp"
+              android:layout_toLeftOf="@+id/order_state_time"
+              android:text="订单已提交"
+              android:layout_marginTop="10dp"
+              android:textColor="@color/black_de"
+              android:textSize="18sp"
+    />
+
+    <TextView android:id="@+id/order_state_desc" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignLeft="@+id/order_item_state"
+              android:layout_below="@+id/order_item_state"
+              android:layout_marginTop="6dp"
+              android:text="请耐心等待商家确认"
+              android:textColor="@color/text_grey"
+              android:textSize="16sp"
+    />
+    <TextView android:id="@+id/order_state_time" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="10dp"
+              android:layout_marginTop="10dp"
+              android:text="3月6日 12:04"
+              android:textColor="@color/text_grey"
+              android:textSize="16sp"/>
+
+
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+          android:layout_alignLeft="@id/order_item_state"
+          android:layout_below="@+id/order_state_desc"
+
+          android:layout_marginTop="10dp"
+          android:background="@color/text_grey"
+    />
+
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/takeaway_comment_view_ll"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+
+              android:background="@drawable/abs__menu_dropdown_panel_holo_light"
+              android:orientation="vertical">
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:paddingBottom="15dp"
+              android:paddingLeft="25dp"
+              android:paddingRight="25dp"
+              android:paddingTop="15dp"
+              android:text="全部评论"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+
+    />
+    <TextView android:id="@+id/takeaway_type_launch"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:paddingBottom="15dp"
+              android:paddingLeft="25dp"
+              android:paddingRight="25dp"
+              android:paddingTop="15dp"
+              android:text="评论最多"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+    />
+
+</LinearLayout>

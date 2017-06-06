@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@android:color/transparent"
+
+              android:orientation="vertical">
+
+
+    <Button android:layout_width="match_parent" android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/account_alipay"
+            android:background="@drawable/head_popup_bg_top"
+            android:text="支付宝"
+            android:textSize="@dimen/text_middle"/>
+    <View android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp"
+          android:background="@color/text_grey"/>
+
+
+    <Button android:layout_width="match_parent" android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:text="微信"
+            android:id="@+id/account_wechat"
+            android:textSize="@dimen/text_middle"/>
+    <View android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp"
+          android:background="@color/text_grey"/>
+    <Button android:layout_width="match_parent" android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/head_popup_bg_bottom"
+            android:text="银行卡"
+            android:id="@+id/account_bank"
+            android:textSize="@dimen/text_middle"/>
+
+    <Button android:layout_width="match_parent" android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/head_popup_bg"
+            android:text="取消"
+            android:id="@+id/account_cancel"
+            android:textSize="@dimen/text_middle"/>
+
+</LinearLayout>

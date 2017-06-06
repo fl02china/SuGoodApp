@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_circle_indicator_fill_color"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/head_common" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+
+        <Button
+            android:id="@+id/btn_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="全部"
+            android:background="@color/white"
+            android:textColor="@drawable/selector_btn" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray"/>
+
+        <Button
+            android:id="@+id/btn_near"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="附近"
+            android:background="@color/white"
+            android:textColor="@drawable/selector_btn" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray"/>
+        <Button
+            android:id="@+id/btn_choose"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="筛选"
+            android:background="@color/white"
+            android:textColor="@drawable/selector_btn" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bg_gray"/>
+
+    <!--<include layout="@layout/good_food_header" />-->
+
+    <ListView
+    android:id="@+id/list_food"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></ListView>
+
+</LinearLayout>

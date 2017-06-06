@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:id="@+id/takeaway_type_list2"
+                  android:layout_below="@+id/takeaway_type_list1"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp">
+
+        <RelativeLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/takeaway_type_list_meituan_rl"
+                        android:layout_weight="1">
+
+            <ImageView android:id="@+id/takeaway_meituan_img"
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       android:layout_alignParentTop="true"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/dinner_snack_icon"
+            />
+            <TextView android:id="@+id/takeaway_meituan_tv"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/takeaway_meituan_img"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center"
+                      android:text="宵夜"
+
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"/>
+
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/takeaway_type_list_drink_rl"
+                        android:layout_weight="1">
+
+            <ImageView android:id="@+id/takeaway_drink_img"
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       android:layout_alignParentTop="true"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/lunch_tea_icon"
+            />
+            <TextView android:id="@+id/takeaway_drink_tv"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/takeaway_drink_img"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center"
+                      android:text="下午茶"
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"/>
+
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/takeaway_type_list_snack_rl"
+                        android:layout_weight="1">
+
+            <ImageView android:id="@+id/takeaway_snack_img"
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       android:layout_alignParentTop="true"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/western_food_icon"
+            />
+            <TextView android:id="@+id/takeaway_snack_tv"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/takeaway_snack_img"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center"
+                      android:text="西餐"
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"/>
+
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/takeaway_type_list_western_food_rl"
+                        android:layout_weight="1">
+
+            <ImageView android:id="@+id/takeaway_western_food_img"
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       android:layout_alignParentTop="true"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/barbecue_icon"
+            />
+            <TextView android:id="@+id/takeaway_western_food_tv"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/takeaway_western_food_img"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center"
+                      android:text="烧烤"
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:id="@+id/takeaway_type_list1"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="11dp" android:layout_alignParentTop="true"
+                  android:layout_alignParentStart="true">
+
+        <RelativeLayout android:layout_width="0dp"
+                        android:id="@+id/takeaway_type_list_fantastic_food_rl"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+            <ImageView android:id="@+id/takeaway_type_list_fantastic_food_img"
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       android:layout_alignParentTop="true"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/dinner_icon"
+            />
+            <TextView android:id="@+id/market_detail_farvorite_tv"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/takeaway_type_list_fantastic_food_img"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center"
+                      android:text="正餐"
+
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"/>
+
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0dp"
+                        android:id="@+id/takeaway_type_list_marker_rl"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1">
+
+            <ImageView android:id="@+id/takeaway_supermarket_img"
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       android:layout_alignParentTop="true"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/snack_icon"
+            />
+            <TextView android:id="@+id/takeaway_supermarket_tv"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/takeaway_supermarket_img"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center"
+                      android:text="小吃"
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"/>
+
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/takeaway_type_list_fruit_rl"
+                        android:layout_weight="1">
+
+            <ImageView android:id="@+id/takeaway_fruit_img"
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       android:layout_alignParentTop="true"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/sweet_icon"
+            />
+            <TextView android:id="@+id/takeaway_fruit_tv"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/takeaway_fruit_img"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center"
+                      android:text="甜品"
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"/>
+
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/takeaway_type_list_lunchtea_rl"
+                        android:layout_weight="1">
+
+            <ImageView android:id="@+id/takeaway_lunchtea_img"
+                       android:layout_width="50dp"
+                       android:layout_height="50dp"
+                       android:layout_alignParentTop="true"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/fruit_icon"
+            />
+            <TextView android:id="@+id/takeaway_lunchtea_tv"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/takeaway_lunchtea_img"
+                      android:layout_centerInParent="true"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center"
+                      android:text="水果"
+                      android:textColor="@color/text_black"
+                      android:textSize="@dimen/text_middle"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>

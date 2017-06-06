@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/market_type_header"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/red"
+        android:minHeight="40dp">
+
+
+        <ImageView
+            android:id="@+id/market_type_header_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_icon" />
+
+
+        <LinearLayout
+            android:id="@+id/market_type_search_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerInParent="true"
+            android:background="@drawable/rectangle_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/search_icon" />
+
+            <EditText
+                android:id="@+id/market_type_search_ed"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/supermaker_type_search_tips"
+                android:minWidth="180dp"
+                android:textColor="@color/grey"
+                android:textCursorDrawable="@null"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textSize="@dimen/text_middle" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/market_type_shopcar_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            android:src="@drawable/shopcar_icon" />
+
+        <ImageView
+            android:id="@+id/market_scan_code_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/market_type_shopcar_img"
+            android:src="@drawable/scan_code_icon"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/market_type_list1_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/market_type_header"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/market_main_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/market_main_activity"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/market_cigarette_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/cigarette_product"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/market_drink_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/drink_product"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/market_grain_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/grain_product"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/market_home_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/home_product"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!--列表2-->
+    <LinearLayout
+        android:id="@+id/market_type_list2_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/market_type_list1_layout"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/market_daily_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/daily_product"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/market_frozen_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/frozen_product"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/market_snacks_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/snacks_product"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/market_machine_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/machine_product"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/market_bed_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/market_type_top_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/bed_product"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/market_type_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/market_type_list2_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@+id/market_type_rv"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:alpha="0.5"
+        android:background="@color/grey"
+        android:gravity="center"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_above="@+id/market_type_rv"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/market_type_dot1"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_check_bg" />
+
+        <ImageView
+            android:id="@+id/market_type_dot2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+
+            android:background="@drawable/circle_uncheck_bg" />
+
+        <ImageView
+            android:id="@+id/market_type_dot3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_uncheck_bg" />
+
+        <ImageView
+            android:id="@+id/market_type_dot4"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_uncheck_bg" />
+
+        <ImageView
+            android:id="@+id/market_type_dot5"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_uncheck_bg" />
+    </LinearLayout>
+</RelativeLayout>

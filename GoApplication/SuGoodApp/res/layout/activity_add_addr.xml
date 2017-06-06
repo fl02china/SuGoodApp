@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/add_address_header"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/red"
+        android:minHeight="40dp">
+
+
+        <ImageView
+            android:id="@+id/add_address_header_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_icon" />
+
+
+        <TextView
+            android:id="@+id/add_address_text_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="新增地址"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_middle"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/add_addr_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_address_header"
+        android:background="@drawable/market_item"
+        android:hint="请输入姓名"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/add_addr_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_addr_name"
+        android:background="@drawable/market_item"
+        android:hint="请输入手机号码"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/add_addr_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_addr_phone"
+        android:background="@drawable/market_item"
+        android:hint="请输入省市区"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/add_addr_ad_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_addr_ad"
+        android:background="@drawable/market_item"
+        android:hint="请输入详细地址"
+        android:padding="10dp" />
+
+
+    <CheckBox
+        android:id="@+id/add_addr_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_addr_ad_info"
+        android:text="设置为默认地址" />
+
+    <Button
+        android:id="@+id/add_addr_summit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_addr_cb"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/market_item"
+        android:text="确定" />
+</RelativeLayout>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#D8DAD6"
+              android:orientation="vertical">
+
+    <!--头部-->
+    <RelativeLayout android:id="@+id/takeaway_comment_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/red"
+                    android:minHeight="40dp">
+
+
+        <ImageView android:id="@+id/takeaway_comment_back"
+                   android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:layout_centerVertical="true"
+                   android:layout_marginLeft="10dp"
+                   android:src="@drawable/back_icon"/>
+
+
+        <TextView android:id="@+id/takeaway_comment_text_tv"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerInParent="true"
+                  android:text="碗面世家"
+                  android:textColor="@color/white"
+                  android:textSize="@dimen/text_middle"
+                  android:textStyle="bold"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="5dp">
+
+        <TextView android:id="@+id/takeaway_comment_sum"
+                  android:layout_width="wrap_content"
+
+                  android:layout_height="match_parent"
+                  android:layout_alignBottom="@+id/takeaway_comment_sum_ratingbar"
+                  android:layout_marginLeft="10dp"
+                  android:gravity="center"
+                  android:text="总分"
+
+                  android:textColor="@android:color/black"
+                  android:textSize="@dimen/text_middle"
+        />
+        <RatingBar android:id="@+id/takeaway_comment_sum_ratingbar"
+                   style="@style/Base.Widget.AppCompat.RatingBar.Indicator"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginLeft="20dp"
+                   android:isIndicator="false"
+                   android:numStars="5"
+                   android:rating="5"
+        />
+
+        <TextView android:id="@+id/takeaway_comment_sum_tv"
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_alignBottom="@+id/takeaway_comment_sum_ratingbar"
+                  android:layout_marginLeft="20dp"
+                  android:layout_toRightOf="@+id/takeaway_comment_sum_ratingbar"
+                  android:gravity="center"
+                  android:text="5星"
+                  android:textColor="@android:color/black"
+                  android:textSize="@dimen/text_middle"
+        />
+        <View android:id="@+id/takeaway_comment_line1"
+              android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_below="@+id/takeaway_comment_sum_tv"
+              android:layout_marginTop="10dp"
+              android:background="@color/text_grey"/>
+
+        <TextView android:id="@+id/takeaway_comment_envir"
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+
+                  android:layout_alignBottom="@+id/takeaway_comment_envir_ratingbar"
+                  android:layout_alignLeft="@+id/takeaway_comment_sum"
+
+                  android:layout_below="@+id/takeaway_comment_line1"
+                  android:layout_marginTop="10dp"
+                  android:gravity="center"
+                  android:text="环境"
+                  android:textColor="@android:color/black"
+                  android:textSize="@dimen/text_middle"
+        />
+
+        <RatingBar android:id="@+id/takeaway_comment_envir_ratingbar" style="@style/MyRatingBar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/takeaway_comment_line1"
+                   android:layout_centerHorizontal="true"
+                   android:isIndicator="false"
+                   android:numStars="5"
+                   android:paddingTop="10dp"
+
+        />
+
+
+        <TextView android:id="@+id/takeaway_comment_service"
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+
+                  android:layout_alignBottom="@+id/takeaway_comment_service_ratingbar"
+                  android:layout_alignLeft="@+id/takeaway_comment_sum"
+
+                  android:layout_below="@+id/takeaway_comment_envir"
+                  android:layout_marginTop="10dp"
+                  android:gravity="center"
+                  android:text="服务"
+                  android:textColor="@android:color/black"
+                  android:textSize="@dimen/text_middle"
+        />
+
+        <RatingBar android:id="@+id/takeaway_comment_service_ratingbar"
+                   style="@style/MyRatingBar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/takeaway_comment_envir"
+                   android:layout_centerHorizontal="true"
+                   android:isIndicator="false"
+                   android:numStars="5"
+                   android:paddingTop="10dp"
+                   android:rating="5"
+        />
+
+
+        <TextView android:id="@+id/takeaway_comment_taste"
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+
+
+                  android:layout_alignBottom="@+id/takeaway_comment_taste_ratingbar"
+                  android:layout_alignLeft="@+id/takeaway_comment_sum"
+                  android:layout_below="@+id/takeaway_comment_service"
+                  android:layout_marginTop="10dp"
+                  android:gravity="center"
+                  android:text="味道"
+                  android:textColor="@android:color/black"
+                  android:textSize="@dimen/text_middle"
+        />
+
+        <RatingBar android:id="@+id/takeaway_comment_taste_ratingbar"
+                   style="@style/MyRatingBar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/takeaway_comment_service"
+                   android:layout_centerHorizontal="true"
+                   android:isIndicator="false"
+                   android:numStars="5"
+                   android:paddingTop="10dp"
+                   android:rating="5"
+        />
+
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/takeaway_shop_bg"
+    >
+
+        <EditText android:id="@+id/takeaway_comment_ed"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="10dp"
+                  android:background="@drawable/edittext_bg"
+                  android:gravity="start"
+                  android:hint="菜品味道如何，服务周到吗，环境如何（写够15字，才是好同志）"
+                  android:inputType="textNoSuggestions|textMultiLine"
+                  android:minHeight="100dp"
+                  android:textSize="@dimen/text_middle"
+                  android:padding="5dp"
+        />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_alignBottom="@+id/takeaway_comment_ed"
+                  android:layout_alignRight="@+id/takeaway_comment_ed"
+                  android:padding="5dp"
+                  android:text="0/50"
+        />
+    </RelativeLayout>
+
+    <LinearLayout android:id="@+id/takeaway_comment_upload_ll"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:background="@color/white"
+                  android:padding="6dp">
+        <HorizontalScrollView android:layout_width="match_parent"
+                              android:layout_height="wrap_content">
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+
+                <RelativeLayout android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/upload_img_bg"
+                                android:padding="10dp">
+                    <ImageView android:id="@+id/takeaway_upaload_pic_img"
+                               android:layout_width="60dp"
+                               android:layout_height="60dp"
+                               android:src="@drawable/upload_pic_icon"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_below="@+id/takeaway_upaload_pic_img"
+                              android:layout_centerHorizontal="true"
+                              android:text="上传照片"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/white"
+                    android:padding="10dp">
+
+
+        <CheckBox android:id="@+id/takeaway_comment_cb" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentLeft="true"
+                  android:text="匿名评价"
+                  android:textSize="16sp"
+        />
+
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/choose_size_bg"
+                android:padding="2dp"
+                android:text="发布评价"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_middle"
+        />
+
+
+    </RelativeLayout>
+</LinearLayout>

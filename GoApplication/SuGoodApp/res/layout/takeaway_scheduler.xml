@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+
+    <LinearLayout
+        android:id="@+id/takeaway_scheduler_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <LinearLayout android:layout_width="0dp"
+                      android:layout_height="wrap_content" android:layout_weight="1">
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center"
+                      android:background="@drawable/takeaway_shop_bg"
+                      android:padding="5dp"
+                      android:textSize="@dimen/text_middle"
+                      android:text="今天（12.31）"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/takeaway_scheduler_rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+    <TextView android:id="@+id/takeaway_scheduler_cancel" android:layout_width="match_parent"
+
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/takeaway_scheduler_ll"
+              android:gravity="center"
+              android:padding="10dp"
+              android:textSize="@dimen/text_middle"
+              android:background="@drawable/takeaway_shop_bg"
+              android:text="取消"
+    />
+</RelativeLayout>

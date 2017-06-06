@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/user_order_id_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="订单ID:31"
+        android:textColor="@color/black_de"
+
+
+        />
+
+    <TextView
+        android:id="@+id/user_order_createtime_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_order_id_tv"
+        android:text="下单时间：2017-03-07"
+        android:textColor="@color/black_de"
+
+        />
+
+    <TextView
+        android:id="@+id/user_order_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/user_order_img"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@+id/user_order_qrcode"
+        android:layout_toRightOf="@+id/user_order_img"
+        android:text="【多城市】皇牛杂秘制牛汤粉"
+
+        android:textColor="@color/black_de" />
+
+    <TextView
+        android:id="@+id/user_order_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/user_order_title"
+        android:layout_below="@+id/user_order_title"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@+id/user_order_qrcode"
+        android:layout_toRightOf="@+id/user_order_img"
+        android:text="牛前腿一斤"
+        android:textColor="@color/black_de" />
+
+
+    <TextView
+        android:id="@+id/user_order_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/user_order_title"
+        android:layout_below="@+id/user_order_desc"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/user_order_img"
+        android:text="￥10"
+        android:textColor="@color/black_de" />
+
+
+    <TextView
+        android:id="@+id/user_order_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/user_order_title"
+
+        android:layout_below="@+id/user_order_price"
+
+        android:layout_toRightOf="@+id/user_order_img"
+        android:text="密码：91283912"
+        android:textColor="@color/black_de"
+
+        android:visibility="gone" />
+
+
+    <ImageView
+        android:id="@+id/user_order_qrcode"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/user_order_createtime_tv"
+        android:scaleType="fitXY"
+        android:src="@drawable/qrcode_icon"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/user_order_pay_btn"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/user_order_qrcode"
+        android:layout_marginTop="10dp"
+        android:background="#02A8EE"
+        android:text="去支付"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/user_order_recomment"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/user_order_pay_btn"
+        android:layout_below="@+id/user_order_qrcode"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/user_order_pay_btn"
+        android:background="#02A8EE"
+        android:text="退款"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/user_order_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/user_order_createtime_tv"
+        android:src="@drawable/market_detail_food_img" />
+
+
+</RelativeLayout>

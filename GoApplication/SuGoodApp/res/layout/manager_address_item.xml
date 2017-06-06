@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_bg_white_color"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/address_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:text="何生"
+        android:textColor="@color/black_de"
+
+
+        />
+
+    <TextView
+        android:id="@+id/address_user_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignTop="@+id/address_user_name"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/address_user_name"
+        android:text="134555444"
+
+        android:textColor="@color/black_de"
+
+
+        />
+
+    <TextView
+        android:id="@+id/address_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/address_user_name"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/address_user_name"
+        android:text="广东省深圳市宝安区新安街道开展花园大厦"
+        android:textColor="@color/black_de"
+
+
+        />
+
+    <View
+        android:id="@+id/address_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/address_tv"
+        android:layout_marginTop="10dp"
+        android:background="#F5F5F5" />
+
+
+    <CheckBox
+        android:id="@+id/address_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/address_user_name"
+        android:layout_below="@+id/address_line"
+        android:layout_marginTop="10dp"
+        android:text="设为默认"
+        android:textColor="@color/black1"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/address_delete_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/address_cb"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/address_line"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="删除"
+
+        android:textColor="@color/black_de"
+        android:visibility="gone"
+
+        />
+
+    <ImageView
+        android:id="@+id/address_delete_img"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/address_delete_tv"
+        android:layout_below="@+id/address_line"
+        android:layout_toLeftOf="@+id/address_delete_tv"
+        android:src="@drawable/address_delete"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/address_edit_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/address_cb"
+        android:layout_alignTop="@+id/address_delete_tv"
+        android:layout_below="@+id/address_line"
+        android:layout_toLeftOf="@+id/address_delete_img"
+        android:gravity="center"
+        android:text="编辑"
+
+        android:textColor="@color/black_de"
+        android:visibility="gone"
+
+        />
+
+    <ImageView
+        android:id="@+id/address_edit_img"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/address_delete_tv"
+        android:layout_below="@+id/address_line"
+        android:layout_toLeftOf="@+id/address_edit_tv"
+        android:src="@drawable/address_edit_icon"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/address_edit_img"
+        android:layout_marginTop="10dp"
+        android:background="#EEEEEE" />
+</RelativeLayout>

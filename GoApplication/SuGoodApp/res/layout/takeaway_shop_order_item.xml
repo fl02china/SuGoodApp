@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:background="@color/background_color"
+              android:orientation="horizontal"
+              android:paddingBottom="10dp"
+              android:paddingLeft="10dp"
+              android:id="@+id/takeaway_shop_type_ll"
+              android:paddingRight="10dp"
+              android:paddingTop="10dp">
+
+
+    <ImageView android:layout_width="20dp"
+               android:layout_height="20dp"
+               android:visibility="gone"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/takeaway_shop_type_tv"
+              android:text="快餐"
+              android:textColor="@color/text_black"
+              android:textSize="@dimen/text_small"
+    />
+</LinearLayout>

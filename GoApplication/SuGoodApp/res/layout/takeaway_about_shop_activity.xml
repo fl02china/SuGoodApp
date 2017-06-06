@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/takeaway_about_shop_rl"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#A47150"
+                android:padding="10dp">
+
+
+    <TextView android:id="@+id/takeaway_shop_desc_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="20dp"
+              android:text="小暖便当（火车站）"
+              android:textColor="@color/white"
+              android:textSize="@dimen/text_middle"/>
+    <RatingBar android:id="@+id/takeaway_shop_desc_ratingbar"
+               style="@style/Base.Widget.AppCompat.RatingBar.Small"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/takeaway_shop_desc_name"
+               android:layout_centerHorizontal="true"
+               android:numStars="5"
+               android:paddingBottom="10dp"
+               android:paddingTop="10dp"
+               android:rating="4"/>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_below="@+id/takeaway_shop_desc_name"
+              android:layout_toRightOf="@+id/takeaway_shop_desc_ratingbar"
+              android:paddingBottom="10dp"
+              android:paddingTop="10dp"
+              android:text="4.7"
+              android:textColor="@color/colorAccent"
+              android:textSize="@dimen/text_middle"
+    />
+
+    <TextView android:id="@+id/takeaway_desc_business_hours"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/takeaway_shop_desc_ratingbar"
+              android:layout_centerHorizontal="true"
+              android:text="营业时间：9:00-0:55"
+              android:textColor="@color/white"
+              android:textSize="@dimen/text_middle"
+    />
+
+
+    <TextView android:id="@+id/takeaway_desc_delivery_msg"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/takeaway_desc_business_hours"
+              android:layout_centerHorizontal="true"
+              android:text="￥30起送  |  配送费￥3  |  30分钟送达"
+
+              android:textColor="@color/white"
+              android:textSize="@dimen/text_middle"
+    />
+
+    <TextView android:id="@+id/takeaway_shop_desc_msg_tv" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/takeaway_desc_delivery_msg"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="20dp"
+              android:text="——————商家公告———————"
+              android:textColor="@color/white"
+              android:textSize="@dimen/text_middle"
+    />
+
+    <TextView android:id="@+id/takeaway_shop_desc_msg1_tv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/takeaway_shop_desc_msg_tv"
+              android:layout_marginTop="10dp"
+
+              android:text="欢迎你光临小暖便当！在线支付更加优惠"
+              android:textColor="@color/white"
+              android:textSize="@dimen/text_middle"
+    />
+
+
+    <TextView android:id="@+id/takeaway_shop_desc_msg2_tv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/takeaway_shop_desc_msg1_tv"
+              android:text="第二份更是半价！每天限十份抢完即止"
+              android:textColor="@color/white"
+    />
+    <TextView android:id="@+id/takeaway_shop_desc_coupon"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/takeaway_shop_desc_msg2_tv"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="20dp"
+              android:text="——————商家优惠———————"
+              android:textColor="@color/white"
+              android:textSize="@dimen/text_middle"
+    />
+
+    <ImageView android:id="@+id/takeaway_shop_desc_reduce_img" android:layout_width="20dp"
+               android:layout_height="20dp"
+               android:layout_below="@+id/takeaway_shop_desc_coupon"
+               android:layout_marginTop="10dp"
+               android:background="@color/white"
+               android:src="@drawable/reduce_icon"
+    />
+
+    <TextView android:id="@+id/takeaway_shop_desc_coupon_tv" android:layout_width="wrap_content"
+              android:layout_height="20dp"
+              android:layout_below="@+id/takeaway_shop_desc_coupon"
+              android:layout_marginLeft="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_toRightOf="@+id/takeaway_shop_desc_reduce_img"
+              android:gravity="center"
+              android:text="第二份更是半价！每天限十份抢完即止"
+              android:textColor="@color/white"
+    />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/about_shop_close"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+
+        android:src="@drawable/close_icon"
+    />
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="3dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView android:id="@+id/all_comment_img"
+                                                  android:layout_width="50dp"
+
+                                                  android:layout_height="50dp"
+
+    />
+    <TextView android:id="@+id/all_comment_title" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_toRightOf="@+id/all_comment_img"
+    />
+    <RatingBar android:id="@+id/all_comment_ratingbar"
+               style="@style/Base.Widget.AppCompat.RatingBar.Small"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/all_comment_title"
+               android:layout_toRightOf="@+id/all_comment_img"
+               android:rating="5"
+    />
+
+    <TextView android:id="@+id/all_comment_desc" android:layout_width="match_parent"
+
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/all_comment_img"/>
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/all_comment_desc">
+
+        <LinearLayout android:id="@+id/all_comment_img_ll"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"/>
+
+
+    </HorizontalScrollView>
+</RelativeLayout>

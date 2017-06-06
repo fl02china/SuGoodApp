@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:layout_margin="3dp">
+
+	<ImageView
+		android:id="@+id/iv_nearby_headpic"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_margin="16dp"
+		android:background="@drawable/ic_launcher"/>
+
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:layout_toRightOf="@+id/iv_nearby_headpic">
+
+		<TextView
+			android:id="@+id/tv_nearby_shopname"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="舌尖上的中国"
+			android:textSize="16sp"
+			android:textColor="#121212"/>
+
+		<TextView
+			android:id="@+id/tv_nearby_distance"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="16dp"
+			android:layout_alignParentRight="true"
+			android:text="16km"
+			android:textSize="13sp"
+			android:textColor="#6b6363"/>
+
+		<TextView
+			android:id="@+id/tv_nearby_time"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="16dp"
+			android:layout_marginTop="4dp"
+			android:layout_alignParentRight="true"
+			android:layout_below="@+id/tv_nearby_distance"
+			android:text="24分钟"
+			android:textSize="13sp"
+			android:textColor="#6b6363"/>
+
+		<RatingBar
+			android:id="@+id/ratingbar"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="4dp"
+			android:numStars="5"
+			android:isIndicator="false"
+			android:progressTint="@color/ratingbar_color"
+			style="?android:attr/ratingBarStyleSmall"
+			android:layout_below="@+id/tv_nearby_shopname"/>
+
+		<TextView
+			android:id="@+id/tv_sold_num"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="11dp"
+			android:layout_alignBottom="@+id/ratingbar"
+			android:layout_toRightOf="@+id/ratingbar"
+			android:text="月售123件"
+			android:textSize="14sp"
+			android:textColor="#121212"/>
+
+		<TextView
+			android:id="@+id/tv_deliver_start_from"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="6dp"
+			android:layout_below="@+id/ratingbar"
+			android:text="起送￥30"
+			android:textSize="14sp"
+			android:textColor="#121212"/>
+
+
+		<TextView
+			android:id="@+id/tv_deliver"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="6dp"
+			android:layout_marginLeft="19dp"
+			android:layout_below="@+id/ratingbar"
+			android:layout_toRightOf="@+id/tv_deliver_start_from"
+			android:text="配送￥30"
+			android:textSize="14sp"
+			android:textColor="#121212"/>
+
+		<com.sugood.app.view.MyGridView
+			android:id="@+id/nearby_mygv"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/tv_deliver"
+			android:layout_marginTop="4dp">
+		</com.sugood.app.view.MyGridView>
+	</RelativeLayout>
+</RelativeLayout>

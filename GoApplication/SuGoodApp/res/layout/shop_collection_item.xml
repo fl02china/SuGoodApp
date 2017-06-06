@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/shop_collection_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/market_detail_food_img" />
+
+    <TextView
+        android:id="@+id/shop_collection_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/shop_collection_img"
+        android:text="维滋美艺术蛋糕店"
+        android:textColor="@color/black_de"
+        android:textSize="18sp" />
+
+    <RatingBar
+        android:id="@+id/shop_collection_ratingbar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/shop_collection_name"
+        android:layout_below="@+id/shop_collection_name"
+        android:layout_toRightOf="@+id/shop_collection_img"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:rating="5" />
+
+
+    <ImageView
+        android:id="@+id/shop_collection_location_img"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignLeft="@+id/shop_collection_name"
+        android:visibility="visible"
+        android:layout_below="@+id/shop_collection_delivery_tel"
+        android:src="@drawable/set_location_icon" />
+
+    <TextView
+        android:id="@+id/shop_collection_delivery_tel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/shop_collection_location_img"
+        android:layout_below="@+id/shop_collection_ratingbar"
+        android:text="￥20起送"
+        android:textColor="@color/text_grey"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/shop_collection_location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="天河区天和"
+        android:textColor="@color/text_grey"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:layout_below="@+id/shop_collection_delivery_tel"
+        android:layout_toRightOf="@+id/shop_collection_location_img"
+       />
+
+</RelativeLayout>

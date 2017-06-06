@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+
+        <RelativeLayout
+            android:id="@+id/takeaway_market_header"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:background="@color/red"
+            android:minHeight="40dp">
+
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/back_icon" />
+
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+                android:background="@drawable/rectangle_bg"
+                android:minWidth="200dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/search_icon" />
+
+                <EditText
+                    android:id="@+id/takeaway_market_editText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+
+
+                    android:focusable="false"
+                    android:hint="@string/supermaker_search_tips"
+                    android:minWidth="180dp"
+                    android:textColor="@color/grey"
+
+                    android:textColorHint="@color/text_black"
+                    android:textCursorDrawable="@null"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/takeaway_market_map"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/scan_code_icon" />
+
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/takeaway_market_main_vp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_below="@+id/takeaway_market_header"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/takeaway_market_main_vp"
+            android:alpha="0.5"
+            android:background="@color/grey"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/takeaway_market_dot_ll"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/takeaway_market_main_vp"
+
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/takeaway_market_dot1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_check_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_dot2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+
+                android:background="@drawable/circle_uncheck_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_dot3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_uncheck_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_dot4"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_uncheck_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_dot5"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_uncheck_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_dot6"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_uncheck_bg" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/takeaway_market_clother_ll"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/takeaway_market_dot_ll">
+
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_shoes_ll"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1.5"
+                android:background="@drawable/market_item_left"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_shoes_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp" />
+
+                <TextView
+                    android:id="@+id/takeaway_market_shoes_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1.2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_child_clothes_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_child_clothes_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_child_clothes_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_clothes_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_clothes_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_clothes_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/takeaway_market_health_care_ll"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/takeaway_market_health_care_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp" />
+
+                <TextView
+                    android:id="@+id/takeaway_market_health_care_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/takeaway_market_band_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/takeaway_market_diamonds_big_ll"
+            android:background="#FEE045"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="品牌店入驻，登录领取红包"
+                android:textColor="@color/text_red"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="50dp">
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_car_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_car_image"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_office_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_office_image"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_goods_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_goods_image"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_study_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_study_image"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="50dp">
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_digital_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_digital_image"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_famer_market_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_famer_market_image"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_newyear_goods_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_newyear_goods_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_house_machine_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_house_machine_image"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F1F1F1"
+
+                />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/takeaway_market_diamonds_big_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/takeaway_market_clother_ll"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_diamonds_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_diamonds_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_diamonds_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_outdoor_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_outdoor_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_outdoor_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_wedding_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_wedding_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_wedding_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_game_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_game_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_game_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_food_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_food_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_food_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_flower_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_flower_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_flower_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_building_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_building_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_building_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takeaway_market_furniture_ll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/market_item_left"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/takeaway_market_furniture_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/takeaway_market_furniture_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--<android.support.v4.widget.SwipeRefreshLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1000dp"-->
+            <!--android:layout_below="@+id/takeaway_market_band_ll">-->
+
+            <!--<com.jcodecraeer.xrecyclerview.XRecyclerView-->
+                <!--android:id="@+id/takeawaw_market_rv"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/takeaway_market_band_ll"/>-->
+
+
+        <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+    </RelativeLayout>
+
+
+</LinearLayout>

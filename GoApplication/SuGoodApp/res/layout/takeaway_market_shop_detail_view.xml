@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <RelativeLayout
+            android:id="@+id/takeaway_market_shop_detail_header"
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/red"
+            android:minHeight="40dp">
+
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_detail_header_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+
+                android:src="@drawable/back_icon" />
+
+
+            <TextView
+                android:id="@+id/takeaway_market_shop_detail_text_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="商品详情"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_middle"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_detail_report_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/report_icon"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_detail_farvorite_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/takeaway_market_shop_detail_report_img"
+                android:src="@drawable/farvorite_icon" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_detail_search"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/takeaway_market_shop_detail_farvorite_img"
+                android:src="@drawable/share_icon"
+
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/takeaway_market_shop_detail_vp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/takeaway_market_shop_detail_header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+
+            android:layout_alignBottom="@+id/takeaway_market_shop_detail_vp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_dot1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_check_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_dot2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+
+                android:background="@drawable/circle_uncheck_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_dot3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_uncheck_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_dot4"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_uncheck_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_dot5"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_uncheck_bg" />
+
+            <ImageView
+                android:id="@+id/takeaway_market_shop_dot6"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_uncheck_bg" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/takeaway_market_shop_detail_product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/takeaway_market_shop_detail_vp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/takeaway_market_shop_detail_price"
+            android:text="[app专享]德芙巧克力"
+            android:textColor="@color/black_de"
+            android:textSize="@dimen/text_middle" />
+
+        <TextView
+            android:id="@+id/takeaway_market_shop_detail_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/takeaway_market_shop_detail_vp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:text="￥14"
+            android:textColor="@color/text_red"
+            android:textSize="@dimen/text_middle"
+
+            />
+
+        <View
+            android:id="@+id/takeaway_market_shop_detail_price_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/takeaway_market_shop_detail_price"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_light" />
+
+
+        <TextView
+            android:id="@+id/takeaway_market_shop_detail_product_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/takeaway_market_shop_detail_product_name"
+            android:layout_below="@+id/takeaway_market_shop_detail_price_line"
+            android:layout_marginTop="10dp"
+            android:text="产品描述："
+            android:textColor="@color/black_de"
+            android:textSize="@dimen/text_middle"
+
+            />
+
+        <Button
+            android:id="@+id/takeaway_market_shop_detail_enter_shop_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignRight="@+id/takeaway_market_shop_detail_price"
+            android:layout_below="@+id/takeaway_market_shop_detail_price_line"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/market_detail_enter_shop_bg"
+            android:text="进店逛逛"
+
+            android:textColor="@color/text_red"
+            android:textSize="@dimen/text_middle" />
+
+        <View
+            android:id="@+id/takeaway_market_shop_detail_product_desc_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_desc"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_light" />
+
+        <TextView
+            android:id="@+id/takeaway_market_shop_detail_product_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/takeaway_market_shop_detail_enter_shop_btn"
+            android:layout_below="@+id/takeaway_market_shop_detail_enter_shop_btn"
+            android:layout_marginLeft="15dp"
+            android:text="德芙巧克力"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_middle" />
+
+
+        <ImageView
+            android:id="@+id/takeaway_market_shop_detail_product_desc_image1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_desc_line"
+            android:layout_marginTop="10dp" />
+
+        <ImageView
+            android:id="@+id/takeaway_market_shop_detail_product_desc_image2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_desc_image1"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/takeaway_market_shop_detail_product_desc_image3"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_desc_image2"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/takeaway_market_shop_detail_product_desc_image4"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_desc_image3"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/takeaway_market_shop_detail_product_desc_image5"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_desc_image4"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/takeaway_market_shop_detail_product_guess_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_desc_image5"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="猜你喜欢"
+            android:textColor="@color/black_de"
+            android:textSize="@dimen/text_middle"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/takeaway_market_shop_detail_product_rv_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_guess_tv"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_light" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/takeaway_market_shop_detail_product_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_rv_line"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/takeaway_market_shop_detail_product_ll_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_rv"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_light" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/takeaway_market_shop_detail_product_ll_line"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/add_shopcar_btn"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/market_detail_add_showcar_bg"
+                android:text="加入购物车"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_middle" />
+
+            <Button
+                android:id="@+id/shop_buynow_btn"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/market_detail_buy_bg"
+                android:text="立即购买"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_middle" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

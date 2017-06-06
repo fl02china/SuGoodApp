@@ -1,0 +1,77 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#06C1AE</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/black_de</item>
+
+    </style>
+
+    <style name="progress_bar_style" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/progress_bar</item>
+    </style>
+
+    <style name="text_black_mid" parent="@style/text_black">
+        <item name="android:textSize">16.0sp</item>
+    </style>
+
+    <style name="text_black">
+        <item name="android:textColor">@drawable/default_text_color</item>
+    </style>
+
+    <style name="text_black_small" parent="@style/text_black">
+        <item name="android:textSize">13.0sp</item>
+    </style>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/bg_dialog</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--设置状态栏颜色-->
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+
+    </style>
+
+    <style name="ActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/action_button_height</item>
+        <item name="android:minWidth">@dimen/action_button_min_width</item>
+        <item name="android:paddingLeft">@dimen/action_button_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/action_button_padding_horizontal</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textSize">@dimen/action_button_text_size</item>
+    </style>
+
+    <style name="MyRatingBar" parent="@style/Base.Widget.AppCompat.RatingBar.Indicator">
+        <item name="android:minHeight">36dp</item>
+        <item name="android:maxHeight">36dp</item>
+        <item name="android:isIndicator">true</item>
+        <item name="android:thumb">@null</item>
+        <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
+    </style>
+
+    <style name="popupwindow_animation">
+        <item name="android:windowEnterAnimation">@anim/popupwindow_enter</item>
+        <item name="android:windowExitAnimation">@anim/popupwindow_exit</item>
+    </style>
+
+    <style name="TablayoutTextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="RadingStyle" parent="@android:style/Widget.RatingBar">
+        <!-- 定义星星图片 -->
+        <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
+        <!-- 根据自定义星星图片的大小,设置相应的值,否则可能显示不全 -->
+        <item name="android:isIndicator">true</item>
+        <item name="android:thumb">@null</item>
+        <item name="android:minHeight">19dp</item>
+
+    </style>
+
+</resources>

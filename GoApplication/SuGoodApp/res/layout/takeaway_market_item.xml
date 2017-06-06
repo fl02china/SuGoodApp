@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/market_item_left">
+
+
+    <ImageView
+        android:id="@+id/takeaway_market_item_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:padding="5dp"
+        android:src="@drawable/defasd_111" />
+
+    <TextView
+        android:id="@+id/takeaway_market_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/takeaway_market_item_img"
+        android:layout_centerInParent="true"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="踏踏米"
+        android:textColor="@color/black_de"
+        android:textSize="@dimen/text_small" />
+
+    <TextView
+        android:id="@+id/takeaway_market_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/takeaway_market_item_img"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/takeaway_market_item_title"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="￥1356"
+        android:textColor="@color/text_red"
+        android:textSize="@dimen/text_small" />
+
+
+    <TextView
+        android:id="@+id/takeaway_market_item_buysum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/takeaway_market_item_img"
+        android:layout_below="@+id/takeaway_market_item_title"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text="352人付款"
+        android:textColor="@color/black_de"
+        android:textSize="@dimen/text_small" />
+
+</RelativeLayout>

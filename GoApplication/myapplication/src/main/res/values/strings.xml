@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">学习</string>
+    <string name="app_login_button">登 录</string>
+    <string name="input_login_account">输入账号</string>
+    <string name="input_login_password">输入密码</string>
+    <string name="app_losginss_button">登 录</string>
+    <string name="app_logins_sbutton">登 录</string>
+    <string name="apps_loginss_button">登 录</string>
+    <string name="app_login_bsutton">登 录</string>
+
+</resources>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CFCECC"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/takeaway_remark_header"
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/red"
+        android:minHeight="40dp">
+
+
+        <ImageView
+            android:id="@+id/takeaway_remark_header_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+
+            android:src="@drawable/back_icon" />
+
+        android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/takeaway_remark_text_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="添加备注"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_middle"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/takeaway_remark_ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/takeaway_remark_header"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:gravity="start"
+        android:hint="口味，偏好等要求"
+        android:inputType="textNoSuggestions|textMultiLine"
+        android:maxEms="50"
+        android:minHeight="200dp"
+        android:padding="2dp"
+        android:textSize="@dimen/text_middle" />
+
+
+    <TextView
+        android:id="@+id/textCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/takeaway_remark_ed"
+        android:layout_alignRight="@+id/takeaway_remark_ed"
+        android:text="0/50"
+        android:textSize="@dimen/text_middle" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/takeaway_remark_ed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_on"
+        android:text="完成"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/takeaway_remark_ed"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:background="@null"-->
+    <!--android:text="完成"-->
+    <!--android:textColor="@color/text_yellow"-->
+    <!--android:textSize="@dimen/text_middle" />-->
+
+
+</RelativeLayout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <ImageView
+        android:id="@+id/takeaway_shop_food_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/lunch_icon" />
+
+    <TextView
+        android:id="@+id/takeaway_shop_food_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_toRightOf="@+id/takeaway_shop_food_img"
+        android:text="香辣炸鸡饭"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_middle" />
+
+
+    <TextView
+        android:id="@+id/takeaway_shop_food_description_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/takeaway_shop_food_name_tv"
+        android:layout_toRightOf="@+id/takeaway_shop_food_img"
+        android:text="炸鸡300克+香辣酱+卤蛋+小菜"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/text_small" />
+
+
+    <TextView
+        android:id="@+id/takeaway_shop_food_sold_num_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/takeaway_shop_food_description_tv"
+        android:layout_toRightOf="@+id/takeaway_shop_food_img"
+        android:text="月售0"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/text_small" />
+
+    <TextView
+        android:id="@+id/takeaway_shop_food_praise_num_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/takeaway_shop_food_description_tv"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/takeaway_shop_food_sold_num_tv"
+        android:text="赞0"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/text_small" />
+
+
+    <TextView
+        android:id="@+id/takeaway_shop_food_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/takeaway_shop_food_sold_num_tv"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/takeaway_shop_food_img"
+        android:text="￥28"
+        android:textColor="@color/text_yellow"
+        android:textSize="@dimen/text_small"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/takeaway_shop_type_size_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/takeaway_shop_food_praise_num_tv"
+        android:layout_margin="10dp"
+        android:background="@drawable/choose_size_bg"
+        android:text="点击购买"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_small" />
+
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/takeaway_shop_food_praise_num_tv"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginTop="9dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/circle_bg"
+            android:text="一"
+            android:textSize="@dimen/text_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="1"
+            android:textColor="@color/text_black"
+            android:textSize="20sp" />
+
+        <!--<Button-->
+        <!--android:layout_width="25dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:background="@drawable/circle_bg"-->
+        <!--android:text="一"/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="1"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_middle" />
+
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/circle_bg"
+            android:text="一"
+            android:textSize="@dimen/text_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="1"
+            android:textColor="@color/text_black"
+            android:textSize="20sp" />
+
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/circle_bg"
+            android:text="十" />
+    </LinearLayout>
+
+
+</RelativeLayout>

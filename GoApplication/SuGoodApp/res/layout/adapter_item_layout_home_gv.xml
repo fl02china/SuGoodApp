@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:gravity="center">
+        <ImageView 
+            android:id="@+id/img_home_gv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"/>
+        
+        <TextView 
+            android:id="@+id/tv_home_gv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="美食"
+            android:layout_marginTop="7dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/img_home_gv"
+            android:textSize="13sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

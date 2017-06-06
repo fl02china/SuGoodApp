@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/rl_address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/address_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:text="何生"
+        android:textColor="@color/black_de"
+
+
+        />
+
+    <TextView
+        android:id="@+id/address_user_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/address_user_name"
+       android:layout_toRightOf="@+id/address_user_name"
+        android:text="134555444"
+
+        android:textColor="@color/black_de"
+
+
+        />
+
+    <TextView
+        android:id="@+id/address_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/address_user_name"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/address_user_name"
+        android:text="广东省深圳市宝安区新安街道开展花园大厦"
+        android:textColor="@color/black_de"
+
+
+        />
+
+    <View
+        android:id="@+id/address_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/address_tv"
+        android:layout_marginTop="10dp"
+        android:background="#F5F5F5" />
+
+<CheckBox android:layout_width="wrap_content"
+          android:layout_alignParentRight="true"
+          android:visibility="invisible"
+          android:id="@+id/address_manager_cb"
+          android:layout_height="wrap_content"/>
+</RelativeLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:background="@drawable/abs__menu_dropdown_panel_holo_light"
+                  android:id="@+id/takeaway_type_view_ll"
+                  android:layout_height="match_parent"
+
+                  android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="全部"
+                  android:textColor="@color/black_de"
+                  android:textSize="@dimen/text_middle"
+                  android:gravity="center"
+                  android:paddingTop="15dp"
+                  android:paddingBottom="15dp"
+                  android:paddingLeft="25dp"
+                  android:paddingRight="25dp"
+
+        />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="正餐"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+              android:gravity="center"
+              android:paddingTop="15dp"
+              android:paddingBottom="15dp"
+              android:paddingLeft="25dp"
+              android:paddingRight="25dp"
+              android:id="@+id/takeaway_type_launch"
+    />
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="小吃"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+              android:gravity="center"
+              android:padding="15dp"
+              android:id="@+id/takeaway_type_snack"
+    />
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="甜品"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+              android:gravity="center"
+              android:padding="15dp"
+              android:id="@+id/takeaway_type_sweet"
+    />
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="水果"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+              android:gravity="center"
+              android:padding="15dp"
+              android:id="@+id/takeaway_type_fruit"
+    />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="宵夜"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+              android:gravity="center"
+              android:padding="15dp"
+              android:id="@+id/takeaway_type_nightsnack"
+    />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="下午茶"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+              android:gravity="center"
+              android:padding="15dp"
+              android:id="@+id/takeaway_type_launchtea"
+    />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="西餐"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+              android:gravity="center"
+              android:padding="15dp"
+              android:id="@+id/takeaway_type_weaternfood"
+    />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="烧烤"
+              android:textColor="@color/black_de"
+              android:textSize="@dimen/text_middle"
+              android:gravity="center"
+              android:padding="15dp"
+              android:id="@+id/takeaway_type_barbecue"
+    />
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+

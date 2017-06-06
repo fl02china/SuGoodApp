@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+>
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+    >
+
+
+        <RelativeLayout android:id="@+id/market_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/red"
+                        android:minHeight="40dp">
+
+            <LinearLayout android:id="@+id/location_text_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_centerVertical="true"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+
+                <ImageView android:id="@+id/takeaway_main_header_back"
+                           android:layout_width="30dp"
+                           android:layout_height="30dp"
+                           android:layout_centerVertical="true"
+                           android:layout_marginLeft="10dp"
+                           android:src="@drawable/back_icon"/>
+                <!--<TextView android:id="@+id/supermaket_location" android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="7dp"
+                          android:text="湛江"
+                          android:textColor="@color/white"
+
+                          android:textSize="@dimen/text_middle"
+                />
+                <ImageView android:layout_width="25dp"
+                           android:layout_height="25dp"
+
+                           android:src="@drawable/choose_icon"/>-->
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/search_layout"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+
+                          android:layout_centerInParent="true"
+                          android:background="@drawable/rectangle_bg"
+                          android:orientation="horizontal">
+
+                <ImageView android:layout_width="25dp" android:layout_height="25dp"
+                           android:layout_gravity="center_vertical"
+                           android:src="@drawable/search_icon"/>
+
+                <EditText android:id="@+id/editText"
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:background="@null"
+
+
+                          android:hint="@string/supermaker_search_tips"
+                          android:minWidth="180dp"
+
+                          android:textColor="@color/grey"
+                          android:textCursorDrawable="@null"
+                          android:textSize="@dimen/text_middle"/>
+            </LinearLayout>
+
+            <ImageView android:id="@+id/msg_img" android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:layout_alignParentRight="true"
+                       android:layout_centerVertical="true"
+                       android:layout_marginRight="5dp"
+                       android:src="@drawable/msg_icon"
+            />
+        <!--    <ImageView android:id="@+id/menu_img" android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:layout_centerVertical="true"
+                       android:layout_marginRight="3dp"
+                       android:layout_toLeftOf="@+id/msg_img"
+
+
+                       android:src="@drawable/menu_icon"
+            />-->
+
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager android:id="@+id/market_main_vp"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="180dp"
+                                           android:layout_below="@+id/market_header"/>
+
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="20dp"
+                      android:layout_alignBottom="@+id/market_main_vp"
+                      android:alpha="0.5"
+                      android:background="@color/grey"
+                      android:gravity="center"
+        />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="20dp"
+                      android:layout_alignBottom="@+id/market_main_vp"
+
+
+                      android:gravity="center"
+                      android:orientation="horizontal">
+            <ImageView android:id="@+id/market_dot1" android:layout_width="10dp"
+                       android:layout_height="10dp"
+                       android:layout_marginLeft="5dp"
+                       android:layout_marginRight="10dp"
+                       android:background="@drawable/circle_check_bg"/>
+            <ImageView android:id="@+id/market_dot2" android:layout_width="10dp"
+                       android:layout_height="10dp"
+                       android:layout_marginLeft="5dp"
+                       android:layout_marginRight="10dp"
+
+                       android:background="@drawable/circle_uncheck_bg"/>
+            <ImageView android:id="@+id/market_dot3" android:layout_width="10dp"
+                       android:layout_height="10dp"
+                       android:layout_marginLeft="5dp"
+                       android:layout_marginRight="10dp"
+                       android:background="@drawable/circle_uncheck_bg"/>
+            <ImageView android:id="@+id/market_dot4" android:layout_width="10dp"
+                       android:layout_height="10dp"
+                       android:layout_marginLeft="5dp"
+                       android:layout_marginRight="10dp"
+                       android:background="@drawable/circle_uncheck_bg"/>
+            <ImageView android:id="@+id/market_dot5" android:layout_width="10dp"
+                       android:layout_height="10dp"
+                       android:layout_marginLeft="5dp"
+                       android:layout_marginRight="10dp"
+                       android:background="@drawable/circle_uncheck_bg"/>
+            <ImageView android:id="@+id/market_dot6" android:layout_width="10dp"
+                       android:layout_height="10dp"
+                       android:layout_marginLeft="5dp"
+                       android:layout_marginRight="10dp"
+                       android:background="@drawable/circle_uncheck_bg"/>
+        </LinearLayout>
+
+        <ImageView android:id="@+id/market_banner_right_img" android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:layout_alignParentRight="true"
+                   android:layout_below="@+id/market_main_vp"
+                   android:layout_marginLeft="30dp"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginTop="10dp"
+                   android:src="@drawable/market_banner_right"/>
+        <TextView android:id="@+id/market_tip_tv_top" android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentLeft="true"
+                  android:layout_below="@+id/market_main_vp"
+                  android:layout_marginLeft="17dp"
+                  android:layout_marginTop="18dp"
+                  android:layout_toLeftOf="@+id/market_banner_right_img"
+                  android:ellipsize="end"
+                  android:maxLines="1"
+                  android:text="昌大昌晚8点生鲜和熟食半价聚优..."
+                  android:textColor="@color/green"
+
+                  android:textSize="14sp"/>
+
+
+        <TextView android:id="@+id/market_tip_tv_bottom" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentLeft="true"
+                  android:layout_below="@+id/market_tip_tv_top"
+                  android:layout_marginLeft="17dp"
+                  android:layout_marginTop="10dp"
+                  android:layout_toLeftOf="@+id/market_banner_right_img"
+                  android:ellipsize="end"
+                  android:maxLines="1"
+                  android:text="哎呦，大润发晚9点面包买一送一..."
+                  android:textColor="@color/green"
+                  android:textSize="14sp"/>
+
+        <LinearLayout android:id="@+id/market_banner_layout"
+                      android:layout_width="match_parent"
+                      android:layout_height="100dp"
+                      android:layout_below="@+id/market_banner_right_img"
+                      android:paddingBottom="5dp"
+                      android:paddingLeft="5dp"
+                      android:paddingTop="15dp"
+        >
+
+            <ImageView android:id="@+id/market_banner_img_left" android:layout_width="0dp"
+                       android:layout_height="100dp"
+                       android:layout_weight="2"
+                       android:src="@drawable/market_send"/>
+
+            <ImageView android:id="@+id/market_banner_img_right2" android:layout_width="0dp"
+                       android:layout_height="100dp"
+                       android:layout_marginLeft="10dp"
+                       android:layout_weight="1"
+                       android:src="@drawable/market_banner_img_right2"/>
+        </LinearLayout>
+
+
+        <LinearLayout android:id="@+id/cheap_product_layout"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_below="@+id/market_banner_layout"
+                      android:orientation="horizontal">
+
+            <!--便利商品-->
+            <RelativeLayout
+                android:id="@+id/cheap_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:onClick="onClick"
+
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/cheap_product_image" android:layout_width="50dp"
+                           android:layout_height="50dp"
+
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentStart="true"
+                           android:layout_alignParentTop="true"
+                           android:src="@drawable/market_default_icon"/>
+                <TextView android:id="@+id/cheap_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/cheap_product_image"
+                          android:text="便利商品"
+                          android:textSize="@dimen/text_small"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/market_item_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/cheap_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/cheap_product_image"
+                          android:text="便利 省事 帮你挑"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+
+            </RelativeLayout>
+
+
+            <!--代买香烟-->
+            <RelativeLayout
+                android:id="@+id/cigarette_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_right"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/cigarette_product_image"
+                           android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentTop="true"
+
+                           android:src="@drawable/buy_cigarette_icon"/>
+                <TextView android:id="@+id/cigarette_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/cigarette_product_image"
+                          android:text="代买香烟"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/cigarette_product_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/cigarette_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/cigarette_product_image"
+                          android:text="中华 芙蓉王 双喜"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--第二行-->
+        <LinearLayout android:id="@+id/frozen_product_layout"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_below="@+id/cheap_product_layout"
+                      android:orientation="horizontal">
+
+            <!--冷冻配送-->
+            <RelativeLayout
+                android:id="@+id/frozen_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/frozen_product_image"
+                           android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentTop="true"
+
+                           android:src="@drawable/frozen_product_icon"/>
+
+                <TextView android:id="@+id/frozen_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/frozen_product_image"
+                          android:text="冷冻配送"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/frozen_product_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/frozen_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/frozen_product_image"
+                          android:text="酸奶 棒冰 速冻饺"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+            </RelativeLayout>
+            <!--奶酒饮料-->
+            <RelativeLayout
+                android:id="@+id/drink_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_right"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/drink_product_image" android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentTop="true"
+
+                           android:src="@drawable/drink_product_icon"/>
+
+                <TextView android:id="@+id/drink_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/drink_product_image"
+                          android:text="奶酒饮料"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/drink_product_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/drink_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/drink_product_image"
+                          android:text="啤酒 咖啡 矿泉水"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--第三行-->
+
+        <LinearLayout android:id="@+id/grain_product_layout"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_below="@+id/frozen_product_layout"
+                      android:orientation="horizontal">
+
+            <!--粮油干调-->
+            <RelativeLayout
+                android:id="@+id/grain_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/grain_product_image"
+                           android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentTop="true"
+
+                           android:src="@drawable/grain_product_icon"/>
+
+                <TextView android:id="@+id/grain_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/grain_product_image"
+                          android:text="粮油干调"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/grain_product_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/grain_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/grain_product_image"
+                          android:text="酱油 大米 方便面"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+            </RelativeLayout>
+            <!--优闲食品-->
+            <RelativeLayout
+                android:id="@+id/snacks_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_right"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/snacks_product_image" android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentTop="true"
+
+                           android:src="@drawable/snacks_product_icon"/>
+
+                <TextView android:id="@+id/snacks_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/snacks_product_image"
+                          android:text="优闲食品"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/snacks_product_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/snacks_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/snacks_product_image"
+                          android:text="薯片 饼干 面包"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <!--第四行-->
+
+        <LinearLayout android:id="@+id/machine_product_layout"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_below="@+id/grain_product_layout"
+                      android:orientation="horizontal">
+
+            <!--家用电器-->
+            <RelativeLayout
+                android:id="@+id/machine_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/machine_product_image"
+                           android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentTop="true"
+
+                           android:src="@drawable/grain_product_icon"/>
+
+                <TextView android:id="@+id/machine_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/machine_product_image"
+                          android:text="家用电器"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/machine_product_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/machine_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/machine_product_image"
+                          android:text="酱油 大米 方便面"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+            </RelativeLayout>
+            <!--日常百货-->
+            <RelativeLayout
+                android:id="@+id/daily_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_right"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/daily_product_image" android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentTop="true"
+
+                           android:src="@drawable/snacks_product_icon"/>
+
+                <TextView android:id="@+id/daily_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/daily_product_image"
+                          android:text="日用百货"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/daily_product_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/daily_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/daily_product_image"
+                          android:text="薯片 饼干 面包"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <!--第五行-->
+
+        <LinearLayout android:id="@+id/_product_layout"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_below="@+id/machine_product_layout"
+                      android:orientation="horizontal">
+
+            <!--家用电器-->
+            <RelativeLayout
+                android:id="@+id/home_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_left"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/home_product_image"
+                           android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentTop="true"
+
+                           android:src="@drawable/grain_product_icon"/>
+
+                <TextView android:id="@+id/home_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/home_product_image"
+                          android:text="家居用品"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/home_product_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/home_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/home_product_image"
+                          android:text="酱油 大米 方便面"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+            </RelativeLayout>
+            <!--床上用品-->
+            <RelativeLayout
+                android:id="@+id/bed_product_rl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/market_item_right"
+                android:onClick="onClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <ImageView android:id="@+id/bed_product_image" android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:layout_alignParentLeft="true"
+                           android:layout_alignParentTop="true"
+
+                           android:src="@drawable/snacks_product_icon"/>
+
+                <TextView android:id="@+id/bed_product_title_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="5dp"
+                          android:layout_toRightOf="@+id/bed_product_image"
+                          android:text="床上用品"
+                          android:textColor="@color/black"/>
+
+                <TextView android:id="@+id/bed_product_content_tv"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/bed_product_title_tv"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="8dp"
+                          android:layout_toRightOf="@+id/bed_product_image"
+                          android:text="薯片 饼干 面包"
+                          android:textColor="@color/text_grey"
+                          android:textSize="12sp"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+>
+    <TextView android:id="@+id/will_pay_order_id" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentTop="true"
+              android:layout_margin="5dp"
+              android:text="订单ID：26"/>
+
+    <TextView android:id="@+id/will_pay_createtime" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentTop="true"
+              android:layout_margin="5dp"
+              android:text="下单时间 11:26"/>
+    <View android:id="@+id/will_pay_line1" android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_below="@+id/will_pay_order_id"
+          android:layout_marginTop="3dp"
+          android:background="@color/text_grey"/>
+
+    <ImageView android:id="@+id/will_pay_pic" android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:src="@drawable/market_default_circle_photo"
+               android:layout_below="@+id/will_pay_line1"
+               android:layout_margin="10dp"
+    />
+
+    <TextView android:id="@+id/will_pay_product_name" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/will_pay_line1"
+              android:layout_marginTop="10dp"
+              android:layout_toRightOf="@+id/will_pay_pic"
+              android:text="腊肠"
+    />
+
+    <View android:id="@+id/will_pay_line2" android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_below="@+id/will_pay_pic"
+          android:layout_marginTop="10dp"
+          android:background="@color/text_grey"/>
+    <TextView android:id="@+id/will_pay_price" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/will_pay_product_name"
+              android:layout_marginTop="10dp" android:layout_toEndOf="@+id/will_pay_pic"
+              android:text="小计：20元"/>
+    <TextView android:id="@+id/will_pay_account" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+android:layout_marginTop="3dp"
+              android:layout_below="@id/will_pay_line2"
+              android:text="配送费用：3 总费用：23"/>
+
+    <View android:id="@+id/will_pay_line3" android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_below="@+id/will_pay_account"
+          android:layout_marginTop="2dp"
+          android:background="@color/text_grey"/>
+
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/will_pay_line3"
+            android:text="详情"
+            android:id="@+id/will_pay_desc"
+    />
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/will_pay_desc"
+            android:layout_below="@+id/will_pay_line3"
+            android:text="删除订单"
+            android:id="@+id/will_pay_delete_order"
+    />
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/will_pay_delete_order"
+            android:layout_below="@+id/will_pay_line3"
+            android:text="去支付"
+            android:id="@+id/will_pay_pay_btn"
+    />
+
+
+</RelativeLayout>

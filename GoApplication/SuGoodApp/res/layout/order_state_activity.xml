@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+
+    <RelativeLayout android:id="@+id/order_state_header"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/red"
+                    android:minHeight="40dp">
+
+
+        <ImageView android:id="@+id/order_state_header_back"
+                   android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:layout_centerVertical="true"
+                   android:layout_marginLeft="10dp"
+
+                   android:src="@drawable/back_icon"/>
+
+
+        <TextView android:id="@+id/order_state_text_tv"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerInParent="true"
+                  android:text="商品名称"
+                  android:textColor="@color/white"
+                  android:textSize="20sp"
+                  android:textStyle="bold"/>
+
+
+    </RelativeLayout>
+
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/order_state_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/order_state_tv"/>
+
+
+    <TextView android:id="@+id/order_state_tv" android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentStart="true"
+              android:layout_below="@+id/order_state_header"
+              android:gravity="center"
+              android:padding="10dp"
+              android:text="订单状态"
+
+              android:textColor="@color/black_de"
+              android:textSize="18sp"/>
+
+</RelativeLayout>

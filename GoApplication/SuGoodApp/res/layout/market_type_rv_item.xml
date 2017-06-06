@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/market_item_left"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp">
+
+    <ImageView
+        android:id="@+id/market_type_rv_item_image"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/market_type_rv_item_img_default" />
+
+    <TextView
+        android:id="@+id/market_type_rv_item_product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/market_type_rv_item_image"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="7dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="新万家猴王（紫）香烟20支装"
+        android:textColor="@color/text_black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/market_type_rv_item_product_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/market_type_rv_item_product_title"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="5dp"
+        android:text="超市特价让利"
+        android:textColor="@color/text_black"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/market_type_rv_item_product_content">
+
+
+        <TextView
+            android:id="@+id/market_type_rv_item_product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="7dp"
+            android:text="￥12"
+            android:textColor="@color/text_red"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/market_type_rv_item_product_sold_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/market_type_rv_item_product_price"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="已售233"
+            android:textColor="@color/text_black"
+            android:textSize="12sp"
+
+            />
+    </RelativeLayout>
+</RelativeLayout>
