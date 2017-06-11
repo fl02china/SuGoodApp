@@ -53,7 +53,7 @@ public class MainActivity extends TabActivity {
         context = MainActivity.this;
 
         initView();
-        initNetData();
+      //  initNetData();
     }
 
     //上传经纬度

@@ -19,7 +19,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.baidu.platform.comapi.map.B;
+//import com.baidu.platform.comapi.map.B;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.sugood.app.R;

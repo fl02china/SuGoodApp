@@ -22,8 +22,8 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
+//import com.baidu.location.BDLocation;
+//import com.baidu.location.BDLocationListener;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -97,18 +97,18 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
         type = getIntent().getStringExtra("type");
         viewHeader = LayoutInflater.from(this).inflate(R.layout.good_food_header, null);
         tv_address = (TextView) viewHeader.findViewById(R.id.tv_address);
-
-        try {
-            if (SugoodApplication.mLocationClient != null) {
-                tv_address.setText("地址:" + SugoodApplication.mLocationClient.getLastKnownLocation().getAddress().address.
-                        replace(SugoodApplication.mLocationClient.getLastKnownLocation().getAddress().country
-                                + SugoodApplication.mLocationClient.getLastKnownLocation().getAddress().province, ""));
-            } else {
-                tv_address.setText("未知位置");
-            }
-        } catch (NullPointerException e) {
-            tv_address.setText("未知位置");
-        }
+        tv_address.setText("未知位置");
+//        try {
+//            if (SugoodApplication.mLocationClient != null) {
+//                tv_address.setText("地址:" + SugoodApplication.mLocationClient.getLastKnownLocation().getAddress().address.
+//                        replace(SugoodApplication.mLocationClient.getLastKnownLocation().getAddress().country
+//                                + SugoodApplication.mLocationClient.getLastKnownLocation().getAddress().province, ""));
+//            } else {
+//                tv_address.setText("未知位置");
+//            }
+//        } catch (NullPointerException e) {
+//            tv_address.setText("未知位置");
+//        }
 
         btn_back = (Button) findViewById(R.id.btn_back);
         edtSearch = (EditText) findViewById(R.id.tv_box_search);
@@ -326,25 +326,26 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
             case R.id.btn_location:
                 isToast = false;
                 showLoading("获取位置");
-                SugoodApplication.mLocationClient.start();
-                SugoodApplication.mLocationClient.registerLocationListener(new BDLocationListener() {
-                    @Override
-                    public void onReceiveLocation(BDLocation bdLocation) {
-                        closeLoading();
-                        Log.e("LOCAtion", "onReceiveLocation: " + bdLocation.getAddrStr());
-                        if (!isToast) {
-                            isToast = true;
-                            ToastUtil.setToast(GoodFoodActivity.this, bdLocation.getAddrStr().replace(bdLocation.getCountry(), ""));
-                            SugoodApplication.mLocationClient.stop();
-                        }
-
-                    }
-
-                    @Override
-                    public void onConnectHotSpotMessage(String s, int i) {
-
-                    }
-                });
+                //百度地图
+//                SugoodApplication.mLocationClient.start();
+//                SugoodApplication.mLocationClient.registerLocationListener(new BDLocationListener() {
+//                    @Override
+//                    public void onReceiveLocation(BDLocation bdLocation) {
+//                        closeLoading();
+//                        Log.e("LOCAtion", "onReceiveLocation: " + bdLocation.getAddrStr());
+//                        if (!isToast) {
+//                            isToast = true;
+//                            ToastUtil.setToast(GoodFoodActivity.this, bdLocation.getAddrStr().replace(bdLocation.getCountry(), ""));
+//                            SugoodApplication.mLocationClient.stop();
+//                        }
+//
+//                    }
+//
+//                    @Override
+//                    public void onConnectHotSpotMessage(String s, int i) {
+//
+//                    }
+//                });
                 break;
             default:
                 break;

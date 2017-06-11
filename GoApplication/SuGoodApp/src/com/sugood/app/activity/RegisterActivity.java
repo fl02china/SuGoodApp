@@ -19,6 +19,7 @@ import com.sugood.app.util.AppUtil;
 import com.sugood.app.util.HttpUtil;
 import com.sugood.app.util.MD5Util;
 import com.sugood.app.util.ToastUtil;
+import com.sugood.app.util.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -115,49 +116,71 @@ public class RegisterActivity extends BaseActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(edtCode.getText().toString())) {
-                    ToastUtil.setToast(RegisterActivity.this, "验证码不能为空");
-                    return;
-                }
-                if (TextUtils.isEmpty(edtPassword.getText().toString())) {
-                    ToastUtil.setToast(RegisterActivity.this, "请输入密码");
-                    return;
-                }
-                if (TextUtils.isEmpty(edtPassword2.getText().toString())) {
-                    ToastUtil.setToast(RegisterActivity.this, "请重复输入密码");
-                    return;
-                }
-                if (edtPassword.getText().toString().length() < 6) {
-                    ToastUtil.setToast(RegisterActivity.this, "请输入不少于6位的密码");
-                    return;
-                }
-                if (!edtPassword.getText().toString().equals(edtPassword2.getText().toString())) {
-                    ToastUtil.setToast(RegisterActivity.this, "两次输入的密码不相同，请重新输入");
-                    return;
-                }
+//                if (!Utils.isNetworkAvailable(RegisterActivity.this)) {
+//                    ToastUtil.setToast(RegisterActivity.this, "网络请求失败，请检查您的网络");
+//                    return;
+//                }
+                if (registerCheck()) return;
                 register();
+//                if (Utils.isNetworkAvailable(RegisterActivity.this)) {
+//                    register();
+//                } else{
+//                    ToastUtil.setToast(RegisterActivity.this, "没有网络");
+//                    return;
+//                }
+
             }
         });
 
 
     }
 
+    private boolean registerCheck() {
+        if (TextUtils.isEmpty(edtCode.getText().toString())) {
+            ToastUtil.setToast(RegisterActivity.this, "验证码不能为空");
+            return true;
+        }
+        if (TextUtils.isEmpty(edtPassword.getText().toString())) {
+            ToastUtil.setToast(RegisterActivity.this, "请输入密码");
+            return true;
+        }
+        if (TextUtils.isEmpty(edtPassword2.getText().toString())) {
+            ToastUtil.setToast(RegisterActivity.this, "请重复输入密码");
+            return true;
+        }
+        if (edtPassword.getText().toString().length() < 6) {
+            ToastUtil.setToast(RegisterActivity.this, "请输入不少于6位的密码");
+            return true;
+        }
+        if (!edtPassword.getText().toString().equals(edtPassword2.getText().toString())) {
+            ToastUtil.setToast(RegisterActivity.this, "两次输入的密码不相同，请重新输入");
+            return true;
+        }
+        return false;
+    }
+
     //注册
     private void register() {
 
         RequestParams params = new RequestParams();
-        params.put("password", MD5Util.getMD5(edtPassword.getText().toString()));
-        params.put("mobile", edtPhone.getText().toString());
-        params.put("code", edtCode.getText().toString());
+        String password =MD5Util.getMD5(edtPassword.getText().toString());
+        String mobile =edtPhone.getText().toString();
+        String code =edtCode.getText().toString();
+//        String password =MD5Util.getMD5("123456");
+//        String mobile ="13620906082";
+//        String code ="123456";
+        params.put("password", password);
+        params.put("mobile", mobile);
+        params.put("code", code);
         HttpUtil.post(Constant.SUGOODREGISTER, params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.e("sadas", "onSuccess: "+response.toString() );
+                Log.e("sadas", "onSuccess: " + response.toString());
                 try {
                     if (!response.getBoolean("success")) {
-                        ToastUtil.setToast(RegisterActivity.this, "您的手机已经注册,请登陆");
+                        ToastUtil.setToast(RegisterActivity.this, response.toString());
                     } else {
                         ToastUtil.setToast(RegisterActivity.this, "注册成功");
                         finish();
@@ -172,7 +195,23 @@ public class RegisterActivity extends BaseActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
+                Log.e("sadas", "onFailure: " + "statusCode:"+statusCode+"  :"+responseString);
                 ToastUtil.setToast(RegisterActivity.this, "注册失败，请重新注册");
+                //  finish();
+            }
+
+            @Override
+            public void onCancel() {
+                Log.e("sadas", "onCancel " );
+                super.onCancel();
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.e("sadas", "onFailure2: " + "statusCode:"+statusCode+"  :"+errorResponse);
+                ToastUtil.setToast(RegisterActivity.this, "注册失败，请检查网络");
+                super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
 

@@ -25,8 +25,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
+//import com.baidu.location.BDLocation;
+//import com.baidu.location.BDLocationListener;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -144,27 +144,29 @@ public class NearbyActivity extends BaseActivity {
         takeaway_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isToast = false;
-                showLoading("获取位置");
-                SugoodApplication.mLocationClient.start();
-                SugoodApplication.mLocationClient.registerLocationListener(new BDLocationListener() {
-                    @Override
-                    public void onReceiveLocation(BDLocation bdLocation) {
-                        closeLoading();
-                        Log.e("LOCAtion", "onReceiveLocation: " + bdLocation.getAddrStr());
-                        if (!isToast) {
-                            isToast = true;
-                            ToastUtil.setToast(NearbyActivity.this, bdLocation.getAddrStr().replace(bdLocation.getCountry(), ""));
-                            SugoodApplication.mLocationClient.stop();
-                        }
-
-                    }
-
-                    @Override
-                    public void onConnectHotSpotMessage(String s, int i) {
-
-                    }
-                });
+                ToastUtil.setToast(NearbyActivity.this, "百度地图已经删除");
+                SugoodApplication.locationClient.startLocation();
+//                isToast = false;
+//                showLoading("获取位置");
+//                SugoodApplication.mLocationClient.start();
+//                SugoodApplication.mLocationClient.registerLocationListener(new BDLocationListener() {
+//                    @Override
+//                    public void onReceiveLocation(BDLocation bdLocation) {
+//                        closeLoading();
+//                        Log.e("LOCAtion", "onReceiveLocation: " + bdLocation.getAddrStr());
+//                        if (!isToast) {
+//                            isToast = true;
+//                            ToastUtil.setToast(NearbyActivity.this, bdLocation.getAddrStr().replace(bdLocation.getCountry(), ""));
+//                            SugoodApplication.mLocationClient.stop();
+//                        }
+//
+//                    }
+//
+//                    @Override
+//                    public void onConnectHotSpotMessage(String s, int i) {
+//
+//                    }
+//                });
             }
         });
 
