@@ -7,15 +7,17 @@ package com.sugood.app.global;
  */
 public class Constant {
     public static final String COM_URL = "www.if.com";
-
+    //新接口base url
+    public static final String NEWSUGOODBASEURL = "http://city58.cn:8080/Speed/";
     //接口base url
-    public static final String SUGOODBASEURL = "http://sgd.92city.com:8080/Speed/";
+   // public static final String SUGOODBASEURL = "http://sgd.92city.com:8080/Speed/";
     //接口base url
-//    public static final String SUGOODBASEURL = "http://www.goodsolo.com:8080/Speed/";
+   public static final String SUGOODBASEURL = "http://www.goodsolo.com:8080/Speed/";
 
     //图片 base Url
     public static final String PHOTOBASEURL = "http://www.goodsolo.com";
-
+ //upload  经纬度
+ public static final String CHECKUPDATE = SUGOODBASEURL + "Speed/Version";
     //upload  经纬度
     public static final String UPLOADLATLONG = SUGOODBASEURL + "Speed/lat/lngQueryPage";
     //美食页面数据

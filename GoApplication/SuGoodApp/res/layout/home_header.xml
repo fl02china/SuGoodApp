@@ -18,10 +18,24 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+
+
+            <!-- 首页广告位-->
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_home"
+                android:layout_width="match_parent"
+
+                android:layout_height="134dp" />
+            <!--<com.mgyapp.android.view.AutoScrollGallery-->
+                <!--android:id="@+id/gallery"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="178dp"-->
+                <!--android:background="@color/white" />-->
             <!-- 分类1 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -44,11 +58,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Viewpager -->
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vp_home"
-                android:layout_width="match_parent"
-                android:layout_height="134dp" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"

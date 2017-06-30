@@ -2,6 +2,7 @@ package com.sugood.app.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
@@ -12,6 +13,7 @@ import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -58,10 +60,12 @@ import com.sugood.app.listener.MarketPageChangeListener;
 import com.sugood.app.util.GlideUtil;
 import com.sugood.app.util.HttpUtil;
 import com.sugood.app.util.JsonUtil;
+import com.sugood.app.util.OtherUtils;
 import com.sugood.app.util.ToastUtil;
 import com.sugood.app.util.Utility;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -81,6 +85,7 @@ import com.amap.api.location.AMapLocationClientOption.AMapLocationMode;
 import com.amap.api.location.AMapLocationClientOption.AMapLocationProtocol;
 import com.amap.api.location.AMapLocationListener;
 
+import androidkun.com.versionupdatelibrary.entity.VersionUpdateConfig;
 import cz.msebera.android.httpclient.Header;
 
 /**
@@ -178,10 +183,12 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
         setContentView(R.layout.activity_home);
         mContext = HomeActivity.this;
         initLocation();
+
         startLocation();
         initCategory();// 初
         initView();// 初始化各控件
         showLoading("定位中");
+        checkupdate();//检查更新
         //initNetData();//上传经纬度
     }
 
@@ -280,6 +287,7 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
     private void initData() {
 
        // showLoading("加载中");
+
         RequestParams params = new RequestParams();
         params.put("page", "1");
         params.put("pageSize", "9999");
@@ -575,6 +583,79 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
         return null;
     }
 
+
+    private void checkupdate(){
+
+        RequestParams params = new RequestParams();
+        int version = OtherUtils.getAppVersion(SugoodApplication.getInstance());
+        params.put("version", version+"");
+        Log.e(TAG, "version112: " + version);
+        HttpUtil.post(Constant.CHECKUPDATE, params, new JsonHttpResponseHandler() {
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.e(TAG, "response112: " + response.toString());
+                try {
+                    if (response.getBoolean("session")) {
+                        showUpdateDialog(response.getString("version"));
+                    } else {
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.e(TAG, "onSuccess: " + response.toString());
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Log.e(TAG, "onFailure: " + responseString);
+            }
+        });
+    }
+
+    private void showUpdateDialog(final String url){
+        /* @setIcon 设置对话框图标
+         * @setTitle 设置对话框标题
+         * @setMessage 设置对话框消息提示
+         * setXXX方法返回Dialog对象，因此可以链式设置属性
+         */
+
+        final AlertDialog.Builder updateDialog =
+                new AlertDialog.Builder(this);
+
+        updateDialog.setTitle("更新提示");
+        updateDialog.setMessage("有新版本更新");
+        updateDialog.setPositiveButton("确定",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        VersionUpdateConfig.getInstance()//获取配置实例
+                                .setContext(HomeActivity.this)//设置上下文
+                                .setDownLoadURL(url)//设置文件下载链接
+                                .setNotificationIconRes(R.drawable.logo)//设置通知图标
+                                .setNotificationSmallIconRes(R.drawable.yes_icon)//设置通知小图标
+                                .setNotificationTitle("速购得更新")//设置通知标题
+                                .startDownLoad();//开始下载
+                    }
+                });
+        updateDialog.setNegativeButton("关闭",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //...To-do
+                    }
+                });
+        // 显示
+        updateDialog.show();
+    }
+
+
+
+
     /**
      * 定位监听
      */
@@ -766,7 +847,7 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
 
             container.addView(imageList.get(position));
 
-            imageList.get(position).setOnClickListener(new View.OnClickListener() {
+            imageList.get(position).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent();
@@ -885,8 +966,8 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
     private void measureView(View childView) {
         LayoutParams p = childView.getLayoutParams();
         if (p == null) {
-            p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            p = new LayoutParams(LayoutParams.FILL_PARENT,
+                    LayoutParams.WRAP_CONTENT);
         }
         int childWidthSpec = ViewGroup.getChildMeasureSpec(0, 0 + 0, p.width);
         int height = p.height;
@@ -948,6 +1029,7 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+
             exit();
             return false;
         }

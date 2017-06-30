@@ -205,9 +205,11 @@
         android:gravity="center">
 
         <CheckBox
+            android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:gravity="center"
+            android:checked="true"
             android:text="我能遵守速购得的用户使用协议和国家的法律法规" />
 
     </LinearLayout>

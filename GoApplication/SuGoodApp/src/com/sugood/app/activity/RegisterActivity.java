@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.sugood.app.util.MD5Util;
 import com.sugood.app.util.ToastUtil;
 import com.sugood.app.util.Utils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,7 +45,8 @@ public class RegisterActivity extends BaseActivity {
     private Button btnRegister;
     private TimeCount timeCount;
     private ImageView iv_back;
-
+    private CheckBox checkbox;
+    private static final String TAG = RegisterActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +62,59 @@ public class RegisterActivity extends BaseActivity {
 
         RequestParams params = new RequestParams();
         params.put("mobile", phone);
-
+        Log.e(TAG, "address: "+Constant.GETCODE);
         HttpUtil.post(Constant.GETCODE, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                ToastUtil.setToast(RegisterActivity.this, "验证码发送成功，请留意短信通知");
-                timeCount = new TimeCount(60000, 1000);
-                timeCount.start();
-                tvGetCode.setClickable(false);
-                tvGetCode.setBackground(ContextCompat.getDrawable(RegisterActivity.this, R.drawable.shape_bar_lc));
+                Log.e(TAG, "address2: "+response.toString());
+                try {
+                    if (!response.getString("session").equals("000")){
+                        ToastUtil.setToast(RegisterActivity.this, "短信验证失败");
+                    }else{
+                        ToastUtil.setToast(RegisterActivity.this, "验证码发送成功，请留意短信通知");
+                        timeCount = new TimeCount(60000, 1000);
+                        timeCount.start();
+                        tvGetCode.setClickable(false);
+                        tvGetCode.setBackground(ContextCompat.getDrawable(RegisterActivity.this, R.drawable.shape_bar_lc));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+//                try {
+//                    if (!response.getBoolean("success")) {
+//                        ToastUtil.setToast(RegisterActivity.this, response.toString());
+//                    } else {
+//
+//                        ToastUtil.setToast(RegisterActivity.this, "验证码发送成功，请留意短信通知");
+//                        timeCount = new TimeCount(60000, 1000);
+//                        timeCount.start();
+//                        tvGetCode.setClickable(false);
+//                        tvGetCode.setBackground(ContextCompat.getDrawable(RegisterActivity.this, R.drawable.shape_bar_lc));
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+
 
             }
 
             @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                Log.e(TAG, "22111111onFailure: "+errorResponse.toString());
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+
+            @Override
+            public void onFinish() {
+                Log.e(TAG, "finish ");
+                super.onFinish();
+            }
+
+            @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.e(TAG, "111111onFailure: "+responseString);
                 super.onFailure(statusCode, headers, responseString, throwable);
             }
         });
@@ -94,6 +135,7 @@ public class RegisterActivity extends BaseActivity {
         edtPassword = (EditText) findViewById(R.id.edt_pw1);
         edtPassword2 = (EditText) findViewById(R.id.edt_pw2);
         btnRegister = (Button) findViewById(R.id.btnRegister);
+        checkbox = (CheckBox) findViewById(R.id.checkbox);
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,6 +178,10 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private boolean registerCheck() {
+        if (!checkbox.isChecked()) {
+            ToastUtil.setToast(RegisterActivity.this, "请确认选择用户协议");
+            return true;
+        }
         if (TextUtils.isEmpty(edtCode.getText().toString())) {
             ToastUtil.setToast(RegisterActivity.this, "验证码不能为空");
             return true;
@@ -180,7 +226,7 @@ public class RegisterActivity extends BaseActivity {
                 Log.e("sadas", "onSuccess: " + response.toString());
                 try {
                     if (!response.getBoolean("success")) {
-                        ToastUtil.setToast(RegisterActivity.this, response.toString());
+                        ToastUtil.setToast(RegisterActivity.this, response.getString("message").toString());
                     } else {
                         ToastUtil.setToast(RegisterActivity.this, "注册成功");
                         finish();
@@ -188,7 +234,7 @@ public class RegisterActivity extends BaseActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                finish();
+              //  finish();
 
             }
 

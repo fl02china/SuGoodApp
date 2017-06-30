@@ -4,7 +4,9 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-alpha3'
+       // classpath 'com.android.tools.build:gradle:3.0.0-alpha3'
+        classpath 'com.android.tools.build:gradle:2.3.3'
+       classpath 'com.android.tools.build:gradle:2.2.0'
 
     }
 }
@@ -12,8 +14,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
 dependencies {
+
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:support-v4:25.0.0'
+    compile 'com.android.support:support-v4:24.0.0'
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile files('libs/httpmime-4.1.2.jar')
    // compile files('libs/IndoorscapeAlbumPlugin.jar')
@@ -32,6 +35,8 @@ dependencies {
     compile files('libs/alipaySdk-20170309.jar')
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
+    compile 'com.androidkun:xversionupdate:1.0.4'
+
 }
 
 android {
@@ -43,10 +48,20 @@ android {
         applicationId "com.sugood.app" // 程序的包名
         minSdkVersion 17
         targetSdkVersion 22
-        versionCode 3
-        versionName "2.1"
+        versionCode 4
+        versionName "2.2"
         multiDexEnabled true  // 消去重复的jar 引用
     }
+//    signingConfigs {
+//        debug {
+//            keyAlias "sugood"
+//            keyPassword "sugood4"
+//            storeFile file("E:\\SuGoodApp\\GoApplication\\sugood.jks")
+//            storePassword "sugood4"
+//        }
+//
+//    }
+
 
 
     useLibrary 'org.apache.http.legacy'
@@ -79,6 +94,16 @@ android {
     }
     buildTypes {
         release {
+	  minifyEnabled false
+            //Zipalign优化
+           // zipAlignEnabled true
+//
+  //           移除无用的resource文件
+          // shrinkResources true
+
+            //签名
+         //   signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             debuggable true
         }
     }

@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">速购得</string>
+    <string name="app_name_main">速购得</string>
     <string name="action_settings"> </string>
 
     <string name="bd_ak">M5GEU66ODRnKbLMphydwkzOEzqiIO518</string>
