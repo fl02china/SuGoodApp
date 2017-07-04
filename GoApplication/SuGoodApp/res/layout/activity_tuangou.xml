@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroller"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -415,7 +416,7 @@
 
             </RelativeLayout>
 
-            <LinearLayout
+<!--            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#f0f0f0"
@@ -468,6 +469,7 @@
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/sdv_msg2"
                         android:layout_width="110dp"
+
                         android:layout_height="110dp"
                         android:layout_centerInParent="true" />
 
@@ -522,12 +524,23 @@
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
-                    </LinearLayout>
-
+                    </LinearLayo
                 </RelativeLayout>
 
+ut>
 
-            </LinearLayout>
+            </LinearLayout>-->
+            <com.sugood.app.view.HorizontalListView
+                android:id="@+id/screen"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:background="#f0f0f0"
+                android:layout_gravity="center"
+
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                >
+            </com.sugood.app.view.HorizontalListView>
 
             <LinearLayout
                 android:layout_width="match_parent"

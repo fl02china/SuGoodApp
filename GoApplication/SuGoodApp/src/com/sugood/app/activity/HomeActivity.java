@@ -41,6 +41,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -105,6 +106,8 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
 
     private ArrayList<ImageView> imageList = new ArrayList<ImageView>();
     private TextView tvLocalCity;
+    private View vbar;
+
     private ViewPager vp_home;
     private EditText home_search;
     private SimpleDraweeView homeAd1;
@@ -194,12 +197,12 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
 
     //上传经纬度
     private void initNetData(String lat
-    ,String lng,String cityName) {
+            , String lng, String cityName) {
 
         RequestParams params = new RequestParams();
         params.put("lat", lat);
         params.put("lng", lng);
-        params.put("cityName",cityName);
+        params.put("cityName", cityName);
 
 //        params.put("lat", SugoodApplication.mLocationClient.getLastKnownLocation().getLatitude()+"");
 //        params.put("lng", SugoodApplication.mLocationClient.getLastKnownLocation().getLongitude()+"");
@@ -286,7 +289,7 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
 
     private void initData() {
 
-       // showLoading("加载中");
+        // showLoading("加载中");
 
         RequestParams params = new RequestParams();
         params.put("page", "1");
@@ -340,6 +343,8 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
 //        initViewpager();
         vpClassic = (ViewPager) headerView.findViewById(R.id.vp_classic);
         initClassicPage();
+
+        vbar =findViewById(R.id.rl_home_top);//搜索栏
         tvLocalCity = (TextView) findViewById(R.id.tv_home_city);
 //        home_top_gv = (GridView) findViewById(R.id.home_top_gv);
         home_down_gv = (GridView) findViewById(R.id.home_down_gv);
@@ -419,6 +424,11 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (getScrollY() <= 0) {
+                    vbar.setBackgroundColor(getResources().getColor(R.color.transparent));//////这样才可以
+                }else{
+                    vbar.setBackgroundColor(getResources().getColor(R.color.bar));//////这样才可以
+                }
 
             }
         });
@@ -445,6 +455,16 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
                 }
             }
         });
+    }
+
+    public int getScrollY() {
+        View c = lv_like_shop.getChildAt(0);
+        if (c == null) {
+            return 0;
+        }
+        int firstVisiblePosition = lv_like_shop.getFirstVisiblePosition();
+        int top = c.getTop();
+        return -top + firstVisiblePosition * c.getHeight();
     }
 
     private void startInetnt(int position) {
@@ -584,11 +604,11 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
     }
 
 
-    private void checkupdate(){
+    private void checkupdate() {
 
         RequestParams params = new RequestParams();
         int version = OtherUtils.getAppVersion(SugoodApplication.getInstance());
-        params.put("version", version+"");
+        params.put("version", version + "");
         Log.e(TAG, "version112: " + version);
         HttpUtil.post(Constant.CHECKUPDATE, params, new JsonHttpResponseHandler() {
 
@@ -617,7 +637,7 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
         });
     }
 
-    private void showUpdateDialog(final String url){
+    private void showUpdateDialog(final String url) {
         /* @setIcon 设置对话框图标
          * @setTitle 设置对话框标题
          * @setMessage 设置对话框消息提示
@@ -652,8 +672,6 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
         // 显示
         updateDialog.show();
     }
-
-
 
 
     /**
@@ -700,7 +718,7 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
                         locationCity = locationCity.replaceAll("[^\u4E00-\u9FA5]", "");
 
                     }
-                    initNetData(location.getLatitude()+"",location.getLongitude()+"",locationCity);
+                    initNetData(location.getLatitude() + "", location.getLongitude() + "", locationCity);
                     tvLocalCity.setText(locationCity);
                 } else {
                     //定位失败
@@ -794,7 +812,10 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
     private void initViewpager(final List<AdEntity> adEntityList) {
         for (int i = 0; i < adEntityList.size(); i++) {
             ImageView iv = new ImageView(mContext);
-            GlideUtil.displayImage(Constant.PHOTOBASEURL + adEntityList.get(i).getPhoto(), iv);
+
+            //  GlideUtil.displayImage(Constant.PHOTOBASEURL + adEntityList.get(i).getPhoto(), iv);
+            Glide.with(iv.getContext()).load(Constant.PHOTOBASEURL + adEntityList.get(i).getPhoto()).error(R.drawable.defasd_111).into(iv);
+            iv.setScaleType(ImageView.ScaleType.FIT_XY);
             imageList.add(iv);
         }
 
@@ -851,6 +872,9 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent();
+                    if (adEntityList.get(position).getType().equals("0")) {
+                        return;
+                    }
                     if (adEntityList.get(position).getType().equals("1")) {
                         intent.putExtra("tuanId", adEntityList.get(position).getDiyid());
                         intent.putExtra("shopId", "");
@@ -868,6 +892,8 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
                         intent.setClass(HomeActivity.this, TakeawayMarketShopDetailActivity.class);
                         intent.putExtra("cateId", adEntityList.get(position).getDiyid());
 //                        intent.putExtra("asa", (Serializable) mShopMainList);
+                    } else {
+                        return;
                     }
                     startActivity(intent);
 

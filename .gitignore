@@ -2,3 +2,7 @@
 /GoApplication/SuGoodApp/gen
 /GoApplication/SuGoodApp/bin
 /GoApplication/app
+/GoApplication/SuGoodApp/release
+/GoApplication/SuGoodApp/*.apk
+/GoApplication/SuGoodApp/SuGoodApp-release.apk
+/GoApplication/SuGoodApp/SuGoodApp-release2.1.apk

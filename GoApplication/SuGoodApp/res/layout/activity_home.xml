@@ -11,7 +11,7 @@
         android:id="@+id/lv_like_shop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:layout_marginTop="-10dp"
 
         android:cacheColorHint="#00000000"
         android:listSelector="#00000000" />
@@ -42,6 +42,7 @@
                 android:ellipsize="end"
                 android:maxLength="4"
                 android:text="湛江"
+
                 android:textColor="#FFFFFFFF"
                 android:textSize="15sp" />
 
@@ -61,15 +62,15 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:paddingLeft="10dp">
-
+            <!--android:background="@drawable/shape_tybox"-->
             <EditText
                 android:id="@+id/home_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/shape_tybox"
+                android:background="@drawable/bg_search"
                 android:drawableLeft="@drawable/ic_search"
                 android:drawablePadding="10dp"
-                android:hint="搜索商家 品类 商圈"
+
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:paddingLeft="10dp"
@@ -105,7 +106,7 @@
                 android:id="@+id/iv_textmessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/bell" />
         </LinearLayout>
     </RelativeLayout>

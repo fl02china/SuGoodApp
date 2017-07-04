@@ -104,4 +104,6 @@
     <color name="window_background">#00000000</color>
     <color name="black_de">#DE000000</color>
     <color name="text_black">#6F6D6E</color>
+    <color name="bar">#65c2ad</color>
+
 </resources>

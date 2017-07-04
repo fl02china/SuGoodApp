@@ -1,18 +1,26 @@
 package com.sugood.app.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.facebook.common.internal.Objects;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -29,6 +37,7 @@ import com.sugood.app.global.Constant;
 import com.sugood.app.util.GlideUtil;
 import com.sugood.app.util.HttpUtil;
 import com.sugood.app.util.JsonUtil;
+import com.sugood.app.view.HorizontalListView;
 
 import org.json.JSONObject;
 
@@ -42,7 +51,7 @@ import cz.msebera.android.httpclient.Header;
  * describe:
  */
 
-public class TuanGouActivity extends BaseActivity {
+public class TuanGouActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     private SimpleDraweeView sdvHeaderTuanGouAd;
     private TextView tvTuanGouName;
@@ -65,24 +74,26 @@ public class TuanGouActivity extends BaseActivity {
     private TextView tvTel;
     private WebView tvTuanGouMsg;
     private TextView tvLookMore;
-    private RelativeLayout rlMsg1;
-    private SimpleDraweeView sdvMsg1;
-    private TextView tvMsg1;
-    private RelativeLayout rlMsg2;
-    private SimpleDraweeView sdvMsg2;
-    private TextView tvMsg2;
-    private RelativeLayout rlMsg3;
-    private SimpleDraweeView sdvMsg3;
-    private TextView tvMsg3;
+//    private RelativeLayout rlMsg1;
+//    private SimpleDraweeView sdvMsg1;
+//    private TextView tvMsg1;
+//    private RelativeLayout rlMsg2;
+//    private SimpleDraweeView sdvMsg2;
+//    private TextView tvMsg2;
+//    private RelativeLayout rlMsg3;
+//    private SimpleDraweeView sdvMsg3;
+    // TextView tvMsg3;
     private WebView tvBuyNotes; //购买须知
     private TextView tvLookMoreShop; //查看更多的店
     private LinearLayout llPl1;
     private LinearLayout llPl2;
     private Button btnBuyNow;
+    private String[] screens;
+    private HorizontalListView mScreenList;
 
     private String mShopId;
     private String mTuanId;
-
+    private ScrollView mScrollView;
     private TuanGouDetail mTuanGoudetail;
     TakeawayShopInfo.EleBean shop = new TakeawayShopInfo.EleBean();
 
@@ -107,6 +118,10 @@ public class TuanGouActivity extends BaseActivity {
      * 识别控件
      */
     private void initView() {
+        mScreenList = (HorizontalListView) findViewById(R.id.screen);
+        mScrollView = (ScrollView) findViewById(R.id.scroller);
+        mScreenList.setScrollParent(mScrollView);
+        mScreenList.setOnItemClickListener(this);
         sdvHeaderTuanGouAd = (SimpleDraweeView) findViewById(R.id.sdv_head_tuangou_ad);
         tvTuanGouName = (TextView) findViewById(R.id.tv_foodTuanGouName);
         tvPrice = (TextView) findViewById(R.id.tv_price);
@@ -128,15 +143,15 @@ public class TuanGouActivity extends BaseActivity {
         tvTel = (TextView) findViewById(R.id.tv_tel);
         tvTuanGouMsg = (WebView) findViewById(R.id.tv_tuangouMsg);
         tvLookMore = (TextView) findViewById(R.id.tv_look_more);
-        rlMsg1 = (RelativeLayout) findViewById(R.id.rl_msg1);
-        sdvMsg1 = (SimpleDraweeView) findViewById(R.id.sdv_msg1);
-        tvMsg1 = (TextView) findViewById(R.id.tv_msg2);
-        rlMsg2 = (RelativeLayout) findViewById(R.id.rl_msg2);
-        sdvMsg2 = (SimpleDraweeView) findViewById(R.id.sdv_msg2);
-        tvMsg2 = (TextView) findViewById(R.id.tv_msg2);
-        rlMsg3 = (RelativeLayout) findViewById(R.id.rl_msg3);
-        sdvMsg3 = (SimpleDraweeView) findViewById(R.id.sdv_msg3);
-        tvMsg3 = (TextView) findViewById(R.id.tv_msg3);
+//        rlMsg1 = (RelativeLayout) findViewById(R.id.rl_msg1);
+//        sdvMsg1 = (SimpleDraweeView) findViewById(R.id.sdv_msg1);
+//        tvMsg1 = (TextView) findViewById(R.id.tv_msg2);
+//        rlMsg2 = (RelativeLayout) findViewById(R.id.rl_msg2);
+//        sdvMsg2 = (SimpleDraweeView) findViewById(R.id.sdv_msg2);
+//        tvMsg2 = (TextView) findViewById(R.id.tv_msg2);
+//        rlMsg3 = (RelativeLayout) findViewById(R.id.rl_msg3);
+//        sdvMsg3 = (SimpleDraweeView) findViewById(R.id.sdv_msg3);
+       // tvMsg3 = (TextView) findViewById(R.id.tv_msg3);
         tvBuyNotes = (WebView) findViewById(R.id.tv_buyNotes);
         tvLookMoreShop = (TextView) findViewById(R.id.tv_look_moreShop);
         llPl1 = (LinearLayout) findViewById(R.id.ll_pl1);
@@ -271,66 +286,74 @@ public class TuanGouActivity extends BaseActivity {
         tvTuanGouMsg.loadDataWithBaseURL(null, mTuanGoudetail.getTuan().getDetails(), "text/html", "utf-8", null);
         tvTuanGouMsg.getSettings().setJavaScriptEnabled(true);
         if (null == mTuanGoudetail.getTuan().getThumb()) {
-            rlMsg1.setVisibility(View.GONE);
-            rlMsg2.setVisibility(View.GONE);
-            rlMsg3.setVisibility(View.GONE);
-        } else if (mTuanGoudetail.getTuan().getThumb().size() == 0) {
-            rlMsg1.setVisibility(View.GONE);
-            rlMsg2.setVisibility(View.GONE);
-            rlMsg3.setVisibility(View.GONE);
-        } else if (mTuanGoudetail.getTuan().getThumb().size() == 1) {
-            rlMsg1.setVisibility(View.VISIBLE);
-            rlMsg2.setVisibility(View.GONE);
-            rlMsg3.setVisibility(View.GONE);
-            sdvMsg1.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(0));
-//            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(0), sdvMsg1);
-        } else if (mTuanGoudetail.getTuan().getThumb().size() == 2) {
-            rlMsg1.setVisibility(View.VISIBLE);
-            rlMsg2.setVisibility(View.VISIBLE);
-//            rlMsg3.setVisibility(View.GONE);
-//            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(0), sdvMsg1);
-//            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(1), sdvMsg2);
-            sdvMsg1.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(0));
-            sdvMsg2.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(1));
-        } else if (mTuanGoudetail.getTuan().getThumb().size() >= 3) {
-            rlMsg1.setVisibility(View.VISIBLE);
-            rlMsg2.setVisibility(View.VISIBLE);
-            rlMsg3.setVisibility(View.VISIBLE);
-//            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(0), sdvMsg1);
-//            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(1), sdvMsg2);
-//            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(2), sdvMsg3);
-            Log.e("IMAF", "updateView: " + mTuanGoudetail.getTuan().getThumb().get(0) + "  ---" + mTuanGoudetail.getTuan().getThumb().get(1) + "++" + mTuanGoudetail.getTuan().getThumb().get(2));
-            sdvMsg1.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(0));
-            sdvMsg2.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(1));
-            sdvMsg3.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(2));
+            mScreenList.setVisibility(View.GONE);
+        } else {
+            screens = mTuanGoudetail.getTuan().getThumb().toArray(new String[mTuanGoudetail.getTuan().getThumb().size()]);
+            ScreenAdapter adapter = new ScreenAdapter(this, screens);
+            mScreenList.setAdapter(adapter);
         }
-        rlMsg1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(TuanGouActivity.this, BigImageViewActivity.class);
-                intent.putExtra("url", mTuanGoudetail.getTuan().getThumb().get(0));
-                startActivity(intent);
-            }
-        });
-        rlMsg2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(TuanGouActivity.this, BigImageViewActivity.class);
-                intent.putExtra("url", mTuanGoudetail.getTuan().getThumb().get(1));
-                startActivity(intent);
-            }
-        });
-        rlMsg3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(TuanGouActivity.this, BigImageViewActivity.class);
-                intent.putExtra("url", mTuanGoudetail.getTuan().getThumb().get(2));
-                startActivity(intent);
-            }
-        });
+
+//        if (null == mTuanGoudetail.getTuan().getThumb()) {
+//            rlMsg1.setVisibility(View.GONE);
+//            rlMsg2.setVisibility(View.GONE);
+//            rlMsg3.setVisibility(View.GONE);
+//        } else if (mTuanGoudetail.getTuan().getThumb().size() == 0) {
+//            rlMsg1.setVisibility(View.GONE);
+//            rlMsg2.setVisibility(View.GONE);
+//            rlMsg3.setVisibility(View.GONE);
+//        } else if (mTuanGoudetail.getTuan().getThumb().size() == 1) {
+//            rlMsg1.setVisibility(View.VISIBLE);
+//            rlMsg2.setVisibility(View.GONE);
+//            rlMsg3.setVisibility(View.GONE);
+//            sdvMsg1.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(0));
+////            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(0), sdvMsg1);
+//        } else if (mTuanGoudetail.getTuan().getThumb().size() == 2) {
+//            rlMsg1.setVisibility(View.VISIBLE);
+//            rlMsg2.setVisibility(View.VISIBLE);
+////            rlMsg3.setVisibility(View.GONE);
+//            GlideUtil.displayImage(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(0), sdvMsg1);
+////            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(1), sdvMsg2);
+//            sdvMsg1.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(0));
+//            sdvMsg2.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(1));
+//        } else if (mTuanGoudetail.getTuan().getThumb().size() >= 3) {
+//            rlMsg1.setVisibility(View.VISIBLE);
+//            rlMsg2.setVisibility(View.VISIBLE);
+//            rlMsg3.setVisibility(View.VISIBLE);
+////            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(0), sdvMsg1);
+////            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(1), sdvMsg2);
+////            GlideUtil.displayImage(Constant.PHOTOBASEURL +  mTuanGoudetail.getTuan().getThumb().get(2), sdvMsg3);
+//            Log.e("IMAF", "updateView: " + mTuanGoudetail.getTuan().getThumb().get(0) + "  ---" + mTuanGoudetail.getTuan().getThumb().get(1) + "++" + mTuanGoudetail.getTuan().getThumb().get(2));
+//            sdvMsg1.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(0));
+//            sdvMsg2.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(1));
+//            sdvMsg3.setImageURI(Constant.PHOTOBASEURL + mTuanGoudetail.getTuan().getThumb().get(2));
+//        }
+//        rlMsg1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setClass(TuanGouActivity.this, BigImageViewActivity.class);
+//                intent.putExtra("url", mTuanGoudetail.getTuan().getThumb().get(0));
+//                startActivity(intent);
+//            }
+//        });
+//        rlMsg2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setClass(TuanGouActivity.this, BigImageViewActivity.class);
+//                intent.putExtra("url", mTuanGoudetail.getTuan().getThumb().get(1));
+//                startActivity(intent);
+//            }
+//        });
+//        rlMsg3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setClass(TuanGouActivity.this, BigImageViewActivity.class);
+//                intent.putExtra("url", mTuanGoudetail.getTuan().getThumb().get(2));
+//                startActivity(intent);
+//            }
+//        });
         tvBuyNotes.loadDataWithBaseURL(null, mTuanGoudetail.getTuan().getInstructions(), "text/html", "utf-8", null);
         tvBuyNotes.getSettings().setJavaScriptEnabled(true);
 
@@ -346,5 +369,78 @@ public class TuanGouActivity extends BaseActivity {
         return thePrice.substring(0, thePrice.length() - 2);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent();
+        intent.setClass(TuanGouActivity.this, BigImageViewActivity.class);
+        intent.putExtra("url", mTuanGoudetail.getTuan().getThumb().get(position));
+        startActivity(intent);
+    }
+
+    private class ScreenAdapter extends BaseAdapter {
+
+        private Context mContext;
+        private LayoutInflater mInflater;
+        private String[] mUrls;
+        //private Picasso mPicasso;
+
+        public ScreenAdapter(Context context, String[] urls) {
+            // TODO Auto-generated constructor stub
+            mContext = context;
+            mUrls = urls;
+            mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            //  mPicasso = Picasso.with(mContext);
+        }
+
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return mUrls == null ? 0 : mUrls.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            // TODO Auto-generated method stub
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // TODO Auto-generated method stub
+            ViewHolder holder;
+            if (convertView == null) {
+                holder = new ViewHolder();
+                convertView = mInflater.inflate(R.layout.item_screen2, null);
+                holder.image = (SimpleDraweeView) convertView.findViewById(R.id.icon);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            if (null != mTuanGoudetail.getTuan().getThumb()) {
+//                Glide.with(mContext).load(Constant.PHOTOBASEURL + mUrls[position])
+//                        .error(R.drawable.defasd_111)
+//                        .override(110, 110)
+//                        //.fit()
+//                        .into(holder.image);
+                holder.image.setImageURI(Constant.PHOTOBASEURL + mUrls[position]);
+
+            } else {
+                holder.image.setImageResource(R.drawable.defasd_111);
+            }
+
+            return convertView;
+        }
+
+        private class ViewHolder {
+            SimpleDraweeView image;
+        }
+    }
 
 }
