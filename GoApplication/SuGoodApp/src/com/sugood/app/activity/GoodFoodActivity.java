@@ -98,6 +98,7 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
         viewHeader = LayoutInflater.from(this).inflate(R.layout.good_food_header, null);
         tv_address = (TextView) viewHeader.findViewById(R.id.tv_address);
         tv_address.setText("未知位置");
+        tv_address.setVisibility(View.GONE);
 //        try {
 //            if (SugoodApplication.mLocationClient != null) {
 //                tv_address.setText("地址:" + SugoodApplication.mLocationClient.getLastKnownLocation().getAddress().address.

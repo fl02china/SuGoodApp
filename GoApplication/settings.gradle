@@ -1,1 +1,2 @@
 include ':SuGoodApp'
+//include ':app',':banner'

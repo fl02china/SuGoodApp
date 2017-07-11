@@ -53,8 +53,11 @@ public class LoginActivity extends BaseActivity {
         if (view.getId() == R.id.btn_login) {
             Log.d("geek", "登录");
             // 得到输入编辑框的数据
-            final String name = et_username.getText().toString();
-            final String pwd = et_userpwd.getText().toString();
+//            final String name = et_username.getText().toString();
+//            final String pwd = et_userpwd.getText().toString();
+            final String name = "18376543595";
+            final String pwd = "111111";
+
             SharedPreferences preferences = getSharedPreferences("info", MODE_PRIVATE);
             SharedPreferences.Editor sped = preferences.edit();
             sped.putString("name", name);

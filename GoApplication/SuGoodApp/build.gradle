@@ -4,9 +4,9 @@ buildscript {
     }
 
     dependencies {
-       // classpath 'com.android.tools.build:gradle:3.0.0-alpha3'
+      // classpath 'com.android.tools.build:gradle:3.0.0-alpha3'
         classpath 'com.android.tools.build:gradle:2.3.3'
-       classpath 'com.android.tools.build:gradle:2.2.0'
+       //classpath 'com.android.tools.build:gradle:2.2.0'
 
     }
 }
@@ -36,7 +36,11 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
     compile 'com.androidkun:xversionupdate:1.0.4'
+    //
+    compile 'com.youth.banner:banner:1.4.9'  //广告轮播最新版本
 
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'//微信支付
+  //  compile project(path: ':banner')
 }
 
 android {

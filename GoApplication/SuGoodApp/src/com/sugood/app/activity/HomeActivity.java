@@ -58,6 +58,7 @@ import com.sugood.app.entity.Food;
 import com.sugood.app.entity.GuessYouLikeProductInfo;
 import com.sugood.app.global.Constant;
 import com.sugood.app.listener.MarketPageChangeListener;
+import com.sugood.app.loader.GlideImageLoader;
 import com.sugood.app.util.GlideUtil;
 import com.sugood.app.util.HttpUtil;
 import com.sugood.app.util.JsonUtil;
@@ -85,6 +86,8 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationClientOption.AMapLocationMode;
 import com.amap.api.location.AMapLocationClientOption.AMapLocationProtocol;
 import com.amap.api.location.AMapLocationListener;
+import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 
 import androidkun.com.versionupdatelibrary.entity.VersionUpdateConfig;
 import cz.msebera.android.httpclient.Header;
@@ -94,7 +97,7 @@ import cz.msebera.android.httpclient.Header;
  *
  * @author wtb
  */
-public class HomeActivity extends BaseActivity implements TextView.OnEditorActionListener {
+public class HomeActivity extends BaseActivity implements TextView.OnEditorActionListener ,OnBannerListener {
     private static final String TAG = HomeActivity.class.getSimpleName();
 
     private Context mContext;
@@ -104,11 +107,12 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
     private HomeGVAdapter upGVAdapter = null;
     private HomeGVAdapter downGVAdapter = null;
 
-    private ArrayList<ImageView> imageList = new ArrayList<ImageView>();
+    //private ArrayList<ImageView> imageList = new ArrayList<ImageView>();
+    private ArrayList<String> imageUrl = new ArrayList<String>();
     private TextView tvLocalCity;
     private View vbar;
 
-    private ViewPager vp_home;
+    //private ViewPager vp_home;
     private EditText home_search;
     private SimpleDraweeView homeAd1;
     private SimpleDraweeView homeAd2;
@@ -153,7 +157,7 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
     static final private int PULL_To_REFRESH = 1; // 正在刷新：放开屏幕后显示
     static final private int REFRESHING = 2; // 正在刷新
     static final private int DONE = 3;
-
+    List<AdEntity> adEntityList;
     private int currentPage = 1;
     List<AdEntity> EntityList;
     ScheduledExecutorService mScheduledExecutorService;
@@ -161,24 +165,24 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
     //设置当前 第几个图片 被选中
     private int autoCurrIndex = 0;
 
-    Handler mHandler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 0:
-                    if (msg.arg1 != 0) {
-                        vp_home.setCurrentItem(msg.arg1);
-                    } else {
-                        //false 当从末页调到首页是，不显示翻页动画效果，
-                        vp_home.setCurrentItem(msg.arg1, false);
-                    }
-                    break;
-            }
-//            vp_home.setCurrentItem(mChangeListener.mCurrentItem);
-        }
-    };
+//    Handler mHandler = new Handler() {
+//
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            switch (msg.what) {
+//                case 0:
+//                    if (msg.arg1 != 0) {
+//                        vp_home.setCurrentItem(msg.arg1);
+//                    } else {
+//                        //false 当从末页调到首页是，不显示翻页动画效果，
+//                        vp_home.setCurrentItem(msg.arg1, false);
+//                    }
+//                    break;
+//            }
+////            vp_home.setCurrentItem(mChangeListener.mCurrentItem);
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -273,7 +277,7 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
                 Log.e("TAG_AD", "onSuccess: " + response);
-                List<AdEntity> adEntityList = JsonUtil.toList(response.toString(), AdEntity.class);
+                adEntityList = JsonUtil.toList(response.toString(), AdEntity.class);
                 initViewpager(adEntityList);
             }
 
@@ -342,6 +346,8 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
         headerView = LayoutInflater.from(mContext).inflate(R.layout.home_header, null);
 //        initViewpager();
         vpClassic = (ViewPager) headerView.findViewById(R.id.vp_classic);
+
+
         initClassicPage();
 
         vbar =findViewById(R.id.rl_home_top);//搜索栏
@@ -506,12 +512,12 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
             viewList.add(home_top_gv);
             upGVAdapter = new HomeGVAdapter(mContext);
             home_top_gv.setGravity(Gravity.CENTER);
-            home_top_gv.setNumColumns(4);
+            home_top_gv.setNumColumns(5);
             home_top_gv.setAdapter(upGVAdapter);
             List<String> bankList = new ArrayList<>();
             List<Integer> imgList = new ArrayList<>();
 
-            for (int n = i * 8; n <= (i + 1) * 8 - 1; n++) {
+            for (int n = i * 10; n <= (i + 1) * 10 - 1; n++) {
                 bankList.add(textList.get(n));
                 imgList.add(list.get(n));
             }
@@ -810,33 +816,50 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
 //    }
 
     private void initViewpager(final List<AdEntity> adEntityList) {
+
+
+
+
+
         for (int i = 0; i < adEntityList.size(); i++) {
             ImageView iv = new ImageView(mContext);
 
+            imageUrl.add(Constant.PHOTOBASEURL + adEntityList.get(i).getPhoto());
             //  GlideUtil.displayImage(Constant.PHOTOBASEURL + adEntityList.get(i).getPhoto(), iv);
-            Glide.with(iv.getContext()).load(Constant.PHOTOBASEURL + adEntityList.get(i).getPhoto()).error(R.drawable.defasd_111).into(iv);
-            iv.setScaleType(ImageView.ScaleType.FIT_XY);
-            imageList.add(iv);
+//            Glide.with(iv.getContext()).load(Constant.PHOTOBASEURL + adEntityList.get(i).getPhoto()).error(R.drawable.defasd_111).into(iv);
+//            iv.setScaleType(ImageView.ScaleType.FIT_XY);
+//            imageList.add(iv);
         }
 
-        vp_home = (ViewPager) findViewById(R.id.vp_home);
-        ImageAdapter pagerAdapter = new ImageAdapter(mContext, imageList, adEntityList);
-        vp_home.setAdapter(pagerAdapter);
+        Banner banner = (Banner) headerView.findViewById(R.id.banner);
+        //设置图片加载器
+        banner.setImageLoader(new GlideImageLoader());
+        //设置图片集合
+        banner.setImages(imageUrl);
+        banner.setDelayTime(3000);
+        banner.setOnBannerListener(this);
+        //banner设置方法全部调用完毕时最后调用
+        banner.start();
 
-        // 设置自动轮播图片，5s后执行，周期是5s
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Message message = new Message();
-                message.what = 0;
-                if (autoCurrIndex == adEntityList.size() - 1) {
-                    autoCurrIndex = -1;
-                }
-                message.arg1 = autoCurrIndex + 1;
-                mHandler.sendMessage(message);
-            }
-        }, 5000, 5000);
+
+//        vp_home = (ViewPager) findViewById(R.id.vp_home);
+//        ImageAdapter pagerAdapter = new ImageAdapter(mContext, imageList, adEntityList);
+//        vp_home.setAdapter(pagerAdapter);
+//
+//        // 设置自动轮播图片，5s后执行，周期是5s
+//        Timer timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                Message message = new Message();
+//                message.what = 0;
+//                if (autoCurrIndex == adEntityList.size() - 1) {
+//                    autoCurrIndex = -1;
+//                }
+//                message.arg1 = autoCurrIndex + 1;
+//                mHandler.sendMessage(message);
+//            }
+//        }, 5000, 5000);
 //
 //        mScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 //        mScheduledExecutorService.scheduleAtFixedRate(new Runnable() {
@@ -852,76 +875,105 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
 //        }, 0, 5, TimeUnit.SECONDS);
     }
 
-    class ImageAdapter extends PagerAdapter {
-        private Context context;
-        private List<ImageView> imageList;
-        private List<AdEntity> adEntityList;
-
-        public ImageAdapter(Context context, List<ImageView> imageList, List<AdEntity> adEntityList) {
-            this.context = context;
-            this.imageList = imageList;
-            this.adEntityList = adEntityList;
+    @Override
+    public void OnBannerClick(int position) {
+        Intent intent = new Intent();
+        if (adEntityList.get(position).getType().equals("0")) {
+            return;
         }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, final int position) {
-
-            container.addView(imageList.get(position));
-
-            imageList.get(position).setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent();
-                    if (adEntityList.get(position).getType().equals("0")) {
-                        return;
-                    }
-                    if (adEntityList.get(position).getType().equals("1")) {
-                        intent.putExtra("tuanId", adEntityList.get(position).getDiyid());
-                        intent.putExtra("shopId", "");
-                        intent.setClass(HomeActivity.this, TuanGouActivity.class);
-                    } else if (adEntityList.get(position).getType().equals("2")) {
-                        intent.putExtra("shopId", adEntityList.get(position).getDiyid());
-                        intent.setClass(HomeActivity.this, ShopDetailActivity.class);
-                    } else if (adEntityList.get(position).getType().equals("3")) {
-                        intent.putExtra("shopId", adEntityList.get(position).getDiyid());
-                        intent.setClass(HomeActivity.this, TakeawayShopDetailActivity.class);
-                    } else if (adEntityList.get(position).getType().equals("4")) {
-                        intent.setClass(HomeActivity.this, TakeawayMarketDetailActivity.class);
-                        intent.putExtra("goodsId", adEntityList.get(position).getDiyid());
-                    } else if (adEntityList.get(position).getType().equals("5")) {
-                        intent.setClass(HomeActivity.this, TakeawayMarketShopDetailActivity.class);
-                        intent.putExtra("cateId", adEntityList.get(position).getDiyid());
+        if (adEntityList.get(position).getType().equals("1")) {
+            intent.putExtra("tuanId", adEntityList.get(position).getDiyid());
+            intent.putExtra("shopId", "");
+            intent.setClass(HomeActivity.this, TuanGouActivity.class);
+        } else if (adEntityList.get(position).getType().equals("2")) {
+            intent.putExtra("shopId", adEntityList.get(position).getDiyid());
+            intent.setClass(HomeActivity.this, ShopDetailActivity.class);
+        } else if (adEntityList.get(position).getType().equals("3")) {
+            intent.putExtra("shopId", adEntityList.get(position).getDiyid());
+            intent.setClass(HomeActivity.this, TakeawayShopDetailActivity.class);
+        } else if (adEntityList.get(position).getType().equals("4")) {
+            intent.setClass(HomeActivity.this, TakeawayMarketDetailActivity.class);
+            intent.putExtra("goodsId", adEntityList.get(position).getDiyid());
+        } else if (adEntityList.get(position).getType().equals("5")) {
+            intent.setClass(HomeActivity.this, TakeawayMarketShopDetailActivity.class);
+            intent.putExtra("cateId", adEntityList.get(position).getDiyid());
 //                        intent.putExtra("asa", (Serializable) mShopMainList);
-                    } else {
-                        return;
-                    }
-                    startActivity(intent);
-
-
-                }
-            });
-
-            return imageList.get(position);
+        } else {
+            return;
         }
-
-        @Override
-        public int getCount() {
-            return imageList.size();
-        }
-
-
-        @Override
-        public boolean isViewFromObject(View view, Object obj) {
-            return view == obj;
-        }
-
-        @Override
-        public void destroyItem(View container, int position, Object object) {
-            ((ViewPager) container).removeView(imageList.get(position));
-        }
-
-
+        startActivity(intent);
     }
+
+//    class ImageAdapter extends PagerAdapter {
+//        private Context context;
+//        private List<ImageView> imageList;
+//        private List<AdEntity> adEntityList;
+//
+//        public ImageAdapter(Context context, List<ImageView> imageList, List<AdEntity> adEntityList) {
+//            this.context = context;
+//            this.imageList = imageList;
+//            this.adEntityList = adEntityList;
+//        }
+//
+//        @Override
+//        public Object instantiateItem(ViewGroup container, final int position) {
+//
+//            container.addView(imageList.get(position));
+//
+//            imageList.get(position).setOnClickListener(new OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent();
+//                    if (adEntityList.get(position).getType().equals("0")) {
+//                        return;
+//                    }
+//                    if (adEntityList.get(position).getType().equals("1")) {
+//                        intent.putExtra("tuanId", adEntityList.get(position).getDiyid());
+//                        intent.putExtra("shopId", "");
+//                        intent.setClass(HomeActivity.this, TuanGouActivity.class);
+//                    } else if (adEntityList.get(position).getType().equals("2")) {
+//                        intent.putExtra("shopId", adEntityList.get(position).getDiyid());
+//                        intent.setClass(HomeActivity.this, ShopDetailActivity.class);
+//                    } else if (adEntityList.get(position).getType().equals("3")) {
+//                        intent.putExtra("shopId", adEntityList.get(position).getDiyid());
+//                        intent.setClass(HomeActivity.this, TakeawayShopDetailActivity.class);
+//                    } else if (adEntityList.get(position).getType().equals("4")) {
+//                        intent.setClass(HomeActivity.this, TakeawayMarketDetailActivity.class);
+//                        intent.putExtra("goodsId", adEntityList.get(position).getDiyid());
+//                    } else if (adEntityList.get(position).getType().equals("5")) {
+//                        intent.setClass(HomeActivity.this, TakeawayMarketShopDetailActivity.class);
+//                        intent.putExtra("cateId", adEntityList.get(position).getDiyid());
+////                        intent.putExtra("asa", (Serializable) mShopMainList);
+//                    } else {
+//                        return;
+//                    }
+//                    startActivity(intent);
+//
+//
+//                }
+//            });
+//
+//            return imageList.get(position);
+//        }
+
+//        @Override
+//        public int getCount() {
+//            return imageList.size();
+//        }
+//
+//
+//        @Override
+//        public boolean isViewFromObject(View view, Object obj) {
+//            return view == obj;
+//        }
+//
+//        @Override
+//        public void destroyItem(View container, int position, Object object) {
+//            ((ViewPager) container).removeView(imageList.get(position));
+//        }
+//
+//
+//    }
 
     /**
      * 初始化分类
@@ -932,40 +984,49 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
         textList = new ArrayList<String>();
         textList.add("美食");
         textList.add("外卖");
-        textList.add("商城");
-        textList.add("休闲");
-        textList.add("市场");
-        textList.add("丽人");
-        textList.add("机票");
-        textList.add("黄页");
-
-        textList.add("电影");
-        textList.add("积分");
-        textList.add("汽车票");
-        textList.add("医疗");
-        textList.add("旅游");
-        textList.add("酒店");
+        textList.add("菜市场");
         textList.add("超市");
-        textList.add("团购");
+        textList.add("休闲");
+        textList.add("商城");
+        textList.add("婚纱摄影");
+        textList.add("车票");
+        textList.add("黄页");
+        textList.add("校园");
+
+
+        textList.add("KTV");
+        textList.add("汽车服务");
+        textList.add("生活服务");
+        textList.add("积分");
+        textList.add("电影");
+        textList.add("求职");
+        textList.add("药店");
+        textList.add("论坛");
+        textList.add("房屋租售");
+        textList.add("更多");
 
         list = new ArrayList<>();
-        list.add(R.drawable.meishi);
-        list.add(R.drawable.waimai);
-        list.add(R.drawable.shangcheng);
-        list.add(R.drawable.xiuxianyule);
-        list.add(R.drawable.shichang);
-        list.add(R.drawable.liren);
-        list.add(R.drawable.jipiao);
-        list.add(R.drawable.huangye);
+        list.add(R.drawable.g_meishi);
+        list.add(R.drawable.g_waimai);
+        list.add(R.drawable.g_caishichang);
+        list.add(R.drawable.g_chaoshi);
+        list.add(R.drawable.g_xiuxianyule);
+        list.add(R.drawable.g_shangcheng);
+        list.add(R.drawable.g_hunshasheying);
+        list.add(R.drawable.g_chepiao);
+        list.add(R.drawable.g_huangye);
+        list.add(R.drawable.g_xiaoyuanshenghuo);
 
-        list.add(R.drawable.dianying);
-        list.add(R.drawable.jifen);
-        list.add(R.drawable.qichepiao);
-        list.add(R.drawable.yiliao);
-        list.add(R.drawable.lvyou);
-        list.add(R.drawable.jiudian);
-        list.add(R.drawable.chaoshi);
-        list.add(R.drawable.tuangou);
+        list.add(R.drawable.g_ktv);
+        list.add(R.drawable.g_qichefuwu);
+        list.add(R.drawable.g_shenghuofuwu);
+        list.add(R.drawable.g_jifen);
+        list.add(R.drawable.g_dianying);
+        list.add(R.drawable.g_qiuzhi);
+        list.add(R.drawable.g_yaodian);
+        list.add(R.drawable.g_luntan);
+        list.add(R.drawable.g_fangwuzushou);
+        list.add(R.drawable.g_gengduo);
 
 
 //        // 假数据

@@ -30,6 +30,8 @@ import com.alipay.sdk.app.EnvUtils;
 import com.alipay.sdk.app.PayTask;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.sugood.app.Constants;
+import com.sugood.app.MD5;
 import com.sugood.app.R;
 import com.sugood.app.adapter.TakeawaySchedulerAdapter;
 import com.sugood.app.adapter.TakerawayCustomerAdapter;
@@ -39,15 +41,28 @@ import com.sugood.app.entity.ShopCarProduct;
 import com.sugood.app.entity.TakeawayShop;
 import com.sugood.app.entity.TakeawayShopInfo;
 import com.sugood.app.entity.UserAddress;
+import com.sugood.app.entity.Wxcont;
 import com.sugood.app.global.Constant;
 import com.sugood.app.util.HttpUtil;
+import com.sugood.app.util.JsonUtil;
+import com.sugood.app.util.OtherUtils;
 import com.sugood.app.util.ToastUtil;
+import com.tencent.mm.opensdk.constants.ConstantsAPI;
+import com.tencent.mm.opensdk.modelbase.BaseReq;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -94,6 +109,11 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
     Double price = 0.00;
     JSONObject json;
     RecyclerView mRv;
+    private Wxcont wxcont;
+    private StringBuffer sb;
+    private Map<String,String> resultunifiedorder;
+    private PayReq req;
+    private final IWXAPI msgApi = WXAPIFactory.createWXAPI(this, null);
 
     List<ShopCarProduct> shopCarList = new ArrayList<>();
     // Realm realm = Realm.getDefaultInstance();
@@ -109,6 +129,7 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                      对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
                      */
                     String resultInfo = payResult.getResult();// 同步返回需要验证的信息
+                    Log.e(TAG, "resultInfo1111: "+resultInfo);
                     String resultStatus = payResult.getResultStatus();
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
@@ -143,6 +164,8 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.takeaway_submit_order_activity);
         mContext = this;
+        sb=new StringBuffer();
+        req=new PayReq();
         initView();
         initData();
 
@@ -358,8 +381,75 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                     ToastUtil.setToast(TakeawaySubmitOrderActivity.this, "请添加地址");
                     return;
                 }
-
                 showLoading("");
+               //aliPay();
+
+               wxPay();
+            }
+
+            private void wxPay(){
+                try {
+                    String type = getIntent().getStringExtra("type");
+                    if (type.equals("shop")) {
+                        json.put("type", "3");
+                    } else if (type.equals("waimai")) {
+                        json.put("type", "1");
+                    } else {
+                        json.put("type", "2");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+                RequestParams params = new RequestParams();
+                params.put("mercid", "goodsolo");
+
+                String type = getIntent().getStringExtra("type");
+                if (type.equals("shop")) {
+                    params.put("attach", "3");
+                } else if (type.equals("waimai")) {
+                    params.put("attach", "1");
+                } else {
+                    params.put("attach", "2");
+                }
+
+                params.put("orderDetails", json);
+                Log.e("TAA" +
+                        "", "onClick: " + json.toString());
+                String ur = "http://test.goodsolo.com/Speed/Speed/pay";
+
+//Constant.SUGOODWX,
+                HttpUtil.post(ur, params, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        super.onSuccess(statusCode, headers, response);
+                        Log.e("TAA", "onSuccess1111: " + response.toString());
+                        closeLoading();
+                        try {
+                            if (response.getInt("code")==1) {
+                                 wxcont =  JsonUtil.toObject(response.getJSONObject("response").getString("cont"), Wxcont.class);
+                                Log.e("TAA1111111111", "onSuccess: " +  SugoodApplication.getInstance().getPackageName());
+
+                                genPayReq();//生成签名参数
+                                sendPayReq();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        super.onFailure(statusCode, headers, responseString, throwable);
+                        Log.e("TAA", "onFailure: " + responseString);
+
+                        closeLoading();
+                    }
+                });
+            }
+
+            private void aliPay() {
+
                 try {
                     String type = getIntent().getStringExtra("type");
                     if (type.equals("shop")) {
@@ -387,6 +477,7 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                         closeLoading();
                         try {
                             if (response.getBoolean("success")) {
+                                Log.e("TAA1111111111", "onSuccess: " + response.toString());
                                 submitOrder(response.getString("orderId"));
                             }
                         } catch (JSONException e) {
@@ -407,6 +498,65 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
 
     }
 
+    /*
+ * 调起微信支付
+ */
+    private void sendPayReq() {
+
+
+        msgApi.registerApp(Constants.APP_ID);
+        msgApi.sendReq(req);
+        Log.i("11111>>>>>", req.partnerId);
+    }
+    private long genTimeStamp() {
+        return System.currentTimeMillis() / 1000;
+    }
+    private void genPayReq() {
+
+        req.appId = Constants.APP_ID;
+        req.partnerId = Constants.MCH_ID;
+
+        req.prepayId =wxcont.getPrepayid();
+     //   Log.e("Simon", "----"+wxcont.getPackagestr());
+        req.packageValue =  "Sign=WXPay";
+        req.nonceStr =wxcont.getNoncestr();
+        req.timeStamp =wxcont.getTimestamp();
+
+
+//        List<NameValuePair> signParams = new LinkedList<NameValuePair>();
+//        signParams.add(new BasicNameValuePair("appid", req.appId));
+//        signParams.add(new BasicNameValuePair("noncestr", req.nonceStr));
+//        signParams.add(new BasicNameValuePair("package", req.packageValue));
+//        signParams.add(new BasicNameValuePair("partnerid", req.partnerId));
+//        signParams.add(new BasicNameValuePair("prepayid", req.prepayId));
+//        signParams.add(new BasicNameValuePair("timestamp", req.timeStamp));
+
+        req.sign = wxcont.getSign();
+
+        sb.append("sign\n"+req.sign+"\n\n");
+
+
+
+        //Log.e("Simon", "----"+signParams.toString());
+
+    }
+//    private String genAppSign(List<NameValuePair> params) {
+//        StringBuilder sb = new StringBuilder();
+//
+//        for (int i = 0; i < params.size(); i++) {
+//            sb.append(params.get(i).getName());
+//            sb.append('=');
+//            sb.append(params.get(i).getValue());
+//            sb.append('&');
+//        }
+//        sb.append("key=");
+//        sb.append(Constants.API_KEY);
+//
+//        this.sb.append("sign str\n"+sb.toString()+"\n\n");
+//        String appSign = MD5.getMessageDigest(sb.toString().getBytes());
+//        Log.e("Simon","----"+appSign);
+//        return appSign;
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -518,6 +668,8 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
 
 
     }
+
+
 
     class SubmitAdapter extends RecyclerView.Adapter<SubmitAdapter.MyHolder> {
 

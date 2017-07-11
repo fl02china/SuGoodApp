@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="go_name">速购得</string>
     <string name="app_name">速购得</string>
     <string name="app_name_main">速购得</string>
     <string name="action_settings"> </string>

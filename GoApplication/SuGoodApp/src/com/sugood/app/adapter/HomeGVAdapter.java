@@ -139,7 +139,7 @@ public class HomeGVAdapter extends BaseAdapter {
                     intent.putExtra("type", "xx");
                     intent.setClass(context, GoodFoodActivity.class);
                     context.startActivity(intent);
-                } else if ("丽人".equals(dataList.get(position))) {
+                } else if ("婚纱摄影".equals(dataList.get(position))) {
                     Intent intent = new Intent();
                     intent.putExtra("type", "lr");
                     intent.setClass(context, GoodFoodActivity.class);
@@ -154,18 +154,21 @@ public class HomeGVAdapter extends BaseAdapter {
                     context.startActivity(new Intent(context, TakeawayMainActivity.class));
                 } else if ("商城".equals(dataList.get(position))) {
                     context.startActivity(new Intent(context, TakeawayMarketActivity.class));
-                } else if ("汽车票".equals(dataList.get(position))) {
-                    Intent intent = new Intent();
-                    intent.putExtra("url", "http://m.elong.com/bus/");
-                    intent.putExtra("title", dataList.get(position));
-                    intent.setClass(context, H5WebActivity.class);
-                    context.startActivity(intent);
+                } else if ("车票".equals(dataList.get(position))) {
+//                    Intent intent = new Intent();
+//                    intent.putExtra("url", "http://m.elong.com/bus/");
+//                    intent.putExtra("title", dataList.get(position));
+//                    intent.setClass(context, H5WebActivity.class);
+//                    context.startActivity(intent);
+
+                    ToastUtil.setToast(context, "暂未开放");
                 } else if ("电影".equals(dataList.get(position))) {
-                    Intent intent = new Intent();
-                    intent.putExtra("url", "http://m.wepiao.com/");
-                    intent.putExtra("title", dataList.get(position));
-                    intent.setClass(context, H5WebActivity.class);
-                    context.startActivity(intent);
+//                    Intent intent = new Intent();
+//                    intent.putExtra("url", "http://m.wepiao.com/");
+//                    intent.putExtra("title", dataList.get(position));
+//                    intent.setClass(context, H5WebActivity.class);
+//                    context.startActivity(intent);
+                    ToastUtil.setToast(context, "暂未开放");
                 } else if ("医疗".equals(dataList.get(position))) {
                     Intent intent = new Intent();
                     intent.putExtra("url", "http://m.haodf.com");
@@ -190,11 +193,14 @@ public class HomeGVAdapter extends BaseAdapter {
                     intent.setClass(context, GoodFoodActivity.class);
                     context.startActivity(intent);
                     context.startActivity(intent);
-                } else if ("市场".equals(dataList.get(position))) {
+                } else if ("菜市场".equals(dataList.get(position))) {
                     Intent intent = new Intent(context, TakeawayShopDetailActivity.class);
                     intent.putExtra("shopId", "10");
                     intent.putExtra("shop", shop);
                     context.startActivity(intent);
+                }else
+                {
+                    ToastUtil.setToast(context, "暂未开放");
                 }
             }
         });

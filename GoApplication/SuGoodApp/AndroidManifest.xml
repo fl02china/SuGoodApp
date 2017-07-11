@@ -74,7 +74,10 @@
             android:value="2cec045a1946139055d9d2073d7094f5" />
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService"></service>
-
+        <activity
+            android:name="com.sugood.app.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
         <activity
             android:name="com.sugood.app.activity.WelcomeActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar">

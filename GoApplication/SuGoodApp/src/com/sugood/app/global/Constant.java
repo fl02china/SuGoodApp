@@ -81,6 +81,7 @@ public class Constant {
     public static final String SUGOODISNEW = SUGOODBASEURL + "Speed/baoEleOrder/queryPage";
     //下单
     public static final String SUGOODDOWNORDER = SUGOODBASEURL + "Speed/alipay/placeOrder";
+   public static final String SUGOODWX = SUGOODBASEURL + "Speed/pay";
 
     //新增地址
     public static final String ADD_ADDRESS_URL = SUGOODBASEURL + "Speed/baoPaddress/add";
