@@ -1,10 +1,13 @@
 package com.sugood.app.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2017/7/10 0010.
  */
 
-public class Wxcont {
+public class Wxcont implements Serializable {
+    private static final long serialVersionUID = -6919461967497580385L;
     private String appid;
     private String noncestr;
 

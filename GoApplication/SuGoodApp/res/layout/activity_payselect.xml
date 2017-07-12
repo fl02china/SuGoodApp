@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#F1F0EE"
+    android:layout_height="match_parent">
+    <!--头部-->
+    <RelativeLayout
+        android:id="@+id/playselect_header"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/red"
+        android:minHeight="40dp">
+
+
+        <ImageView
+            android:id="@+id/playselect_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_icon" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="支付订单"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_middle"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="22dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:layout_height="40dp"
+        android:orientation="horizontal"></LinearLayout>
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <RadioButton
+            android:id="@+id/radio_weixin"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:button="@null"
+            android:drawableLeft="@drawable/icon_weixin"
+        android:drawableRight="@drawable/icon_select"
+
+            android:textColor="#6D6D6D" />
+
+        <RadioButton
+            android:id="@+id/radio_alipay"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+
+            android:drawableLeft="@drawable/icon_aliplay"
+            android:drawableRight="@drawable/icon_select"
+            android:button="@null"
+
+            android:checked="true"
+            android:text="支付宝"
+            android:textColor="#6D6D6D" />
+    </RadioGroup>
+</LinearLayout>

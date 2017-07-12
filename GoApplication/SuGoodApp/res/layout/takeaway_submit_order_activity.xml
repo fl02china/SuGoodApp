@@ -389,10 +389,10 @@
         android:id="@+id/takeaway_submit_order_payway_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/takeaway_submit_order_line4"
         android:background="@color/white"
-        android:padding="3dp">
+        android:padding="3dp"
+        android:layout_below="@+id/takeaway_submit_order_line4"
+        android:layout_alignParentStart="true">
 
 
         <TextView

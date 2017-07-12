@@ -448,7 +448,7 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                 });
             }
 
-            private void aliPay() {
+            private void getOrder() {
 
                 try {
                     String type = getIntent().getStringExtra("type");
@@ -467,8 +467,9 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                 params.put("orderDetails", json);
                 Log.e("TAA" +
                         "", "onClick: " + json.toString());
-                String ur = "http://192.168.0.105:8080/Speed/Speed/alipay/placeOrder";
-//
+
+                String ur = " http://test.goodsolo.com/Speed/Speed/alipay/placeOrder";
+// HttpUtil.post(Constant.SUGOODDOWNORDER, params, new JsonHttpResponseHandler()
                 HttpUtil.post(Constant.SUGOODDOWNORDER, params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -478,6 +479,10 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                         try {
                             if (response.getBoolean("success")) {
                                 Log.e("TAA1111111111", "onSuccess: " + response.toString());
+                                Intent intent = new Intent();
+                                intent.putExtra("orderId", response.getString("orderId"));
+                                intent.setClass(mContext, PaySelectActivity.class);
+                                startActivityForResult(intent, 6);
                                 submitOrder(response.getString("orderId"));
                             }
                         } catch (JSONException e) {
@@ -636,6 +641,7 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
 
         try {
             json.put("orderId", id);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
