@@ -156,6 +156,17 @@
             android:configChanges="orientation|keyboardHidden"
 
             android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+
+        <activity
+            android:name="com.sugood.app.activity.PaySelectActivity"
+            android:configChanges="orientation|keyboardHidden"
+
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+        <activity
+            android:name="com.sugood.app.activity.PayresultActivity"
+            android:configChanges="orientation|keyboardHidden"
+
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity
             android:name="com.sugood.app.activity.TakeawayAboutShopActivity"
             android:configChanges="orientation|keyboardHidden"

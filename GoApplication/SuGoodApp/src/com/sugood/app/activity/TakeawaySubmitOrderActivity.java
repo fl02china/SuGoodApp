@@ -1,8 +1,10 @@
 package com.sugood.app.activity;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -114,50 +116,55 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
     private Map<String,String> resultunifiedorder;
     private PayReq req;
     private final IWXAPI msgApi = WXAPIFactory.createWXAPI(this, null);
-
+    private FinshReceiver mFinsh;
     List<ShopCarProduct> shopCarList = new ArrayList<>();
     // Realm realm = Realm.getDefaultInstance();
     @SuppressLint("HandlerLeak")
-    private Handler mHandler = new Handler() {
-        @SuppressWarnings("unused")
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case SDK_PAY_FLAG: {
-                    @SuppressWarnings("unchecked")
-                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
-                    /**
-                     对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
-                     */
-                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
-                    Log.e(TAG, "resultInfo1111: "+resultInfo);
-                    String resultStatus = payResult.getResultStatus();
-                    // 判断resultStatus 为9000则代表支付成功
-                    if (TextUtils.equals(resultStatus, "9000")) {
-                        // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        Toast.makeText(TakeawaySubmitOrderActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
-                        finish();
-/*
-                        RealmResults<ShopCarList> list = realm.where(ShopCarList.class).findAll();
-                        list.addChangeListener(new RealmChangeListener<RealmResults<ShopCarList>>() {
-                            @Override
-                            public void onChange(RealmResults<ShopCarList> element) {
-                                element.deleteAllFromRealm();
-                            }
-                        });*/
-
-
-                    } else {
-                        // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-                        Toast.makeText(TakeawaySubmitOrderActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-                }
-
-                default:
-                    break;
-            }
-        }
-    };
+//    private Handler mHandler = new Handler() {
+//        @SuppressWarnings("unused")
+//        public void handleMessage(Message msg) {
+//            switch (msg.what) {
+//
+//                case SDK_PAY_FLAG: {
+//                    @SuppressWarnings("unchecked")
+//                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+//
+//                    /**
+//                     对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
+//                     */
+//                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
+//                    Log.e(TAG, "resultInfo1111: "+resultInfo);
+//                    String resultStatus = payResult.getResultStatus();
+//                    // 判断resultStatus 为9000则代表支付成功
+//                    if (TextUtils.equals(resultStatus, "9000")) {
+//                        // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+//                        Toast.makeText(TakeawaySubmitOrderActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent("FinishActivity");
+//                        sendBroadcast(intent);//发送对应的广播
+//
+//                        finish();
+///*
+//                        RealmResults<ShopCarList> list = realm.where(ShopCarList.class).findAll();
+//                        list.addChangeListener(new RealmChangeListener<RealmResults<ShopCarList>>() {
+//                            @Override
+//                            public void onChange(RealmResults<ShopCarList> element) {
+//                                element.deleteAllFromRealm();
+//                            }
+//                        });*/
+//
+//
+//                    } else {
+//                        // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
+//                        Toast.makeText(TakeawaySubmitOrderActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+//                    }
+//                    break;
+//                }
+//
+//                default:
+//                    break;
+//            }
+//        }
+//    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -168,9 +175,16 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
         req=new PayReq();
         initView();
         initData();
-
+        mFinsh = new FinshReceiver();
+        registerReceiver(mFinsh, new IntentFilter("FinishActivity"));
     }
-
+    //广播接收事件
+    private class FinshReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            finish();
+        }
+    }
     private void initData() {
 
 
@@ -381,10 +395,10 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                     ToastUtil.setToast(TakeawaySubmitOrderActivity.this, "请添加地址");
                     return;
                 }
-                showLoading("");
+                //showLoading("");
                //aliPay();
 
-               wxPay();
+                goPay();
             }
 
             private void wxPay(){
@@ -416,10 +430,10 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                 params.put("orderDetails", json);
                 Log.e("TAA" +
                         "", "onClick: " + json.toString());
-                String ur = "http://test.goodsolo.com/Speed/Speed/pay";
+                String url = "http://test.goodsolo.com/Speed/Speed/pay";
 
 //Constant.SUGOODWX,
-                HttpUtil.post(ur, params, new JsonHttpResponseHandler() {
+                HttpUtil.post(url, params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);
@@ -447,7 +461,36 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                     }
                 });
             }
+            private void goPay(){
+                try {
+                    String type = getIntent().getStringExtra("type");
+                    if (type.equals("shop")) {
+                        json.put("type", "3");
+                    } else if (type.equals("waimai")) {
+                        json.put("type", "1");
+                    } else {
+                        json.put("type", "2");
+                    }
 
+                    JSONObject body = new JSONObject();
+                    body.put("type",json.getString("type"));
+
+                    Intent intent = new Intent();
+                    intent.putExtra("orderDetails", json.toString());
+                    intent.putExtra("Body", body.toString());
+                    intent.putExtra("type", json.getString("type"));
+                    intent.putExtra("price", price.toString());
+                    intent.setClass(mContext, PaySelectActivity.class);
+
+
+                    startActivityForResult(intent, 6);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+            }
             private void getOrder() {
 
                 try {
@@ -470,7 +513,7 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
 
                 String ur = " http://test.goodsolo.com/Speed/Speed/alipay/placeOrder";
 // HttpUtil.post(Constant.SUGOODDOWNORDER, params, new JsonHttpResponseHandler()
-                HttpUtil.post(Constant.SUGOODDOWNORDER, params, new JsonHttpResponseHandler() {
+                HttpUtil.post(ur, params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);
@@ -479,11 +522,21 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                         try {
                             if (response.getBoolean("success")) {
                                 Log.e("TAA1111111111", "onSuccess: " + response.toString());
+                                //json.put("orderId", response.getString("orderId"));
+
+                                JSONObject body = new JSONObject();
+                                body.put("type",json.getString("type"));
+                                body.put("orderId",response.getString("orderId"));
                                 Intent intent = new Intent();
+                                intent.putExtra("orderDetails", json.toString());
                                 intent.putExtra("orderId", response.getString("orderId"));
+                                intent.putExtra("Body", body.toString());
+                                intent.putExtra("price", price.toString());
                                 intent.setClass(mContext, PaySelectActivity.class);
+
+
                                 startActivityForResult(intent, 6);
-                                submitOrder(response.getString("orderId"));
+                             //  submitOrder(response.getString("orderId"));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -587,7 +640,11 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                 rl_choose_address.setVisibility(View.VISIBLE);
                 market_address_tv.setText("");
                 market_address_name_tv.setText("");
-            } else {
+            }else if(resultCode ==133) {
+                finish();
+            }
+
+            else {
                 Log.e("RRRRRRRR", "onActivityResult: " + data.getStringExtra("remark"));
                 mRemark = data.getStringExtra("remark");
                 mRemarkTV.setText(data.getStringExtra("remark"));
@@ -596,84 +653,89 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
         }
     }
 
-    /**
-     * 支付宝支付业务
-     *
-     * @param orderinfo
-     */
-    public void payV2(final String orderinfo) {
-//        if (TextUtils.isEmpty(APPID) || (TextUtils.isEmpty(RSA2_PRIVATE) && TextUtils.isEmpty(RSA_PRIVATE))) {
-//            new AlertDialog.Builder(this).setTitle("警告").setMessage("需要配置APPID | RSA_PRIVATE")
-//                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialoginterface, int i) {
-//                            //
-//                            finish();
-//                        }
-//                    }).show();
-//            return;
-//        }
-        Runnable payRunnable = new Runnable() {
+//    /**
+//     * 支付宝支付业务
+//     *
+//     * @param orderinfo
+//     */
+//    public void payV2(final String orderinfo) {
+////        if (TextUtils.isEmpty(APPID) || (TextUtils.isEmpty(RSA2_PRIVATE) && TextUtils.isEmpty(RSA_PRIVATE))) {
+////            new AlertDialog.Builder(this).setTitle("警告").setMessage("需要配置APPID | RSA_PRIVATE")
+////                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+////                        public void onClick(DialogInterface dialoginterface, int i) {
+////                            //
+////                            finish();
+////                        }
+////                    }).show();
+////            return;
+////        }
+//        Runnable payRunnable = new Runnable() {
+//
+//            @Override
+//            public void run() {
+////                EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
+//                PayTask alipay = new PayTask(TakeawaySubmitOrderActivity.this);
+//                Map<String, String> result = alipay.payV2(orderinfo, true);
+//                Log.i("msp", result.toString());
+//                Message msg = new Message();
+//                msg.what = SDK_PAY_FLAG;
+//                msg.obj = result;
+//                mHandler.sendMessage(msg);
+//            }
+//        };
+//
+//        Thread payThread = new Thread(payRunnable);
+//        payThread.start();
+//    }
 
-            @Override
-            public void run() {
-//                EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
-                PayTask alipay = new PayTask(TakeawaySubmitOrderActivity.this);
-                Map<String, String> result = alipay.payV2(orderinfo, true);
-                Log.i("msp", result.toString());
-                Message msg = new Message();
-                msg.what = SDK_PAY_FLAG;
-                msg.obj = result;
-                mHandler.sendMessage(msg);
-            }
-        };
-
-        Thread payThread = new Thread(payRunnable);
-        payThread.start();
+    @Override
+    protected void onDestroy() {
+        this.unregisterReceiver(mFinsh);
+        super.onDestroy();
     }
-
 
     /**
      * 提交订单
      */
-    private void submitOrder(String id) {
-
-//        Log.e("JSON", "submitOrder: "+ JsonUtil.toJson(mList.get(ps)));
-
-        try {
-            json.put("orderId", id);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String Subject = "速购得";
-        RequestParams params = new RequestParams();
-        Log.e("sss", "submitOrder: " + json);
-        params.put("Body", json);
-        params.put("Subject", Subject);
-        params.put("TotalAmount", price);
-
-        HttpUtil.post(Constant.SUGOODSUBMITORDER, params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                Log.d("ssad", "onSuccess: " + response);
-                try {
-                    String orderinfo = response.getString("Body");
-                    payV2(orderinfo);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Log.e("ssss", "onFailure: " + responseString);
-            }
-        });
-
-
-    }
+//    private void submitOrder(String id) {
+//
+////        Log.e("JSON", "submitOrder: "+ JsonUtil.toJson(mList.get(ps)));
+//
+//        try {
+//            json.put("orderId", id);
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        String Subject = "速购得";
+//        RequestParams params = new RequestParams();
+//        Log.e("sss", "submitOrder: " + json);
+//        params.put("Body", json);
+//        params.put("Subject", Subject);
+//        params.put("TotalAmount", price);
+//
+//        HttpUtil.post(Constant.SUGOODSUBMITORDER, params, new JsonHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//                Log.d("ssad", "onSuccess: " + response);
+//                try {
+//                    String orderinfo = response.getString("Body");
+//                    payV2(orderinfo);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+//                super.onFailure(statusCode, headers, responseString, throwable);
+//                Log.e("ssss", "onFailure: " + responseString);
+//            }
+//        });
+//
+//
+//    }
 
 
 

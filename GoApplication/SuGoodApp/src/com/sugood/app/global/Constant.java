@@ -11,9 +11,10 @@ public class Constant {
     public static final String NEWSUGOODBASEURL = "http://city58.cn:8080/Speed/";
     //接口base url
    // public static final String SUGOODBASEURL = "http://sgd.92city.com:8080/Speed/";
-    //接口base url
-   public static final String SUGOODBASEURL = "http://www.goodsolo.com:8080/Speed/";
-
+    //接口base 正式服务器
+public static final String SUGOODBASEURL = "http://www.goodsolo.com:8080/Speed/";
+    //接口base 测试服务器
+ //   public static final String SUGOODBASEURL = "http://test.goodsolo.com/Speed";
     //图片 base Url
     public static final String PHOTOBASEURL = "http://www.goodsolo.com";
  //upload  经纬度
@@ -80,7 +81,7 @@ public class Constant {
     //查询是否新用户
     public static final String SUGOODISNEW = SUGOODBASEURL + "Speed/baoEleOrder/queryPage";
     //下单
-    public static final String SUGOODDOWNORDER = SUGOODBASEURL + "Speed/alipay/placeOrder";
+    public static final String SUGOODALIPAY = SUGOODBASEURL + "Speed/alipay/placeOrder";
    public static final String SUGOODWX = SUGOODBASEURL + "Speed/pay";
 
     //新增地址

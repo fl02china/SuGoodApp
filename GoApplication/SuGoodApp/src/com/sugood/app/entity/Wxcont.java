@@ -15,18 +15,23 @@ public class Wxcont implements Serializable {
     private String prepayid;
     private String sign;
     private String timestamp;
+    private String outTradeNo;
 
     @Override
     public String toString() {
         return "Wxcont{" +
                 "appid='" + appid + '\'' +
                 ", noncestr='" + noncestr + '\'' +
-
                 ", partnerid='" + partnerid + '\'' +
                 ", prepayid='" + prepayid + '\'' +
                 ", sign='" + sign + '\'' +
                 ", timestamp='" + timestamp + '\'' +
+                ", outtradeno='" + outTradeNo + '\'' +
                 '}';
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public String getAppid() {
@@ -44,8 +49,6 @@ public class Wxcont implements Serializable {
     public void setNoncestr(String noncestr) {
         this.noncestr = noncestr;
     }
-
-
 
     public String getPartnerid() {
         return partnerid;
@@ -77,5 +80,13 @@ public class Wxcont implements Serializable {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getOuttradeno() {
+        return outTradeNo;
+    }
+
+    public void setOuttradeno(String outtradeno) {
+        this.outTradeNo = outtradeno;
     }
 }

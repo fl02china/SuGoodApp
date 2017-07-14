@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -99,7 +100,10 @@ public class AddAddrActivity extends AppCompatActivity {
                 params.put("tel", mPhoneEd.getText().toString());
                 params.put("areaStr", mAddressEd.getText().toString());
                 params.put("info", mAddressInfoEd.getText().toString());
-                HttpUtil.post(Constant.UPDATE_ADDRESS_URL, params, new AsyncHttpResponseHandler() {
+
+                String url=Constant.ADD_ADDRESS_URL;
+                //url = "http://test.goodsolo.com/Speed/Speed/baoPaddress/add";
+                HttpUtil.post(url, params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
@@ -144,7 +148,10 @@ public class AddAddrActivity extends AppCompatActivity {
                 params.put("tel", mPhoneEd.getText().toString());
                 params.put("areaStr", mAddressEd.getText().toString());
                 params.put("info", mAddressInfoEd.getText().toString());
-                HttpUtil.post(Constant.ADD_ADDRESS_URL, params, new AsyncHttpResponseHandler() {
+               // Constant.ADD_ADDRESS_URL
+                String url=Constant.ADD_ADDRESS_URL;
+               // url = "http://test.goodsolo.com/Speed/Speed/baoPaddress/add";
+                HttpUtil.post(url, params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 

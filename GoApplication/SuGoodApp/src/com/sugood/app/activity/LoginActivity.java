@@ -55,9 +55,10 @@ public class LoginActivity extends BaseActivity {
             // 得到输入编辑框的数据
 //            final String name = et_username.getText().toString();
 //            final String pwd = et_userpwd.getText().toString();
-            final String name = "18376543595";
-            final String pwd = "111111";
-
+//            final String name = "18376543595";
+//            final String pwd = "111111";
+            final String name = "13620906082";
+            final String pwd = "123456";
             SharedPreferences preferences = getSharedPreferences("info", MODE_PRIVATE);
             SharedPreferences.Editor sped = preferences.edit();
             sped.putString("name", name);
