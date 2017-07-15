@@ -471,86 +471,68 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                     } else {
                         json.put("type", "2");
                     }
+                    showLoading("");
+                    RequestParams params = new RequestParams();
+                    params.put("orderDetails", json.toString());
+                    Log.e("TAA" +
+                            "", "onClick: " + json.toString().toString());
 
-                    JSONObject body = new JSONObject();
-                    body.put("type",json.getString("type"));
+                    String ur = "http://test.goodsolo.com/Speed/Speed/alipay/placeOrder";
 
-                    Intent intent = new Intent();
-                    intent.putExtra("orderDetails", json.toString());
-                    intent.putExtra("Body", body.toString());
-                    intent.putExtra("type", json.getString("type"));
-                    intent.putExtra("price", price.toString());
-                    intent.setClass(mContext, PaySelectActivity.class);
+//HttpUtil.post(Constant.SUGOODALIPAY, params, new JsonHttpResponseHandler()
 
+                    HttpUtil.post((Constant.SUGOODALIPAY), params, new JsonHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            super.onSuccess(statusCode, headers, response);
+                            Log.e("TAA", "onSuccess: " + response.toString());
+                             closeLoading();
+                            try {
+                                if (response.getBoolean("success")) {
+                                    Log.e("TAG2222", "onSuccess: " + response.toString());
+                                    String orderid =response.getString("orderId");
 
-                    startActivityForResult(intent, 6);
+                                    JSONObject body = new JSONObject();
 
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-
-                }
-            }
-            private void getOrder() {
-
-                try {
-                    String type = getIntent().getStringExtra("type");
-                    if (type.equals("shop")) {
-                        json.put("type", "3");
-                    } else if (type.equals("waimai")) {
-                        json.put("type", "1");
-                    } else {
-                        json.put("type", "2");
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-
-                }
-                RequestParams params = new RequestParams();
-                params.put("orderDetails", json);
-                Log.e("TAA" +
-                        "", "onClick: " + json.toString());
-
-                String ur = " http://test.goodsolo.com/Speed/Speed/alipay/placeOrder";
-// HttpUtil.post(Constant.SUGOODDOWNORDER, params, new JsonHttpResponseHandler()
-                HttpUtil.post(ur, params, new JsonHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
-                        Log.e("TAA", "onSuccess: " + response.toString());
-                        closeLoading();
-                        try {
-                            if (response.getBoolean("success")) {
-                                Log.e("TAA1111111111", "onSuccess: " + response.toString());
-                                //json.put("orderId", response.getString("orderId"));
-
-                                JSONObject body = new JSONObject();
-                                body.put("type",json.getString("type"));
-                                body.put("orderId",response.getString("orderId"));
-                                Intent intent = new Intent();
-                                intent.putExtra("orderDetails", json.toString());
-                                intent.putExtra("orderId", response.getString("orderId"));
-                                intent.putExtra("Body", body.toString());
-                                intent.putExtra("price", price.toString());
-                                intent.setClass(mContext, PaySelectActivity.class);
+                                    body.put("type",json.getString("type"));
+                                    body.put("orderId",orderid);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("shopname", shop.getShopName());
+                                    intent.putExtra("orderId", orderid);
+                                    intent.putExtra("orderDetails", json.toString());
+                                    intent.putExtra("Body", body.toString());
+                                    intent.putExtra("type", json.getString("type"));
+                                    intent.putExtra("price", price.toString());
+                                    //   intent.putExtra("time", price.toString());
+                                    intent.setClass(mContext, PaySelectActivity.class);
 
 
-                                startActivityForResult(intent, 6);
-                             //  submitOrder(response.getString("orderId"));
+                                    startActivityForResult(intent, 6);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
 
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                        super.onFailure(statusCode, headers, responseString, throwable);
-                        Log.e("TAA", "onFailure: " + responseString);
-                        closeLoading();
-                    }
-                });
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                            super.onFailure(statusCode, headers, responseString, throwable);
+                            Log.e("TAA", "onFailure: " + responseString);
+                            closeLoading();
+                        }
+                    });
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
             }
+
+
+
+
         });
 
 

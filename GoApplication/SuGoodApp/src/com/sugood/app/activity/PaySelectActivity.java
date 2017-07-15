@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -39,6 +40,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
@@ -50,9 +53,10 @@ import cz.msebera.android.httpclient.Header;
 public class PaySelectActivity extends BaseActivity {
     String type;
     String orderId;
-    String orderDetails;
+  String orderDetails;
     boolean bool;
-    JSONObject body;
+   // JSONObject body;
+    String Body;
     private StringBuffer sb;
     private PayReq req;
     private Wxcont wxcont;
@@ -121,19 +125,32 @@ public class PaySelectActivity extends BaseActivity {
         sb=new StringBuffer();
         setContentView(R.layout.activity_payselect);
         req=new PayReq();
-        body = new JSONObject();
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         type = bundle.getString("type");
         price=bundle.getString("price");
+        orderDetails=bundle.getString("orderDetails");
         Log.e("sss33333", "price: "+price);
       //  orderId = bundle.getString("orderId");
-        orderDetails = bundle.getString("orderDetails");
+        orderId = bundle.getString("orderId");
+        Body = bundle.getString("Body");
 
         mResult = new ResultReceiver();
         registerReceiver(mResult, new IntentFilter("ResultActivity"));
+        TextView tx_name = (TextView) findViewById(R.id.tx_name);
+        TextView tx_time = (TextView) findViewById(R.id.tx_time);
+        TextView tx_price = (TextView) findViewById(R.id.tx_price);
+        TextView tx_order = (TextView) findViewById(R.id.tx_order);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+        String time = formatter.format(curDate);
 
 
+        tx_name.setText(bundle.getString("shopname"));
+        tx_price.setText("¥"+price);
+        tx_time.setText(time);
+        tx_order.setText("订单编号"+orderId);
         final RadioGroup payRroup = (RadioGroup) findViewById(R.id.radiogroup);
         Button payButton = (Button) findViewById(R.id.pay);
         payButton.setText("确定支付 ¥"+price);
@@ -175,15 +192,15 @@ public class PaySelectActivity extends BaseActivity {
     }
 
     private void wxPay(){
-
+        showLoading("");
         RequestParams params = new RequestParams();
         params.put("mercid", "goodsolo");
 
 
-        Log.e("TAA", "body: " + body);
+        Log.e("TAA", "body: " + Body);
         Log.e("TAA", "orderDetails: " + orderDetails);
         params.put("orderDetails", orderDetails);
-        params.put("Body", body);
+        params.put("Body", Body);
         Log.e("TAA" +
                 "", "onClick: " + params.toString());
         String ur = "http://test.goodsolo.com/Speed/Speed/pay";
@@ -221,61 +238,26 @@ public class PaySelectActivity extends BaseActivity {
     }
 
     private void getOrder(final int paytype){
-        showLoading("");
-        RequestParams params = new RequestParams();
-        params.put("orderDetails", orderDetails);
-        Log.e("TAA" +
-                "", "onClick: " + orderDetails.toString());
-
-        String ur = "http://test.goodsolo.com/Speed/Speed/alipay/placeOrder";
-
-//HttpUtil.post(Constant.SUGOODALIPAY, params, new JsonHttpResponseHandler()
-
-        HttpUtil.post((Constant.SUGOODALIPAY), params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                Log.e("TAA", "onSuccess: " + response.toString());
-               // closeLoading();
-                try {
-                    if (response.getBoolean("success")) {
-                        Log.e("TAG2222", "onSuccess: " + response.toString());
-                        orderid =response.getString("orderId");
-                        body.put("type",type.toString());
-                        body.put("orderId",response.getString("orderId"));
-                        if (paytype==1){
-                        wxPay();}else
-                        {
-                            alipay();
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Log.e("TAA", "onFailure: " + responseString);
-                closeLoading();
-            }
-        });
+        if (paytype==1){
+            wxPay();}else
+        {
+            alipay();
+        }
     }
 
     /**
      * 支付宝支付订单
      */
     private void alipay() {
-
+        showLoading("");
 
         String Subject = "速购得";
         RequestParams params = new RequestParams();
         //Log.e("sss", "submitOrder: " + json);
-        params.put("Body", body);
+        params.put("Body", Body);
         params.put("Subject", Subject);
         params.put("TotalAmount", price);
-        Log.e("sss1111", "Body: " + body);
+        Log.e("sss1111", "Body: " + Body);
         Log.e("sss1111", "Subject: " + Subject);
         Log.e("sss1111", "TotalAmount: " + price);
         //Constant.SUGOODSUBMITORDER

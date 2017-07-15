@@ -58,7 +58,7 @@ public class LoginActivity extends BaseActivity {
 //            final String name = "18376543595";
 //            final String pwd = "111111";
             final String name = "13620906082";
-            final String pwd = "123456";
+            final String pwd = "366325";
             SharedPreferences preferences = getSharedPreferences("info", MODE_PRIVATE);
             SharedPreferences.Editor sped = preferences.edit();
             sped.putString("name", name);
@@ -68,8 +68,9 @@ public class LoginActivity extends BaseActivity {
             RequestParams data = new RequestParams();
             data.put("name", name);
             data.put("password", MD5Util.getMD5(pwd));
-
-            HttpUtil.post(Constant.SUGOOGLOGIN, data, new JsonHttpResponseHandler() {
+        //    String URL = "http://test.goodsolo.com/Speed/Speed/My/userLoginent";
+            String URL =  Constant.SUGOOGLOGIN;
+            HttpUtil.post(URL, data, new JsonHttpResponseHandler() {
 
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -79,6 +80,7 @@ public class LoginActivity extends BaseActivity {
                     try {
                         if (response.getBoolean("success")) {
                             SugoodApplication.isLogin = true;
+                        //    User user = JsonUtil.toObject(response.getString("List"), User.class);
                             User user = JsonUtil.toObject(response.getString("content"), User.class);
                             SugoodApplication.user = user;
                             UserIDAndPW userIDAndPW = new UserIDAndPW();
@@ -99,7 +101,7 @@ public class LoginActivity extends BaseActivity {
 
 
                         } else {
-                            ToastUtil.setToast(LoginActivity.this, "密码错误,请重新输入");
+                            ToastUtil.setToast(LoginActivity.this, response.getString("message"));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
