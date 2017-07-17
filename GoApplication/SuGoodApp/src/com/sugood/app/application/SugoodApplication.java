@@ -113,8 +113,9 @@ public class SugoodApplication extends Application {
         SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
 
         RequestParams params = new RequestParams();
-        params.put("name", sharedPreferences.getString("name", ""));
+        params.put("account", sharedPreferences.getString("name", ""));
         params.put("password", MD5Util.getMD5(sharedPreferences.getString("pwd", "")));
+
         HttpUtil.post(Constant.SUGOOGLOGIN, params, new JsonHttpResponseHandler() {
 
             @Override
@@ -124,7 +125,8 @@ public class SugoodApplication extends Application {
                 try {
                     if (response.getBoolean("success")) {
                         isLogin = true;
-                        User user1 = JsonUtil.toObject(response.getString("content"), User.class);
+                       // User user1 = JsonUtil.toObject(response.getString("content"), User.class);
+                        User user1 = JsonUtil.toObject(response.getString("List"), User.class);
                         user = user1;
                     }
                 } catch (JSONException e) {

@@ -430,10 +430,10 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                 params.put("orderDetails", json);
                 Log.e("TAA" +
                         "", "onClick: " + json.toString());
-                String url = "http://test.goodsolo.com/Speed/Speed/pay";
 
-//Constant.SUGOODWX,
-                HttpUtil.post(url, params, new JsonHttpResponseHandler() {
+
+
+                HttpUtil.post(Constant.SUGOODWX, params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);
@@ -477,7 +477,6 @@ public class TakeawaySubmitOrderActivity extends BaseActivity {
                     Log.e("TAA" +
                             "", "onClick: " + json.toString().toString());
 
-                    String ur = "http://test.goodsolo.com/Speed/Speed/alipay/placeOrder";
 
 //HttpUtil.post(Constant.SUGOODALIPAY, params, new JsonHttpResponseHandler()
 

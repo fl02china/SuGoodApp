@@ -75,7 +75,8 @@ public class UserActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        tv_nickName.setText(SugoodApplication.user.getNickname());
+        if(SugoodApplication.user!=null){
+        tv_nickName.setText(SugoodApplication.user.getNickname());}
 
     }
 

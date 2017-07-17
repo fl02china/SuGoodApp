@@ -14,12 +14,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
 dependencies {
-
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:support-v4:24.0.0'
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile files('libs/httpmime-4.1.2.jar')
-   // compile files('libs/IndoorscapeAlbumPlugin.jar')
+    // compile files('libs/IndoorscapeAlbumPlugin.jar')
     compile 'com.facebook.fresco:fresco:0.12.0'
     //compile files('libs/BaiduLBS_Android.jar')
     compile files('libs/fastjson-1.1.51.android.jar')
@@ -37,10 +36,13 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
     compile 'com.androidkun:xversionupdate:1.0.4'
     //
-    compile 'com.youth.banner:banner:1.4.9'  //广告轮播最新版本
+    compile 'com.youth.banner:banner:1.4.9'
+    //广告轮播最新版本
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //微信支付
 
-    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'//微信支付
-  //  compile project(path: ':banner')
+    //  compile project(path: ':banner')
+
 }
 
 android {

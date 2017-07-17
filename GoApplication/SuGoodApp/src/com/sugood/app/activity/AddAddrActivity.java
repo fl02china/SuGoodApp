@@ -102,7 +102,7 @@ public class AddAddrActivity extends AppCompatActivity {
                 params.put("info", mAddressInfoEd.getText().toString());
 
                 String url=Constant.ADD_ADDRESS_URL;
-                //url = "http://test.goodsolo.com/Speed/Speed/baoPaddress/add";
+
                 HttpUtil.post(url, params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -150,7 +150,7 @@ public class AddAddrActivity extends AppCompatActivity {
                 params.put("info", mAddressInfoEd.getText().toString());
                // Constant.ADD_ADDRESS_URL
                 String url=Constant.ADD_ADDRESS_URL;
-               // url = "http://test.goodsolo.com/Speed/Speed/baoPaddress/add";
+
                 HttpUtil.post(url, params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

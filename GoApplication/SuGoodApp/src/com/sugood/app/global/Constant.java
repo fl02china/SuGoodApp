@@ -12,9 +12,9 @@ public class Constant {
     //接口base url
    // public static final String SUGOODBASEURL = "http://sgd.92city.com:8080/Speed/";
     //接口base 正式服务器
-public static final String SUGOODBASEURL = "http://www.goodsolo.com:8080/Speed/";
-    //接口base 测试服务器
- //   public static final String SUGOODBASEURL = "http://test.goodsolo.com/Speed";
+//public static final String SUGOODBASEURL = "http://www.goodsolo.com:8080/Speed/";
+ //接口base 测试服务器
+    public static final String SUGOODBASEURL = "http://test.goodsolo.com/Speed/";
     //图片 base Url
     public static final String PHOTOBASEURL = "http://www.goodsolo.com";
  //upload  经纬度
@@ -34,7 +34,7 @@ public static final String SUGOODBASEURL = "http://www.goodsolo.com:8080/Speed/"
     //获取短信验证码
     public static final String GETCODE = SUGOODBASEURL + "Speed/mobile";
     //登录
-    public static final String SUGOOGLOGIN = SUGOODBASEURL + "Speed/My/userLogin";
+    public static final String SUGOOGLOGIN = SUGOODBASEURL + "Speed/My/userLoginent";
     //注册
     public static final String SUGOODREGISTER = SUGOODBASEURL + "Speed/baoUsers/add";
     // 找回密码
@@ -75,7 +75,8 @@ public static final String SUGOODBASEURL = "http://www.goodsolo.com:8080/Speed/"
     public static final String TAKEAWAY_REMARK_LIST_URL = SUGOODBASEURL + "Speed/WaiMai/baoShop/eleDianPing";
     /*外卖详情*/
     public static final String TAKEAWAY_DESC_LIST_URL = SUGOODBASEURL + "Speed/WaiMai/baoShop/eleXiangQing";
-
+    //查结果
+    public static final String SUGOODRESULT = SUGOODBASEURL + "Speed/pay/query";
     //提交订单
     public static final String SUGOODSUBMITORDER = SUGOODBASEURL + "Speed/alipay";
     //查询是否新用户

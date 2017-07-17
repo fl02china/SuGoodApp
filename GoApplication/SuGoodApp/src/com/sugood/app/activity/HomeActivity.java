@@ -322,6 +322,22 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
 //                Utility.setListViewHeightBasedOnChildren(lv_like_shop);
                 mAdapter.notifyDataSetChanged();
             }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                closeLoading();
+                Log.e(TAG, "onSuccess11111: " + errorResponse.toString());
+                ToastUtil.setToast(HomeActivity.this, errorResponse.toString());
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                closeLoading();
+                Log.e(TAG, "onSuccess11111: " + errorResponse.toString());
+                ToastUtil.setToast(HomeActivity.this, errorResponse.toString());
+            }
         });
 
 

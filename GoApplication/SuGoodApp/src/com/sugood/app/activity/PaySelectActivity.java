@@ -203,10 +203,10 @@ public class PaySelectActivity extends BaseActivity {
         params.put("Body", Body);
         Log.e("TAA" +
                 "", "onClick: " + params.toString());
-        String ur = "http://test.goodsolo.com/Speed/Speed/pay";
+
 
 //Constant.SUGOODWX,
-        HttpUtil.post(ur, params, new JsonHttpResponseHandler() {
+        HttpUtil.post(Constant.SUGOODWX, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -260,9 +260,9 @@ public class PaySelectActivity extends BaseActivity {
         Log.e("sss1111", "Body: " + Body);
         Log.e("sss1111", "Subject: " + Subject);
         Log.e("sss1111", "TotalAmount: " + price);
-        //Constant.SUGOODSUBMITORDER
-        String ur = "http://test.goodsolo.com/Speed/Speed/alipay";
-        HttpUtil.post(ur, params, new JsonHttpResponseHandler() {
+
+
+        HttpUtil.post( Constant.SUGOODSUBMITORDER, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -390,10 +390,10 @@ public class PaySelectActivity extends BaseActivity {
         Log.e("sss1111", "sss111type: " + type);
         Log.e("sss1111", "sss111outTradeNo: " + outTradeNo);
         Log.e("sss1111", "sss111params: " + params.toString());
-        //  String ur = "http://test.goodsolo.com/Speed/Speed/pay";
-        String url = "http://test.goodsolo.com/Speed/Speed/pay/query";
 
-        HttpUtil.post(url, params, new JsonHttpResponseHandler() {
+
+
+        HttpUtil.post(Constant.SUGOODRESULT, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);

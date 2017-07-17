@@ -3,6 +3,7 @@ package com.sugood.app.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -53,12 +54,17 @@ public class LoginActivity extends BaseActivity {
         if (view.getId() == R.id.btn_login) {
             Log.d("geek", "登录");
             // 得到输入编辑框的数据
-//            final String name = et_username.getText().toString();
-//            final String pwd = et_userpwd.getText().toString();
+            final String name = et_username.getText().toString();
+            final String pwd = et_userpwd.getText().toString();
+            if (TextUtils.isEmpty(et_username.getText().toString())) {
+                Toast.makeText(LoginActivity.this, "用户名不能为空", Toast.LENGTH_LONG).show();
+            } else if (TextUtils.isEmpty(et_userpwd.getText().toString())) {
+                Toast.makeText(LoginActivity.this, "密码不能为空", Toast.LENGTH_LONG).show();
+            }else {
 //            final String name = "18376543595";
 //            final String pwd = "111111";
-            final String name = "13620906082";
-            final String pwd = "366325";
+//            final String name = "13620906082";
+//            final String pwd = "366325";
             SharedPreferences preferences = getSharedPreferences("info", MODE_PRIVATE);
             SharedPreferences.Editor sped = preferences.edit();
             sped.putString("name", name);
@@ -66,10 +72,10 @@ public class LoginActivity extends BaseActivity {
             sped.commit();
             Log.d("geek", "用户名：" + name + "密码：" + pwd);
             RequestParams data = new RequestParams();
-            data.put("name", name);
+            data.put("account", name);
             data.put("password", MD5Util.getMD5(pwd));
-        //    String URL = "http://test.goodsolo.com/Speed/Speed/My/userLoginent";
-            String URL =  Constant.SUGOOGLOGIN;
+
+             String URL =  Constant.SUGOOGLOGIN;
             HttpUtil.post(URL, data, new JsonHttpResponseHandler() {
 
                 @Override
@@ -80,16 +86,17 @@ public class LoginActivity extends BaseActivity {
                     try {
                         if (response.getBoolean("success")) {
                             SugoodApplication.isLogin = true;
-                        //    User user = JsonUtil.toObject(response.getString("List"), User.class);
-                            User user = JsonUtil.toObject(response.getString("content"), User.class);
+                            User user = JsonUtil.toObject(response.getString("List"), User.class);
+
+                            //   User user = JsonUtil.toObject(response.getString("content"), User.class);
                             SugoodApplication.user = user;
                             UserIDAndPW userIDAndPW = new UserIDAndPW();
                             userIDAndPW.setLogin(true);
                             userIDAndPW.setPassword(pwd);
                             userIDAndPW.setUserID(name);
                             SugoodApplication.liteOrm.update(userIDAndPW);
-                            String msg = response.getString("message");
-                            Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_LONG).show();
+                            //   String msg = response.getString("message");
+                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_LONG).show();
                             initNetData();
                             Intent intent = new Intent();
                             intent.putExtra("nickname", SugoodApplication.user.getNickname());
@@ -101,6 +108,7 @@ public class LoginActivity extends BaseActivity {
 
 
                         } else {
+                            SugoodApplication.isLogin = false;
                             ToastUtil.setToast(LoginActivity.this, response.getString("message"));
                         }
                     } catch (JSONException e) {
@@ -134,6 +142,7 @@ public class LoginActivity extends BaseActivity {
 //                    Toast.makeText(this, "登录失败", Toast.LENGTH_LONG).show();
 //                }
 //            }
+        }
         }
     }
 
