@@ -19,6 +19,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.litesuits.orm.LiteOrm;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.mob.MobSDK;
 import com.sugood.app.entity.Ctiy;
 import com.sugood.app.entity.ShopCarProduct;
 import com.sugood.app.entity.User;
@@ -37,6 +38,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import cn.sharesdk.framework.ShareSDK;
 import cz.msebera.android.httpclient.Header;
 import io.realm.Realm;
 
@@ -77,6 +79,8 @@ public class SugoodApplication extends Application {
         super.onCreate();
         Realm.init(this);
         mInstance = this;
+
+        MobSDK.init(this,"1f82ab2d98501","4d7a822640543ccfaade40b4d40c7a4e");
         Fresco.initialize(getApplicationContext());
         // 初始化百度地图
 //        SDKInitializer.initialize(getApplicationContext());
@@ -109,14 +113,24 @@ public class SugoodApplication extends Application {
     }
 
     private void loginUser() {
-
-        SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-
         RequestParams params = new RequestParams();
-        params.put("account", sharedPreferences.getString("name", ""));
-        params.put("password", MD5Util.getMD5(sharedPreferences.getString("pwd", "")));
+        SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+        String URl;
+        System.out.println("111111111:"+sharedPreferences.getBoolean("istdlogin",false));
 
-        HttpUtil.post(Constant.SUGOOGLOGIN, params, new JsonHttpResponseHandler() {
+        if(sharedPreferences.getBoolean("istdlogin",false)){
+            params.put("openid", sharedPreferences.getString("openid", ""));
+            params.put("nickname",sharedPreferences.getString("nickname", ""));
+            URl=Constant.SUGOOGTHRLOGIN;
+        }else{
+            params.put("account", sharedPreferences.getString("name", ""));
+            params.put("password", MD5Util.getMD5(sharedPreferences.getString("pwd", "")));
+            URl=Constant.SUGOOGLOGIN;
+        }
+
+
+
+        HttpUtil.post(URl, params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

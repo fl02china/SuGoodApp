@@ -22,6 +22,16 @@ public class UserIDAndPW {
 
     @Column("isLogin")
     private boolean isLogin;
+    @Column("istdLogin")
+    private boolean istdLogin;
+
+    public boolean istdLogin() {
+        return istdLogin;
+    }
+
+    public void setIstdLogin(boolean istdLogin) {
+        this.istdLogin = istdLogin;
+    }
 
     public String getUserID() {
         return UserID;

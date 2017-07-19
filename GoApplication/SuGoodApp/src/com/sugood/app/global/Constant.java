@@ -35,6 +35,8 @@ public class Constant {
     public static final String GETCODE = SUGOODBASEURL + "Speed/mobile";
     //登录
     public static final String SUGOOGLOGIN = SUGOODBASEURL + "Speed/My/userLoginent";
+    //第三方登录
+    public static final String SUGOOGTHRLOGIN = SUGOODBASEURL + "Speed/My/userWxQqLogin";
     //注册
     public static final String SUGOODREGISTER = SUGOODBASEURL + "Speed/baoUsers/add";
     // 找回密码

@@ -3,7 +3,7 @@
     android:shape="rectangle">
 
     <!-- 填充颜色 -->
-    <solid android:color="#ffffff"/>
+    <solid android:color="#3ee5b1"/>
 
     <!-- 线的宽度，颜色 -->
     <stroke
