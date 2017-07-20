@@ -247,7 +247,7 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
         if ("ms".equals(type)) {
             params.put("parentId", "69");
         } else if ("lr".equals(type)) {
-            params.put("parentId", "10");
+            params.put("parentId", "234");
         } else if ("xx".equals(type)) {
             params.put("parentId", "6");
         }else if ("ly".equals(type)) {

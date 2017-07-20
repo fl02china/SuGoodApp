@@ -115,6 +115,8 @@ public class TakeawayShopcarFragment extends Fragment {
         mContext = getActivity();
         ButterKnife.bind(this, view);
         initView(view);
+        mTypeList.clear();
+        mTypeInfolist.clear();
         shop = (TakeawayShopInfo.EleBean) getArguments().getSerializable("shop");
         shopId = getArguments().getString("shopId");
         requestData(shopId);
@@ -122,6 +124,8 @@ public class TakeawayShopcarFragment extends Fragment {
     }
 
     private void initData(List<TakeawayShopType> typeList) {
+
+      //  typeList.clear();
         foodAdapter = new TakeawayOrderFoodAdapter(mContext, mTypeInfolist);
         //recyclerview
         mRecyclerView.setHasFixedSize(true);
@@ -273,6 +277,12 @@ public class TakeawayShopcarFragment extends Fragment {
 
         );
 
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
     }
 
     private void initView(View view) {

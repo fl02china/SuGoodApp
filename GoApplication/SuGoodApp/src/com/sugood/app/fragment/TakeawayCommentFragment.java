@@ -69,6 +69,11 @@ public class TakeawayCommentFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
 
     private void requestData(int page, String shopId, final boolean isLoadMore) {
 
