@@ -126,7 +126,10 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                if (adEntityList.get(0).getType().equals("1")) {
+                if (adEntityList.size()==0){
+
+                }
+            else    if (adEntityList.get(0).getType().equals("1")) {
                     intent.putExtra("tuanId", adEntityList.get(0).getDiyid());
                     intent.putExtra("shopId", "");
                     intent.setClass(GoodFoodActivity.this, TuanGouActivity.class);
@@ -166,7 +169,7 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
         if ("ms".equals(type)) {
             photoParams.put("siteId", "80");
         } else if ("lr".equals(type)) {
-            photoParams.put("siteId", "102");
+            photoParams.put("siteId", "106");
         } else if ("xx".equals(type)) {
             photoParams.put("siteId", "101");
         }else if ("ly".equals(type)) {
@@ -181,6 +184,8 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
                 adEntityList = JsonUtil.toList(response.toString(), AdEntity.class);
                 if (adEntityList.size() > 0) {
                     simpleDraweeView.setImageURI(Constant.PHOTOBASEURL + adEntityList.get(0).getPhoto());
+                }else {
+                    simpleDraweeView.setVisibility(View.GONE);
                 }
 
             }
@@ -248,6 +253,7 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
             params.put("parentId", "69");
         } else if ("lr".equals(type)) {
             params.put("parentId", "234");
+            params.put("cateid", "284");
         } else if ("xx".equals(type)) {
             params.put("parentId", "6");
         }else if ("ly".equals(type)) {

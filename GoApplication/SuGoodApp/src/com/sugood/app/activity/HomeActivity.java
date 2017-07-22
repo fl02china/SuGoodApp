@@ -1171,11 +1171,18 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
                     Log.e("TAG", "onSuccess: " + response.toString());
                     foodList.clear();
                     foodList = (ArrayList<Food>) JsonUtil.toList(response.toString(), Food.class);
-                    mAdapter.setData(foodList);
+                   if (foodList.size()!=0){
+                       mAdapter.setData(foodList);
 //                    Utility.setListViewHeightBasedOnChildren(lv_like_shop);
-                    mAdapter.notifyDataSetChanged();
-                    lv_like_shop.setSelection(1);
-                    closeLoading();
+                       mAdapter.notifyDataSetChanged();
+                       lv_like_shop.setSelection(1);
+                       closeLoading();
+                   }else
+                   {
+                       initData();
+                   }
+
+
                 }
 
                 @Override

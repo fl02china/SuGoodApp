@@ -100,8 +100,11 @@ public class AddAddrActivity extends AppCompatActivity {
                 params.put("tel", mPhoneEd.getText().toString());
                 params.put("areaStr", mAddressEd.getText().toString());
                 params.put("info", mAddressInfoEd.getText().toString());
-
-                String url=Constant.ADD_ADDRESS_URL;
+                String url;
+                if(add_address_text_tv.getText().equals("修改地址")){
+                    url=Constant.UPDATE_ADDRESS_URL;
+                }else{
+           url=Constant.ADD_ADDRESS_URL;}
 
                 HttpUtil.post(url, params, new AsyncHttpResponseHandler() {
                     @Override

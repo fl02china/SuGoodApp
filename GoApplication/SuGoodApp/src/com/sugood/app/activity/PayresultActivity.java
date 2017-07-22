@@ -52,6 +52,7 @@ public class PayresultActivity extends BaseActivity {
                     Intent intent2 = new Intent();
                     intent2.setClass(PayresultActivity.this, UserOrderActivity.class);
                     startActivity(intent2);
+                    finish();
                 } else {
 //                    Intent intent = new Intent();
 //                    intent.setClass(MineActivity.this, LoginActivity.class);
