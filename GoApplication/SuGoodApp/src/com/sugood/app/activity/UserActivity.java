@@ -26,6 +26,7 @@ import com.sugood.app.util.HttpUtil;
 import com.sugood.app.util.ToastUtil;
 import com.sugood.app.util.Utils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -70,6 +71,8 @@ public class UserActivity extends BaseActivity {
         initView();
 
         initData();
+
+
     }
 
     @Override

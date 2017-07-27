@@ -2,7 +2,6 @@ package com.sugood.app.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 import com.sugood.app.R;
 import com.sugood.app.entity.UserOrder;
 import com.sugood.app.global.Constant;
 import com.sugood.app.util.DateUtil;
 import com.sugood.app.util.GlideUtil;
-import com.sugood.app.util.HttpUtil;
-
-import org.json.JSONObject;
 
 import java.util.List;
-
-import cz.msebera.android.httpclient.Header;
 
 /**
  * Package :com.android.supermarket.user.adapter
@@ -38,7 +30,7 @@ public class UserOrderAdapter extends RecyclerView.Adapter<UserOrderAdapter.User
 
     List<UserOrder> mList;
     Context mContext;
-    TextViewViewOnClickListener onOnClickListener;
+    TextViewViewOnClickListener OnPayClickListener;
     TextOnClickListener OnClickListener;
 
     public UserOrderAdapter(Context conetxt) {
@@ -99,7 +91,7 @@ public class UserOrderAdapter extends RecyclerView.Adapter<UserOrderAdapter.User
             @Override
             public void onClick(View v) {
                 if (order.getStatus().equals("0")) {
-                    onOnClickListener.onOnClick(v, position);
+                    OnPayClickListener.onOnClick(v, position);
                 }
             }
         });
@@ -153,13 +145,16 @@ public class UserOrderAdapter extends RecyclerView.Adapter<UserOrderAdapter.User
     }
 
     public void setViewOnClickListener(TextViewViewOnClickListener listener) {
-        this.onOnClickListener = listener;
+        this.OnPayClickListener = listener;
     }
 
     public interface TextViewViewOnClickListener {
         void onOnClick(View view, int position);
     }
 
+    /**
+     * @param listener
+     */
     public void setTKOnClickListener(TextOnClickListener listener) {
         this.OnClickListener = listener;
     }

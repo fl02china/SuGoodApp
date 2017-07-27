@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/com_tenpay_form_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <!--<TextView-->
+            <!--android:id="@+id/back"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="@drawable/icon_back"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--/>-->
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="订单"
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@drawable/icon_back"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginTop="15dp"
+        android:paddingTop="15dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tx_waimai"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/order_waimai"
+            android:gravity="center"
+            android:drawablePadding="10dp"
+            android:text="外卖订单" />
+
+        <TextView
+            android:id="@+id/tx_tuangou"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/order_tuangou"
+            android:gravity="center"
+            android:drawablePadding="10dp"
+            android:text="团购订单" />
+
+        <TextView
+            android:id="@+id/tx_shangcheng"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/order_shangcheng"
+            android:gravity="center"
+            android:drawablePadding="10dp"
+            android:text="商城订单" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -120,7 +120,7 @@
                 android:background="@color/border_gray" />
 
             <TextView
-                android:id="@+id/text3"
+                android:id="@+id/money_tol"
                 android:layout_width="wrap_content"
                 android:layout_height="42.0dip"
                 android:layout_weight="1.0"

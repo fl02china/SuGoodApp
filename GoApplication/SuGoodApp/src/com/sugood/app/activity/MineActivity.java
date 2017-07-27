@@ -11,12 +11,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.sugood.app.R;
 import com.sugood.app.application.SugoodApplication;
 import com.sugood.app.global.Constant;
 import com.sugood.app.util.GlideUtil;
+import com.sugood.app.util.HttpUtil;
 import com.sugood.app.util.ToastUtil;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
@@ -79,7 +86,6 @@ public class MineActivity extends AppCompatActivity {
 
     }
 
-
     private void initDataFromNet() {
         Log.i(TAG, "initDataFromNet: ");
         if (SugoodApplication.user != null) {
@@ -128,7 +134,8 @@ public class MineActivity extends AppCompatActivity {
                 if (SugoodApplication.isLogin) {
                     //Toast.makeText(mContext, "订单", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
-                    intent.setClass(MineActivity.this, UserOrderActivity.class);
+                //    intent.setClass(MineActivity.this, UserOrderActivity.class);
+                    intent.setClass(MineActivity.this, OrderManagerActivity.class);
                     startActivity(intent);
                 } else {
 //                    Intent intent = new Intent();

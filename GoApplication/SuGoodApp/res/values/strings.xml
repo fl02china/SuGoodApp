@@ -49,5 +49,19 @@
     <string name="load_fail">加载失败</string>
     <string name="no_more">没有更多了</string>
 
+    <string name="order_all">全部</string>
+    <string name="order_ing">进行中</string>
+    <string name="order_wait">待支付</string>
+    <string name="order_pinjia">待评价</string>
+    <string name="order_cancle">取消</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="order_num">订单编号:</string>
+    <string name="order_tol">本单总计：</string>
+    <string name="ordertoo">再来一单</string>
+    <string name="pingjia">评价</string>
+    <string name="peisong">配送费4元</string>
 </resources>

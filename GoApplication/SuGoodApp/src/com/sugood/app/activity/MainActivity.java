@@ -53,6 +53,8 @@ public class MainActivity extends TabActivity {
         context = MainActivity.this;
 
         initView();
+
+
       //  initNetData();
     }
 
@@ -108,6 +110,7 @@ public class MainActivity extends TabActivity {
         homeTab.setContent(new Intent(this, HomeActivity.class));
         nearbyTab.setContent(new Intent(this, NearbyActivity.class));
         servicedemandTab.setContent(new Intent(this, ServiceDemandActivity.class));
+        //servicedemandTab.setContent(new Intent(this, ServiceDemandActivity.class));
         mineTab.setContent(new Intent(this, MineActivity.class));
         // 将选项卡加进TabHost
         tabhost.addTab(homeTab);

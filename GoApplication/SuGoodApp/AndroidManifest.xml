@@ -119,8 +119,18 @@
         <activity
             android:name="com.sugood.app.activity.ServiceDemandActivity"
             android:launchMode="singleTask"></activity>
-
-
+        <activity
+            android:name="com.sugood.app.activity.OrderManagerActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.sugood.app.activity.OrderShanChengActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.sugood.app.activity.OrderTuanGouActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.sugood.app.activity.OrderWaiMaiActivity"
+            android:launchMode="singleTask"></activity>
         <activity android:name="com.sugood.app.activity.LoginActivity" />
 
         <activity
