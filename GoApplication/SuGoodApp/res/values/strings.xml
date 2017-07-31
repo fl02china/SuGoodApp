@@ -64,4 +64,16 @@
     <string name="ordertoo">再来一单</string>
     <string name="pingjia">评价</string>
     <string name="peisong">配送费4元</string>
+
+    <string name="st_shagnjia">商家已接单</string>
+    <string name="st_qs1">骑士已接单</string>
+    <string name="st_qs2">骑手已取餐</string>
+    <string name="st_qs3">骑手配送中</string>
+    <string name="st_pijia">收货待评价</string>
+
+    <string name="concentQS">联系骑手</string>
+    <string name="ing">进行中</string>
+    <string name="sp_num">商品（%1$d）</string>
+    <string name="addr">地址：</string>
+
 </resources>

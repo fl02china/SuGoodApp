@@ -24,6 +24,15 @@ public class ShopCollection {
     private String addr;
     private String photo;
     private String type;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public int getShopId() {
         return shopId;
@@ -76,6 +85,7 @@ public class ShopCollection {
     @Override
     public String toString() {
         return "ShopCollection{" +
+                "id=" + id +
                 "shopId=" + shopId +
                 ", shopName='" + shopName + '\'' +
                 ", tel='" + tel + '\'' +

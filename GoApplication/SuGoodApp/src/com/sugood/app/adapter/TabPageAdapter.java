@@ -77,7 +77,10 @@ public class TabPageAdapter extends FragmentPagerAdapter {
 	 */
 	public void addTabFragment(String tag, Class<?> clss, Bundle args){
 		int tabPos = mTabs.size();
-		TabInfo tab = new TabInfo(tag, clss, args);
+		Bundle bundle = new Bundle();
+		bundle.putString("status",tag);
+
+		TabInfo tab = new TabInfo(tag, clss, bundle);
 		if (tag != null){
 			tab.fragment = mFm.findFragmentByTag(tag);
 			if (tab.fragment != null && !tab.fragment.isDetached()){

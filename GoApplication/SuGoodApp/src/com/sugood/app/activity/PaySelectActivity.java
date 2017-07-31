@@ -131,7 +131,7 @@ public class PaySelectActivity extends BaseActivity {
         type = bundle.getString("type");
         price=bundle.getString("price");
         orderDetails=bundle.getString("orderDetails");
-        Log.e("sss33333", "price: "+price);
+
       //  orderId = bundle.getString("orderId");
         orderId = bundle.getString("orderId");
         Body = bundle.getString("Body");
@@ -197,8 +197,7 @@ public class PaySelectActivity extends BaseActivity {
         params.put("mercid", "goodsolo");
 
 
-        Log.e("TAA", "body: " + Body);
-        Log.e("TAA", "orderDetails: " + orderDetails);
+
         params.put("orderDetails", orderDetails);
         params.put("Body", Body);
         Log.e("TAA" +

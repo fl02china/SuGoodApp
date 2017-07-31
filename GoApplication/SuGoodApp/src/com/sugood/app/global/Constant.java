@@ -59,6 +59,9 @@ public class Constant {
     public static final String SUGOODADDR = SUGOODBASEURL + "Speed/My/shopAddr/queryPage";
     //订单查询
     public static final String SUGOODORDER = SUGOODBASEURL + "Speed/My/order";
+
+    //外卖订单查询
+    public static final String SUGOODWMORDER = SUGOODBASEURL + "Speed/My/WaiOrder";
     // 删除地址
     public static final String SUGOODDELETEADDR = SUGOODBASEURL + "Speed/baoPaddress/delete";
     //添加地址
@@ -125,6 +128,11 @@ public class Constant {
     public static final String TIXIAN_URL = SUGOODBASEURL + "Speed/My/deposit";
     // 退款
     public static final String TUIKUAN_URL = SUGOODBASEURL + "Speed/alipay/reimburse";
+
+    // 取消订单
+    public static final String CANCLEORDER = SUGOODBASEURL + "Speed/alipay/cancel";
+    // 删除店铺
+    public static final String DELETESHOP = SUGOODBASEURL + "Speed/baoShopFavorites/delete";
 
 
 }

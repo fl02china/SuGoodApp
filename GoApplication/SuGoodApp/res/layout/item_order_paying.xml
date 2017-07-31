@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
@@ -22,6 +23,8 @@
         <TextView
             android:id="@+id/order_num"
             style="@style/SmallText"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:ellipsize="marquee"
             android:layout_toRightOf="@+id/text1"
             android:text="1234563333333" />
 
@@ -35,24 +38,26 @@
             android:text="2017/05/06 15:30" />
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/img"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
             android:layout_below="@+id/order_num"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/aaa"
-            app:civ_border_color="@android:color/white"
-            app:civ_border_width="2dp"></de.hdodenhof.circleimageview.CircleImageView>
+
+            android:layout_marginTop="10dp"
+
+            fresco:roundAsCircle="true"
+            fresco:roundedCornerRadius="180dp"
+            fresco:roundingBorderColor="@color/bg_gray"
+            fresco:roundingBorderWidth="1dp" />
 
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/order_num"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/order_num"
             android:layout_toRightOf="@+id/img"
             android:orientation="vertical">
 
@@ -81,35 +86,117 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/text1"
-            android:gravity="center"
             android:background="@drawable/phone"
-            android:textColor="@android:color/white"
+            android:gravity="center"
+
             android:textSize="14sp" />
+
         <View
             android:id="@+id/divider1"
             style="@style/Divider"
             android:layout_below="@+id/img"
-            android:layout_marginTop="10dp"
-            />
+            android:layout_marginTop="10dp" />
+
         <TextView
             android:id="@+id/count"
             style="@style/SmallText"
             android:layout_below="@+id/divider1"
             android:layout_marginTop="5dp"
-            android:text="商品(2)"
-            />
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycle_list"
+            android:text="商品(2)" />
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recycle_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:visibility="gone"-->
+        <!--android:layout_below="@+id/count"-->
+        <!--android:layout_marginBottom="5dp" />-->
+
+        <LinearLayout
+            android:id="@+id/liner_list"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/count"
-            android:layout_marginBottom="5dp" />
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/liner_list_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/list_food_name1"
+                    style="@style/SmallText"
+
+
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/list_food_num1"
+                    style="@style/SmallText"
+                    android:layout_below="@+id/text1"
+                    android:paddingRight="20dp"
+
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/list_food_price1"
+                    style="@style/SmallText"
+                    android:layout_width="@dimen/text_width"
+                    android:layout_below="@+id/text1"
+
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/liner_list_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/list_food_name2"
+                    style="@style/SmallText"
+                    android:layout_below="@+id/text1"
+
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/list_food_num2"
+                    style="@style/SmallText"
+                    android:layout_below="@+id/text1"
+
+                    android:paddingRight="20dp"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/list_food_price2"
+                    style="@style/SmallText"
+                    android:layout_width="@dimen/text_width"
+                    android:layout_below="@+id/text1"
+
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
         <View
             android:id="@+id/divider2"
             style="@style/Divider"
-            android:layout_below="@+id/recycle_list"
-            android:layout_marginTop="10dp"
-            />
+            android:layout_below="@+id/liner_list"
+            android:layout_marginTop="10dp" />
 
         <LinearLayout
             android:id="@+id/liner1"
@@ -120,16 +207,16 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/textView4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
 
-                />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/text2"
                 style="@style/SmallText"
-                android:layout_below="@+id/text1"
+
                 android:text="本单总计："
                 android:textSize="16sp" />
 
@@ -147,12 +234,11 @@
                 style="@style/SmallText"
                 android:layout_below="@+id/text1"
 
-                android:text="配送费4元"
+
                 android:textSize="14sp"
 
                 />
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -164,37 +250,42 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tx_cancle_order"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+               android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/tx_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="55dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_buleshape"
+
+                android:background="@drawable/bg_cancle_order"
                 android:gravity="center"
-                android:text="取消订单" />
+               />
 
             <TextView
-                android:id="@+id/order_pay"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:id="@+id/tx_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_buleshape"
+                android:background="@drawable/bg_pay"
                 android:gravity="center"
-                android:text="去支付" />
+                />
 
             <!--<TextView-->
-                <!--android:id="@+id/order_pay"-->
-                <!--android:layout_width="80dp"-->
-                <!--android:layout_below="@+id/liner1"-->
-                <!--android:background="@drawable/btn_buleshape"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:text="去支付"-->
-                <!--android:layout_marginTop="15dp"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:gravity="center"-->
-                <!--/>-->
+            <!--android:id="@+id/order_pay"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_below="@+id/liner1"-->
+            <!--android:background="@drawable/btn_buleshape"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:text="去支付"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:gravity="center"-->
+            <!--/>-->
         </LinearLayout>
     </RelativeLayout>
 

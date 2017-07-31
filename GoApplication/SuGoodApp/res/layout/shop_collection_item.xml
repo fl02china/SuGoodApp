@@ -69,5 +69,16 @@
         android:layout_below="@+id/shop_collection_delivery_tel"
         android:layout_toRightOf="@+id/shop_collection_location_img"
        />
-
+    <TextView
+        android:id="@+id/delete"
+        android:layout_width="60dp"
+        android:layout_alignTop="@+id/shop_collection_name"
+        android:background="@drawable/btn_buleshape"
+        android:layout_height="28dp"
+        android:text="删除"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/white"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        />
 </RelativeLayout>

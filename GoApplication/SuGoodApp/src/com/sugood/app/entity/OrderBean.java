@@ -38,6 +38,7 @@ public class OrderBean implements Serializable {
     private String shopName;
     private String logo;
     private String tel;
+    private String mobile;
     private int score;
     private List<WaimaiBean> waimai;
 
@@ -144,7 +145,13 @@ public class OrderBean implements Serializable {
     public void setWaimai(List<WaimaiBean> waimai) {
         this.waimai = waimai;
     }
+    public String getmobile() {
+        return mobile;
+    }
 
+    public void setmobile(String mobile) {
+        this.mobile = mobile;
+    }
     @Override
     public String toString() {
         return "OrderBean{" +
@@ -160,6 +167,7 @@ public class OrderBean implements Serializable {
                 ", logo='" + logo + '\'' +
                 ", tel='" + tel + '\'' +
                 ", score=" + score +
+                ", mobile=" + mobile +
                 ", waimai=" + waimai +
                 '}';
     }

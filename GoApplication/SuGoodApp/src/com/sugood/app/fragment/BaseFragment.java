@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.sugood.app.view.LoadingDialog;
+
 
 public abstract class BaseFragment extends Fragment {
-
+    private LoadingDialog loadingDialog;
 
 
     private View mRoot;
@@ -20,6 +22,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         int layoutRes = getLayoutRes();
+        loadingDialog = new LoadingDialog(getActivity());
         if (layoutRes > 0){
 
             mRoot = inflater.inflate(layoutRes, container, false);
@@ -31,6 +34,19 @@ public abstract class BaseFragment extends Fragment {
 //    public void  initToolBar(){
 //
 //    }
+public void showLoading(String msg) {
+    if (!loadingDialog.isShowing()) {
+        loadingDialog.show();
+        loadingDialog.setText(msg);
+    }
+}
+
+    public void closeLoading() {
+        if (loadingDialog.isShowing()) {
+            loadingDialog.cancel();
+        }
+    }
+
 
     public View findViewById(int id){
         if (mRoot == null){
@@ -53,7 +69,11 @@ public abstract class BaseFragment extends Fragment {
      * @return
      */
     protected abstract int getLayoutRes();
-
+    /**
+     * 设置status
+     * @return
+     */
+    protected abstract int getStatus();
     /**
      * 展示一个toast
      * @param msg

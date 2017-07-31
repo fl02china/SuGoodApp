@@ -9,7 +9,10 @@ import android.widget.TextView;
 import com.sugood.app.R;
 import com.sugood.app.adapter.TabPageAdapter;
 import com.sugood.app.fragment.OrderAllFragment;
+import com.sugood.app.fragment.OrderCancleFragment;
 import com.sugood.app.fragment.OrderIngFragment;
+import com.sugood.app.fragment.OrderPayFragment;
+import com.sugood.app.fragment.OrderPingJiaFragment;
 import com.sugood.app.fragment.WillPayFragment;
 import com.sugood.app.helper.TabRadioHelper;
 import com.viewpagerindicator.UnderlinePageIndicator;
@@ -52,11 +55,19 @@ public class OrderWaiMaiActivity extends BaseActivity {
         mTabHelper.setViewPager(mPager);
 
         mTabAdapter = new TabPageAdapter(getSupportFragmentManager(), this);
+
+
         mTabAdapter.addTabFragment("orderAll", OrderAllFragment.class, null);
-       mTabAdapter.addTabFragment("ordering", OrderAllFragment.class, null);
-        mTabAdapter.addTabFragment("orderWait", OrderAllFragment.class, null);
-        mTabAdapter.addTabFragment("orderPinjia", OrderAllFragment.class, null);
-        mTabAdapter.addTabFragment("orderCancle", WillPayFragment.class, null);
+        mTabAdapter.addTabFragment("ordering", OrderIngFragment.class, null);
+        mTabAdapter.addTabFragment("orderWait", OrderPayFragment.class, null);
+        mTabAdapter.addTabFragment("orderPinjia", OrderPingJiaFragment.class, null);
+        mTabAdapter.addTabFragment("orderCancle", OrderCancleFragment.class, null);
+
+//        mTabAdapter.addTabFragment("1", OrderAllFragment.class, null);
+//        mTabAdapter.addTabFragment("2", OrderAllFragment.class, null);
+//        mTabAdapter.addTabFragment("3", OrderAllFragment.class, null);
+//        mTabAdapter.addTabFragment("4", OrderAllFragment.class, null);
+//        mTabAdapter.addTabFragment("5", OrderAllFragment.class, null);
         //mTabAdapter.addTabFragment("app", AppMangerFragment.class, null);
         mPager.setAdapter(mTabAdapter);
 
