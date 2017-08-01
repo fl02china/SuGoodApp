@@ -142,7 +142,7 @@
 
                 style="@style/SmallText"
 
-                android:text="总计："
+                android:text="@string/order_tol"
                 android:textSize="16sp" />
 
             <TextView

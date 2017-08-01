@@ -10,7 +10,7 @@ public class OrderShangCheng {
 
     /**
      * orderId : 20170717173024852
-     * shopId : 182
+     * shopId : 1821
      * userId : 852
      * needPay : 539900
      * status : 13

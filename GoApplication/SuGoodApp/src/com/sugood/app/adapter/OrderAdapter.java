@@ -132,6 +132,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                         onRightClickListener.onOnClick(v, position);
                     }
                 });
+                holderpay.btn_right.setBackgroundResource(R.drawable.bg_gopay);
                 break;
             case TYPE_1:
                 OrderPayViewHolder holderpay2 = (OrderPayViewHolder) holder;
