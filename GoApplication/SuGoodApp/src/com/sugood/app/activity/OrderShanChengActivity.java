@@ -13,6 +13,10 @@ import com.sugood.app.fragment.OrderIngFragment;
 import com.sugood.app.fragment.OrderPayFragment;
 import com.sugood.app.fragment.OrderPingJiaFragment;
 import com.sugood.app.fragment.OrderSCAllFragment;
+import com.sugood.app.fragment.OrderSCCancleFragment;
+import com.sugood.app.fragment.OrderSCIngFragment;
+import com.sugood.app.fragment.OrderSCPayFragment;
+import com.sugood.app.fragment.OrderSCPingJiaFragment;
 import com.sugood.app.helper.TabRadioHelper;
 import com.viewpagerindicator.UnderlinePageIndicator;
 

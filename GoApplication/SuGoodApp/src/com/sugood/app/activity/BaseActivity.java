@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.sugood.app.view.LoadingDialog;
 
@@ -40,6 +41,13 @@ public class BaseActivity extends AppCompatActivity {
     public void closeKeyboard(EditText ed) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(ed.getWindowToken(), 0);
+    }
+    /**
+     * 展示一个toast
+     * @param msg
+     */
+    public void tip(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
 }

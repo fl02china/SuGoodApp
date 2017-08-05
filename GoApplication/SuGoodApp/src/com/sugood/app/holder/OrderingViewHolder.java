@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sugood.app.R;
 import com.sugood.app.entity.OrderBean;
+import com.sugood.app.global.Constant;
 import com.sugood.app.util.DateUtil;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -95,7 +96,7 @@ public class OrderingViewHolder extends BaseOrderViewHolder {
         time.setText(DateUtil.timeStamp2Date(order.getCreateTime()+"", "yyyy/MM/dd HH:mm"));
         orderNum.setText(order.getOrderId());
         name.setText(order.getShopName());
-
+        img.setImageURI(Constant.PHOTOBASEURL+order.getLogo());
         count.setText("商品数量"+"("+order.getNum()+"）");
         ratingbar.setRating(order.getScore());
         //  ratingbar.setNumStars(Integer.parseInt(order.getScore()+""));

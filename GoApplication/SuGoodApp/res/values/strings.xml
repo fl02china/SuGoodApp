@@ -55,6 +55,10 @@
     <string name="order_pinjia">待评价</string>
     <string name="order_cancle">取消</string>
 
+    <string name="tuangou_1">待使用</string>
+    <string name="tuangou_2">已使用</string>
+    <string name="tuangou_3">已取消</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -64,7 +68,7 @@
     <string name="ordertoo">再来一单</string>
     <string name="pingjia">评价</string>
     <string name="peisong">配送费4元</string>
-
+    <string name="xiaoji">小计：</string>
     <string name="st_shagnjia">商家已接单</string>
     <string name="st_qs1">骑士已接单</string>
     <string name="st_qs2">骑手已取餐</string>
@@ -75,5 +79,6 @@
     <string name="ing">进行中</string>
     <string name="sp_num">商品（%1$d）</string>
     <string name="addr">地址：</string>
-
+    <string name="tuangounum">团购号：</string>
+    <string name="usetime">有效期：</string>
 </resources>

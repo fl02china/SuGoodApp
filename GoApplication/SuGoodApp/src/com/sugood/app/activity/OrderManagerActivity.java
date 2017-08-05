@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sugood.app.R;
+import com.sugood.app.application.SugoodApplication;
+import com.sugood.app.util.ToastUtil;
 
 /**
  * Created by Administrator on 2017/7/22 0022.
@@ -45,29 +47,40 @@ public class OrderManagerActivity  extends BaseActivity {
         txWaimai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                //    intent.setClass(MineActivity.this, UserOrderActivity.class);
-                intent.setClass(OrderManagerActivity.this, OrderWaiMaiActivity.class);
-                startActivity(intent);
+                if (SugoodApplication.isLogin) {
+                    Intent intent = new Intent();
+                    //    intent.setClass(MineActivity.this, UserOrderActivity.class);
+                    intent.setClass(OrderManagerActivity.this, OrderWaiMaiActivity.class);
+                    startActivity(intent);
+                }else{
+                  tip("请先登录");
+                }
             }
         });
         txTuangou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SugoodApplication.isLogin){
                 Intent intent = new Intent();
                 //    intent.setClass(MineActivity.this, UserOrderActivity.class);
                 intent.setClass(OrderManagerActivity.this, OrderTuanGouActivity.class);
-                startActivity(intent);
+                startActivity(intent);}else{
+                    tip("请先登录");
+                }
 
             }
         });
         txShangcheng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SugoodApplication.isLogin) {
                 Intent intent = new Intent();
                 //    intent.setClass(MineActivity.this, UserOrderActivity.class);
                 intent.setClass(OrderManagerActivity.this, OrderShanChengActivity.class);
                 startActivity(intent);
+            }else{
+                tip("请先登录");
+            }
             }
         });
 }

@@ -224,6 +224,8 @@ public class TuanGouActivity extends BaseActivity implements AdapterView.OnItemC
         RequestParams params = new RequestParams();
         params.put("shopId", mShopId);
         params.put("tuanId", mTuanId);
+        System.out.println("111mShopId:"+mShopId);
+        System.out.println("111mTuanId:"+mTuanId);
         HttpUtil.post(Constant.SUGOODTUANGOU, params, new JsonHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {

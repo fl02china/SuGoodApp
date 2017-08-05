@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sugood.app.R;
 import com.sugood.app.entity.OrderShangCheng;
+import com.sugood.app.global.Constant;
 import com.sugood.app.util.DateUtil;
 
 import java.util.List;
@@ -43,10 +44,13 @@ public class OrderShangchengAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     OnRightClickListener onRightClickListener;
     OnLeftClickListener onLeftClickListener;
     OMiddleClickListener OMiddleClickListener;
-    public OrderShangchengAdapter(Context context, List<OrderShangCheng> list) {
+    public OrderShangchengAdapter(Context context) {
         this.context = context;
-        this.orderList = list;
 
+
+    }
+    public void setData(List<OrderShangCheng> list) {
+        this.orderList = list;
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -61,20 +65,167 @@ public class OrderShangchengAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             case TYPE_0:
                 OrderSCViewHolder holderpay = (OrderSCViewHolder) holder;
                 holderpay.bindHolder(orderList.get(position));
-                holderpay.txLeft.setOnClickListener(new View.OnClickListener() {
+                holderpay.btn_middle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        OMiddleClickListener.onOnClick(v, position);
+                    }
+                });
+                holderpay.btn_left.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
                         onLeftClickListener.onOnClick(v, position);
                     }
                 });
+                holderpay.btn_right.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        onRightClickListener.onOnClick(v, position);
+                    }
+                });
+                break;
+            case TYPE_1:
+
+                OrderSCViewHolder holderpay2 = (OrderSCViewHolder) holder;
+                holderpay2.bindHolder(orderList.get(position));
+                holderpay2.btn_middle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        OMiddleClickListener.onOnClick(v, position);
+                    }
+                });
+                holderpay2.btn_left.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        onLeftClickListener.onOnClick(v, position);
+                    }
+                });
+                holderpay2.btn_right.setBackgroundResource(R.drawable.bg_wait_sj);
+                holderpay2.btn_left.setBackgroundResource(R.drawable.bg_tuikuan_order);
+
+                break;
+            case TYPE_13:
+
+                OrderSCViewHolder holderpay3 = (OrderSCViewHolder) holder;
+                holderpay3.bindHolder(orderList.get(position));
+                holderpay3.btn_middle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        OMiddleClickListener.onOnClick(v, position);
+                    }
+                });
+
+                holderpay3.btn_right.setBackgroundResource(R.drawable.bg_fahuoed);
+                holderpay3.btn_left.setVisibility(View.GONE);
+
+                break;
+            case TYPE_8:
+
+                OrderSCViewHolder holderpay4 = (OrderSCViewHolder) holder;
+                holderpay4.bindHolder(orderList.get(position));
+                holderpay4.btn_middle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        OMiddleClickListener.onOnClick(v, position);
+                    }
+                });
+                holderpay4.btn_right.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        onRightClickListener.onOnClick(v, position);
+                    }
+                });
+                holderpay4.btn_right.setBackgroundResource(R.drawable.bg_scpingjia);
+                holderpay4.btn_left.setVisibility(View.GONE);
+
+                break;
+
+            case TYPE_14:
+                OrderSCViewHolder holderpay5 = (OrderSCViewHolder) holder;
+                holderpay5.bindHolder(orderList.get(position));
+                holderpay5.btn_right.setBackgroundResource(R.drawable.bg_finish_sj);
+                holderpay5.btn_left.setVisibility(View.GONE);
+                holderpay5.btn_middle.setVisibility(View.GONE);
+
+                break;
+
+            case TYPE_15:
+                OrderSCViewHolder holderpay6 = (OrderSCViewHolder) holder;
+                holderpay6.bindHolder(orderList.get(position));
+                holderpay6.btn_right.setBackgroundResource(R.drawable.bg_cancle);
+                holderpay6.btn_left.setVisibility(View.GONE);
+                holderpay6.btn_middle.setVisibility(View.GONE);
+
+                break;
+            case TYPE_3:
+            case TYPE_7:
+            case TYPE_10:
+            case TYPE_11:
+            case TYPE_12:
+                OrderSCViewHolder holderpay7 = (OrderSCViewHolder) holder;
+                holderpay7.bindHolder(orderList.get(position));
+                holderpay7.btn_middle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        OMiddleClickListener.onOnClick(v, position);
+                    }
+                });
+                holderpay7.btn_left.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        onLeftClickListener.onOnClick(v, position);
+                    }
+                });
+                holderpay7.btn_right.setBackgroundResource(R.drawable.bg_dobysj);
+                holderpay7.btn_left.setBackgroundResource(R.drawable.bg_cancle_tuikuan);
+                break;
+            case TYPE_4:
+                OrderSCViewHolder holderpay8 = (OrderSCViewHolder) holder;
+                holderpay8.bindHolder(orderList.get(position));
+                holderpay8.btn_right.setBackgroundResource(R.drawable.bg_tuikuan_finish);
+                holderpay8.btn_left.setVisibility(View.GONE);
+                holderpay8.btn_middle.setVisibility(View.GONE);
+
+                break;
+
+            case TYPE_5:
+                OrderSCViewHolder holderpay9 = (OrderSCViewHolder) holder;
+                holderpay9.bindHolder(orderList.get(position));
+                holderpay9.btn_middle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        OMiddleClickListener.onOnClick(v, position);
+                    }
+                });
+
+                holderpay9.btn_right.setBackgroundResource(R.drawable.bg_sj_jujue);
+                holderpay9.btn_left.setVisibility(View.GONE);
+
+                break;
+
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return orderList.size();
+        if (orderList!=null){
+        return orderList.size();}else{
+            return 0;
+        }
+
+
     }
     @Override
     public int getItemViewType(int position) {
@@ -102,10 +253,10 @@ public class OrderShangchengAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         @BindView(R.id.money_tol) TextView moneyTol;
         @BindView(R.id.money_num) TextView moneyNum;
         @BindView(R.id.liner2) LinearLayout liner2;
-        @BindView(R.id.tx_left) TextView txLeft;
-        @BindView(R.id.tx_middle) TextView txMiddle;
-        @BindView(R.id.tx_right) TextView txRight;
-
+        @BindView(R.id.tx_left) TextView btn_left;
+        @BindView(R.id.tx_middle) TextView btn_middle;
+        @BindView(R.id.tx_right) TextView btn_right;
+        @BindView(R.id.item_price) TextView itemprice;
         OrderSCViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
@@ -114,6 +265,24 @@ public class OrderShangchengAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             time.setText(DateUtil.timeStamp2Date(order.getCreateTime()+"", "yyyy/MM/dd HH:mm"));
             orderNum.setText(order.getOrderId());
             name.setText(order.getShopName());
+            addr.setText(order.getAddr());
+
+            phone.setText(order.getUserTel());
+
+            shopname.setText(order.getShopName());
+
+
+            moneyTol.setText((double)order.getNeedPay()/100+"");
+
+            if (order.getGoods().size()>0) {
+                int shopnum = order.getGoods().get(0).getNum();
+                double shopprice = (double) order.getGoods().get(0).getMallPrice() / 100;
+                img.setImageURI(Constant.PHOTOBASEURL + order.getGoods().get(0).getPhoto());
+                goodsname.setText(order.getGoods().get(0).getTitle());
+                num.setText("X" + order.getGoods().get(0).getNum());
+
+                itemprice.setText((double) (shopprice * shopnum) + "");
+            }
         }
     }
 

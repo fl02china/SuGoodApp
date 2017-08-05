@@ -2,6 +2,7 @@ package com.sugood.app.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -43,6 +44,12 @@ public class OrderWaiMaiActivity extends BaseActivity {
         mIndicator = (UnderlinePageIndicator) findViewById(R.id.indicator);
 
         back = (TextView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mTabGroup = (RadioGroup) findViewById(R.id.tab_group);
 
         indicator = (UnderlinePageIndicator) findViewById(R.id.indicator);

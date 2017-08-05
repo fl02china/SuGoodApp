@@ -98,8 +98,10 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
 
 //            final String name = "13620906082";
 //            final String pwd = "366325";
-                        final String name = "18376543595";
-            final String pwd = "111111";
+//            final String name = "13267889357";//13267889357   111111
+//           final String pwd = "111111";
+            final String name = "13077858411";//13267889357   111111
+           final String pwd = "123456";
             if (TextUtils.isEmpty(name)) {
                 Toast.makeText(LoginActivity.this, "用户名不能为空", Toast.LENGTH_LONG).show();
             } else if (TextUtils.isEmpty(pwd)) {

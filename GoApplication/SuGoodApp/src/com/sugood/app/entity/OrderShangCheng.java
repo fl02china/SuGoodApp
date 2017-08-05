@@ -8,6 +8,25 @@ import java.util.List;
 
 public class OrderShangCheng {
 
+    @Override
+    public String toString() {
+        return "OrderShangCheng{" +
+                "orderId='" + orderId + '\'' +
+                ", shopId=" + shopId +
+                ", userId=" + userId +
+                ", needPay=" + needPay +
+                ", status=" + status +
+                ", tel='" + tel + '\'' +
+                ", userTel='" + userTel + '\'' +
+                ", xm='" + xm + '\'' +
+                ", shopName='" + shopName + '\'' +
+                ", addr='" + addr + '\'' +
+                ", createTime=" + createTime +
+                ", expressPrice=" + expressPrice +
+                ", goods=" + goods +
+                '}';
+    }
+
     /**
      * orderId : 20170717173024852
      * shopId : 1821

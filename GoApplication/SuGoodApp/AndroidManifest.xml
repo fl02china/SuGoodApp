@@ -133,6 +133,7 @@
             android:launchMode="singleTask"></activity>
         <activity android:name="com.sugood.app.activity.LoginActivity" />
 
+        <activity android:name="com.sugood.app.activity.TuanGouCodeDetailActivity" />
         <activity
             android:name="com.sugood.app.activity.FunActivity"
             android:launchMode="singleTask" />

@@ -109,8 +109,8 @@ public class MainActivity extends TabActivity {
         // 绑定显示的页面
         homeTab.setContent(new Intent(this, HomeActivity.class));
         nearbyTab.setContent(new Intent(this, NearbyActivity.class));
-        servicedemandTab.setContent(new Intent(this, ServiceDemandActivity.class));
-        //servicedemandTab.setContent(new Intent(this, ServiceDemandActivity.class));
+      //  servicedemandTab.setContent(new Intent(this, ServiceDemandActivity.class));
+        servicedemandTab.setContent(new Intent(this, OrderManagerActivity.class));
         mineTab.setContent(new Intent(this, MineActivity.class));
         // 将选项卡加进TabHost
         tabhost.addTab(homeTab);

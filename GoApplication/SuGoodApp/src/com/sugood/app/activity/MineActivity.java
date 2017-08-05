@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.sugood.app.R;
@@ -40,7 +41,7 @@ public class MineActivity extends AppCompatActivity {
     private TextView tv_username;
     private RelativeLayout rel_personal_info;
     //	private RelativeLayout rl_user_pic;
-    private CircleImageView mPic;
+    private SimpleDraweeView mPic;
     private RelativeLayout rel_my_balance;
     private RelativeLayout rel_my_coupon;
     private RelativeLayout rel_member_level;
@@ -75,7 +76,7 @@ public class MineActivity extends AppCompatActivity {
         tv_username = (TextView) findViewById(R.id.tv_username);
         rel_personal_info = (RelativeLayout) findViewById(R.id.rel_personal_info);
 //		rl_user_pic = (RelativeLayout) findViewById(R.id.rl_user_pic);
-        mPic = (CircleImageView) findViewById(R.id.iv_user_head_pic);
+        mPic = (SimpleDraweeView) findViewById(R.id.iv_user_head_pic);
         rel_my_balance = (RelativeLayout) findViewById(R.id.rel_my_balance);
         rel_my_coupon = (RelativeLayout) findViewById(R.id.rel_my_coupon);
         rel_member_level = (RelativeLayout) findViewById(R.id.rel_member_level);

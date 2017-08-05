@@ -76,7 +76,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             case TYPE_5:
                 return new OrderPayViewHolder(mInflater.inflate(R.layout.item_order_paying, parent, false), 2);
             case TYPE_6:
-                return new OrderingViewHolder(mInflater.inflate(R.layout.item_ordering, parent, false), 2);
+                return new OrderPayViewHolder(mInflater.inflate(R.layout.item_order_paying, parent, false), 2);
             case TYPE_7:
                 return new OrderPayViewHolder(mInflater.inflate(R.layout.item_order_paying, parent, false), 2);
             case TYPE_8:
@@ -205,7 +205,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             case TYPE_11:
             case TYPE_7:
             case TYPE_12:
-
+            case TYPE_6:
                 OrderPayViewHolder holderpay7 = (OrderPayViewHolder) holder;
                 holderpay7.bindHolder(orderList.get(position));
                 holderpay7.connectclient.setText("等待处理");
@@ -273,7 +273,11 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return orderList.size();
+        if (orderList!=null){
+            return orderList.size();
+        }else{
+            return 0;
+        }
     }
 
 

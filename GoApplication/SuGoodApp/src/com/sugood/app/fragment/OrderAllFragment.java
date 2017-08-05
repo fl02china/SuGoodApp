@@ -1,10 +1,12 @@
 package com.sugood.app.fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -88,38 +90,60 @@ public class OrderAllFragment extends BaseFragment {
     }
 
 
-    private void cancleOrder(int pos,String type) {
+    private void cancleOrder(final int pos, final String type) {
 
-        showLoading("");
-        RequestParams params = new RequestParams();
-        params.put("orderId", mList.get(pos).getOrderId());
+        final AlertDialog.Builder cancleOrderDialog =
+                new AlertDialog.Builder(getActivity());
 
-        params.put("type",type);
-        HttpUtil.post(Constant.CANCLEORDER, params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                Log.e("TUi", "onSuccess: " + response.toString());
-                closeLoading();
-                try {
-                    if (!response.getBoolean("success")) {
-                        ToastUtil.setToast(getActivity(), response.getString("message"));
-                    } else {
-                        ToastUtil.setToast(getActivity(), "提交退款申请成功");
+        cancleOrderDialog.setTitle("取消订单");
+        cancleOrderDialog.setMessage("是否继续");
+        cancleOrderDialog.setPositiveButton("确定",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        showLoading("");
+                        RequestParams params = new RequestParams();
+                        params.put("orderId", mList.get(pos).getOrderId());
+
+                        params.put("type",type);
+                        HttpUtil.post(Constant.CANCLEORDER, params, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+                                Log.e("TUi", "onSuccess: " + response.toString());
+                                closeLoading();
+                                try {
+                                    if (!response.getBoolean("success")) {
+                                        ToastUtil.setToast(getActivity(), response.getString("message"));
+                                    } else {
+                                        ToastUtil.setToast(getActivity(), "提交退款申请成功");
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                                super.onFailure(statusCode, headers, responseString, throwable);
+                                Log.e("TUi", "onSuccess: " + responseString);
+                                closeLoading();
+                                ToastUtil.setToast(getActivity(), "提交退款申请失败");
+                            }
+                        });
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
+                });
+        cancleOrderDialog.setNegativeButton("关闭",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //...To-do
+                    }
+                });
+        // 显示
+        cancleOrderDialog.show();
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Log.e("TUi", "onSuccess: " + responseString);
-                closeLoading();
-                ToastUtil.setToast(getActivity(), "提交退款申请失败");
-            }
-        });
+
     }
 
     private void tuikuan(int pos,String type,String code) {
