@@ -50,7 +50,13 @@ public class PayresultActivity extends BaseActivity {
                 if (SugoodApplication.isLogin) {
                     //Toast.makeText(mContext, "订单", Toast.LENGTH_SHORT).show();
                     Intent intent2 = new Intent();
-                    intent2.setClass(PayresultActivity.this, UserOrderActivity.class);
+
+                    Bundle bundle=new Bundle();
+                    bundle.putInt("type",1);
+
+                    intent2.putExtras(bundle);
+                    //    intent.setClass(MineActivity.this, UserOrderActivity.class);
+                    intent2.setClass(PayresultActivity.this, OrderManagerActivity.class);
                     startActivity(intent2);
                     finish();
                 } else {

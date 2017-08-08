@@ -22,6 +22,7 @@ import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.BindView;
@@ -113,7 +114,11 @@ public class TakeawayOrderFoodAdapter extends RecyclerView.Adapter<TakeawayOrder
                     public void onClick(View v) {
                         page++;
                         mAmount.setText("" + page);
-                        String allPrice = page * info.getIntPrice() + "";
+                        DecimalFormat df = new DecimalFormat("0.00");
+                        String allPrice = df.format(page * info.getIntPrice()); //6.20   这个是字符串，但已经是我要的两位小数了
+                        // String allPrice = page * info.getIntPrice() + "";
+
+
 //                        String result = allPrice.substring(0, allPrice.length() - 2) + "." + allPrice.substring(allPrice.length() - 2) + "元";
                         mPrice.setText(allPrice + "元");
 

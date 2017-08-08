@@ -135,6 +135,11 @@ public class MineActivity extends AppCompatActivity {
                 if (SugoodApplication.isLogin) {
                     //Toast.makeText(mContext, "订单", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
+                    Bundle bundle=new Bundle();
+
+                    bundle.putInt("type",1);
+
+                    intent.putExtras(bundle);
                 //    intent.setClass(MineActivity.this, UserOrderActivity.class);
                     intent.setClass(MineActivity.this, OrderManagerActivity.class);
                     startActivity(intent);

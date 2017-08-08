@@ -32,6 +32,8 @@ public class OrderManagerActivity  extends BaseActivity {
 
     }
     private void initView(){
+
+
         back = (TextView) findViewById(R.id.back);
         txWaimai = (TextView) findViewById(R.id.tx_waimai);
         txTuangou = (TextView) findViewById(R.id.tx_tuangou);
@@ -43,7 +45,9 @@ public class OrderManagerActivity  extends BaseActivity {
         }
     });
 
-
+        if (getIntent().getIntExtra("type",0)!=1){
+            back.setVisibility(View.GONE);
+        }
         txWaimai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

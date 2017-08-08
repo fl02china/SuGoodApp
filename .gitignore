@@ -6,3 +6,5 @@
 /GoApplication/SuGoodApp/*.apk
 /GoApplication/SuGoodApp/SuGoodApp-release.apk
 /GoApplication/SuGoodApp/SuGoodApp-release2.1.apk
+/GoApplication/SuGoodApp/proguard-rules.pro
+/banner

@@ -227,7 +227,10 @@ public class OrdeTgUseingFragment extends BaseFragment{
                                     startActivity(intent);
 
                                     break;
+                                case 8:
+                                  tip("评价功能开发中");
 
+                                    break;
 
 
 

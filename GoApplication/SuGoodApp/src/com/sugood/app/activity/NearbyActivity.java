@@ -144,8 +144,8 @@ public class NearbyActivity extends BaseActivity {
         takeaway_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtil.setToast(NearbyActivity.this, "百度地图已经删除");
-                SugoodApplication.locationClient.startLocation();
+                //ToastUtil.setToast(NearbyActivity.this, "百度地图已经删除");
+               // SugoodApplication.locationClient.startLocation();
 //                isToast = false;
 //                showLoading("获取位置");
 //                SugoodApplication.mLocationClient.start();

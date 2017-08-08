@@ -19,12 +19,14 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.sugood.app.R;
 import com.sugood.app.activity.PaySelectActivity;
+import com.sugood.app.activity.TakeawayShopDetailActivity;
 import com.sugood.app.adapter.OrderAdapter;
 import com.sugood.app.application.SugoodApplication;
 import com.sugood.app.entity.OrderBean;
 import com.sugood.app.global.Constant;
 import com.sugood.app.util.HttpUtil;
 import com.sugood.app.util.JsonUtil;
+import com.sugood.app.util.MD5Util;
 import com.sugood.app.util.ToastUtil;
 import com.sugood.app.view.RecycleViewDivider;
 
@@ -146,6 +148,31 @@ public class OrderAllFragment extends BaseFragment {
 
     }
 
+    private void showtuikuan(final int pos, final String type, final String code) {
+
+        final AlertDialog.Builder tuikuanDialog =
+                new AlertDialog.Builder(getActivity());
+
+        tuikuanDialog.setTitle("申请退款");
+        tuikuanDialog.setMessage("是否继续");
+        tuikuanDialog.setPositiveButton("确定",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tuikuan(pos,type,code);
+                    }
+                });
+        tuikuanDialog.setNegativeButton("关闭",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //...To-do
+                    }
+                });
+        // 显示
+        tuikuanDialog.show();
+    }
+
     private void tuikuan(int pos,String type,String code) {
 
         showLoading("");
@@ -153,6 +180,7 @@ public class OrderAllFragment extends BaseFragment {
         params.put("orderId", mList.get(pos).getOrderId());
         params.put("code", code);
         params.put("type",type);
+        params.put("mdKey", MD5Util.getMD5(mList.get(pos).getOrderId()+"goodsolo"));
         HttpUtil.post(Constant.TUIKUAN_URL, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -160,10 +188,12 @@ public class OrderAllFragment extends BaseFragment {
                 Log.e("TUi", "onSuccess: " + response.toString());
                 closeLoading();
                 try {
-                    if (!response.getBoolean("success")) {
+                    if (!response.getBoolean("session")) {
                         ToastUtil.setToast(getActivity(), response.getString("message"));
                     } else {
+
                         ToastUtil.setToast(getActivity(), "提交退款申请成功");
+                        mXRecyclerView.refresh();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -224,8 +254,8 @@ public class OrderAllFragment extends BaseFragment {
                                     tip("取消订单");
                                     break;
                                 case 1:
-                                    tuikuan(position,"ele","");
-                                    tip("申请退款");
+                                    showtuikuan(position,"ele","");
+
                                     break;
                                 case 9:
                                 case 2:
@@ -236,6 +266,10 @@ public class OrderAllFragment extends BaseFragment {
                                     startActivity(intent);
                                     break;
                                 case 8:
+                                    Intent intent2 = new Intent(mContext, TakeawayShopDetailActivity.class);
+                                    intent2.putExtra("shopId", String.valueOf(mList.get(position).getShopId()));
+
+                                    mContext.startActivity(intent2);
                                     tip("再来一单");
                                     break;
                             }

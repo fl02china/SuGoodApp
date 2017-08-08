@@ -24,6 +24,7 @@ import com.sugood.app.entity.OrderShangCheng;
 import com.sugood.app.global.Constant;
 import com.sugood.app.util.HttpUtil;
 import com.sugood.app.util.JsonUtil;
+import com.sugood.app.util.MD5Util;
 import com.sugood.app.util.ToastUtil;
 import com.sugood.app.view.RecycleViewDivider;
 
@@ -96,6 +97,7 @@ public class OrderSCAllFragment extends BaseFragment {
         showLoading("");
         RequestParams params = new RequestParams();
         params.put("orderId", mList.get(pos).getOrderId());
+        params.put("mdKey", MD5Util.getMD5(mList.get(pos).getOrderId()+"goodsolo"));
         params.put("code", code);
         params.put("type",type);
         HttpUtil.post(Constant.TUIKUAN_URL, params, new JsonHttpResponseHandler() {
@@ -225,8 +227,8 @@ public class OrderSCAllFragment extends BaseFragment {
                 Log.e("TAG111", "onSuccess: " + response.toString());
                 try {
                     mList = JsonUtil.toList(response.getString("list"), OrderShangCheng.class);
-                    System.out.println("11122mList.get(3):"+mList.get(3).toString());
-                    System.out.println("11122mList.get(2):"+mList.get(2).toString());
+//                    System.out.println("11122mList.get(3):"+mList.get(3).toString());
+//                    System.out.println("11122mList.get(2):"+mList.get(2).toString());
                    // Collections.reverse(mList);
                     adapter.setData(mList);
 

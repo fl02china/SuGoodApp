@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 
 public class OrderShangchengAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     Context context;
+    private TextView back;
     List<OrderShangCheng> orderList;
     public final static int TYPE_0 = 0;
     public final static int TYPE_1 = 1;

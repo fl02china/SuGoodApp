@@ -95,15 +95,13 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 return new OrderingViewHolder(mInflater.inflate(R.layout.item_ordering, parent, false), 2);
             case TYPE_14:
                 return new OrderPayViewHolder(mInflater.inflate(R.layout.item_order_paying, parent, false), 2);
-
+            case TYPE_15:
+                return new OrderPayViewHolder(mInflater.inflate(R.layout.item_order_paying, parent, false), 2);
         }
         return null;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return orderList.get(position).getStatus();
-    }
+
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
@@ -263,6 +261,13 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 holderpay8.btn_right.setBackgroundResource(R.drawable.bg_cancle);
                 holderpay8.btn_left.setVisibility(View.GONE);
                 break;
+//            default:
+//            OrderPayViewHolder holderpay9 = (OrderPayViewHolder) holder;
+//            holderpay9.bindHolder(orderList.get(position));
+//                holderpay9.connectclient.setBackground(null);
+//                holderpay9.connectclient.setText("订单状态："+getItemViewType(position));
+//                break;
+
         }
     }
 
@@ -272,14 +277,18 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return orderList.get(position).getStatus();
+    }
+    @Override
     public int getItemCount() {
         if (orderList!=null){
             return orderList.size();
         }else{
             return 0;
         }
-    }
 
+    }
 
 
 

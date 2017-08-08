@@ -93,15 +93,16 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
         if (view.getId() == R.id.btn_login) {
             Log.d("geek", "登录");
             // 得到输入编辑框的数据
-//            final String name = et_username.getText().toString();
-//            final String pwd = et_userpwd.getText().toString();
-
+            final String name = et_username.getText().toString();
+            final String pwd = et_userpwd.getText().toString();
+//            et_username.setText("13077858411");
+//            et_userpwd.setText("123456");
 //            final String name = "13620906082";
 //            final String pwd = "366325";
 //            final String name = "13267889357";//13267889357   111111
 //           final String pwd = "111111";
-            final String name = "13077858411";//13267889357   111111
-           final String pwd = "123456";
+//            final String name = "13077858411";//13267889357   111111
+//           final String pwd = "123456";
             if (TextUtils.isEmpty(name)) {
                 Toast.makeText(LoginActivity.this, "用户名不能为空", Toast.LENGTH_LONG).show();
             } else if (TextUtils.isEmpty(pwd)) {

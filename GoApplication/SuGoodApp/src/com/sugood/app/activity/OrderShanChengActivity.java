@@ -2,6 +2,7 @@ package com.sugood.app.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -26,7 +27,7 @@ import com.viewpagerindicator.UnderlinePageIndicator;
 
 public class OrderShanChengActivity  extends BaseActivity{
     private TextView back;
-
+    private TextView title;
     private UnderlinePageIndicator indicator;
 
     private RadioGroup mTabGroup;
@@ -45,7 +46,15 @@ public class OrderShanChengActivity  extends BaseActivity{
         // mPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.view_padding));
         mIndicator = (UnderlinePageIndicator) findViewById(R.id.indicator);
 
+        title= (TextView) findViewById(R.id.title);
         back = (TextView) findViewById(R.id.back);
+        title.setText("商城订单");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mTabGroup = (RadioGroup) findViewById(R.id.tab_group);
 
         indicator = (UnderlinePageIndicator) findViewById(R.id.indicator);

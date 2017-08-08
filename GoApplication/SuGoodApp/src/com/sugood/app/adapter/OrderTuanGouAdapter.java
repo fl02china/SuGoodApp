@@ -85,8 +85,15 @@ public class OrderTuanGouAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             case TYPE_8:
                 OrderTuanGouAdapter.OrderTGViewHolder holderpay2 = (OrderTuanGouAdapter.OrderTGViewHolder) holder;
                 holderpay2.bindHolder(orderList.get(position));
-                holderpay2.txRight.setBackgroundResource(R.drawable.bg_use_finish);
-                holderpay2.txLeft.setVisibility(View.GONE);
+                holderpay2.txRight.setBackgroundResource(R.drawable.bg_scpingjia);
+                holderpay2.txRight.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        onRightClickListener.onOnClick(v, position);
+                    }
+                });
+                holderpay2.txLeft.setBackgroundResource(R.drawable.bg_use_finish);
                 break;
             case TYPE_4:
                 OrderTuanGouAdapter.OrderTGViewHolder holderpay3 = (OrderTuanGouAdapter.OrderTGViewHolder) holder;
@@ -100,6 +107,13 @@ public class OrderTuanGouAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     }
                 });
                 holderpay3.txRight.setBackgroundResource(R.drawable.bg_cancle);
+                break;
+            case TYPE_14:
+                OrderTuanGouAdapter.OrderTGViewHolder holderpay4 = (OrderTuanGouAdapter.OrderTGViewHolder) holder;
+                holderpay4.bindHolder(orderList.get(position));
+                holderpay4.txRight.setBackgroundResource(R.drawable.bg_use_finish);
+
+                holderpay4.txLeft.setVisibility(View.GONE);
                 break;
         }
 
@@ -148,11 +162,10 @@ public class OrderTuanGouAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             ButterKnife.bind(this, view);
         }
         public void bindHolder(OrderTuanGou order){
-            System.out.println("ordertime："+order.getCreateTime()+"");
-            System.out.println("usetime："+order.getFailDate());
+
             ordertime.setText(DateUtil.timeStamp2Date(order.getCreateTime()+"", "yyyy/MM/dd HH:mm"));
             usetime.setText(order.getFailDate());
-
+            name.setText(order.getTitle());
             img.setImageURI(Constant.PHOTOBASEURL+order.getPhoto());
             tuangounum.setText(order.getCode()+"");
 //            name.setText(order.getShopName());
