@@ -118,7 +118,8 @@ public class OrderAllFragment extends BaseFragment {
                                     if (!response.getBoolean("success")) {
                                         ToastUtil.setToast(getActivity(), response.getString("message"));
                                     } else {
-                                        ToastUtil.setToast(getActivity(), "提交退款申请成功");
+                                        ToastUtil.setToast(getActivity(), "取消订单申请成功");
+                                        mXRecyclerView.refresh();
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -130,7 +131,7 @@ public class OrderAllFragment extends BaseFragment {
                                 super.onFailure(statusCode, headers, responseString, throwable);
                                 Log.e("TUi", "onSuccess: " + responseString);
                                 closeLoading();
-                                ToastUtil.setToast(getActivity(), "提交退款申请失败");
+                                ToastUtil.setToast(getActivity(), "取消订单申请失败");
                             }
                         });
                     }

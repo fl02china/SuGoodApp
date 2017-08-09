@@ -110,10 +110,11 @@ public class OrdeTgUseingFragment extends BaseFragment{
                 Log.e("TUi", "onSuccess: " + response.toString());
                 closeLoading();
                 try {
-                    if (!response.getBoolean("success")) {
+                    if (!response.getBoolean("session")) {
                         ToastUtil.setToast(getActivity(), response.getString("message"));
                     } else {
                         ToastUtil.setToast(getActivity(), "提交退款申请成功");
+                        mXRecyclerView.refresh();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -204,7 +205,7 @@ public class OrdeTgUseingFragment extends BaseFragment{
 //                                    break;
                                 case 1:
                                     showtuikuan(position,"tuan","");
-                                    tip("申请退款");
+
                                     break;
 
                             }

@@ -52,8 +52,8 @@ public class SugoodApplication extends Application {
     //声明AMapLocationClient类对象
     public static AMapLocationClient locationClient = null;
 
-
-
+    public static String lat="";
+    public static String lng="";
     public List<ShopCarProduct> shopCarProductList = new ArrayList<>();
 
     public static LiteOrm liteOrm;

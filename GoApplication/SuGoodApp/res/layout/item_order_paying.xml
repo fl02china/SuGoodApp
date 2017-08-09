@@ -103,19 +103,19 @@
             android:layout_below="@+id/divider1"
             android:layout_marginTop="5dp"
             android:text="商品(2)" />
-        <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/recycle_list"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="30dp"-->
-        <!--android:visibility="gone"-->
-        <!--android:layout_below="@+id/count"-->
-        <!--android:layout_marginBottom="5dp" />-->
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_list"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:visibility="gone"
+        android:layout_below="@+id/count"
+        android:layout_marginBottom="5dp" />
 
         <LinearLayout
             android:id="@+id/liner_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/count"
+            android:layout_below="@+id/recycle_list"
             android:orientation="vertical">
 
             <LinearLayout

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +19,6 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.facebook.common.internal.Objects;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -29,12 +26,9 @@ import com.sugood.app.R;
 import com.sugood.app.application.SugoodApplication;
 import com.sugood.app.entity.DianPing;
 import com.sugood.app.entity.ShopCarProduct;
-import com.sugood.app.entity.TakeawayShop;
 import com.sugood.app.entity.TakeawayShopInfo;
-import com.sugood.app.entity.Tuan;
 import com.sugood.app.entity.TuanGouDetail;
 import com.sugood.app.global.Constant;
-import com.sugood.app.util.GlideUtil;
 import com.sugood.app.util.HttpUtil;
 import com.sugood.app.util.JsonUtil;
 import com.sugood.app.view.HorizontalListView;
@@ -43,6 +37,8 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 /**
@@ -53,6 +49,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class TuanGouActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
+    @BindView(R.id.header_back)
+    ImageView headerBack;
+    @BindView(R.id.detail_text_tv)
+    TextView detailTextTv;
+    @BindView(R.id.farvorite_img)
+    ImageView farvoriteImg;
     private SimpleDraweeView sdvHeaderTuanGouAd;
     private TextView tvTuanGouName;
     private TextView tvPrice;
@@ -74,7 +76,7 @@ public class TuanGouActivity extends BaseActivity implements AdapterView.OnItemC
     private TextView tvTel;
     private WebView tvTuanGouMsg;
     private TextView tvLookMore;
-//    private RelativeLayout rlMsg1;
+    //    private RelativeLayout rlMsg1;
 //    private SimpleDraweeView sdvMsg1;
 //    private TextView tvMsg1;
 //    private RelativeLayout rlMsg2;
@@ -101,6 +103,7 @@ public class TuanGouActivity extends BaseActivity implements AdapterView.OnItemC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tuangou);
+        ButterKnife.bind(this);
         getIntentData();
         initView();
         initNetData();
@@ -112,6 +115,8 @@ public class TuanGouActivity extends BaseActivity implements AdapterView.OnItemC
         mTuanId = getIntent().getStringExtra("tuanId");
 
     }
+
+
 
 
     /**
@@ -151,7 +156,7 @@ public class TuanGouActivity extends BaseActivity implements AdapterView.OnItemC
 //        tvMsg2 = (TextView) findViewById(R.id.tv_msg2);
 //        rlMsg3 = (RelativeLayout) findViewById(R.id.rl_msg3);
 //        sdvMsg3 = (SimpleDraweeView) findViewById(R.id.sdv_msg3);
-       // tvMsg3 = (TextView) findViewById(R.id.tv_msg3);
+        // tvMsg3 = (TextView) findViewById(R.id.tv_msg3);
         tvBuyNotes = (WebView) findViewById(R.id.tv_buyNotes);
         tvLookMoreShop = (TextView) findViewById(R.id.tv_look_moreShop);
         llPl1 = (LinearLayout) findViewById(R.id.ll_pl1);
@@ -224,8 +229,8 @@ public class TuanGouActivity extends BaseActivity implements AdapterView.OnItemC
         RequestParams params = new RequestParams();
         params.put("shopId", mShopId);
         params.put("tuanId", mTuanId);
-        System.out.println("111mShopId:"+mShopId);
-        System.out.println("111mTuanId:"+mTuanId);
+        System.out.println("111mShopId:" + mShopId);
+        System.out.println("111mTuanId:" + mTuanId);
         HttpUtil.post(Constant.SUGOODTUANGOU, params, new JsonHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {

@@ -41,7 +41,7 @@ public class MainActivity extends TabActivity {
     private TabHost tabhost;
     private TabHost.TabSpec homeTab;
     private TabHost.TabSpec nearbyTab;
-    private TabHost.TabSpec servicedemandTab;
+    //private TabHost.TabSpec servicedemandTab;
     private TabHost.TabSpec mineTab;
 
     private long exitTime = 0;
@@ -98,24 +98,24 @@ public class MainActivity extends TabActivity {
         tabhost = this.getTabHost();
         homeTab = tabhost.newTabSpec("home");
         nearbyTab = tabhost.newTabSpec("nearby");
-        servicedemandTab = tabhost.newTabSpec("servicedemand");
+        //servicedemandTab = tabhost.newTabSpec("servicedemand");
         mineTab = tabhost.newTabSpec("mine");
 
         homeTab.setIndicator(createContent("首页", R.drawable.main_home_tab));
         nearbyTab.setIndicator(createContent("附近", R.drawable.main_nearby_tab));
-        servicedemandTab.setIndicator(createContent("订单", R.drawable.main_service_demand_tab));
+        //servicedemandTab.setIndicator(createContent("订单", R.drawable.main_service_demand_tab));
         mineTab.setIndicator(createContent("我的", R.drawable.main_mine_tab));
 
         // 绑定显示的页面
         homeTab.setContent(new Intent(this, HomeActivity.class));
         nearbyTab.setContent(new Intent(this, NearbyActivity.class));
       //  servicedemandTab.setContent(new Intent(this, ServiceDemandActivity.class));
-        servicedemandTab.setContent(new Intent(this, OrderManagerActivity.class));
+        //servicedemandTab.setContent(new Intent(this, OrderManagerActivity.class));
         mineTab.setContent(new Intent(this, MineActivity.class));
         // 将选项卡加进TabHost
         tabhost.addTab(homeTab);
         tabhost.addTab(nearbyTab);
-        tabhost.addTab(servicedemandTab);
+     //   tabhost.addTab(servicedemandTab);
         tabhost.addTab(mineTab);
         tabhost.setCurrentTab(0);
         // 设置tabHost切换时动态更改图标
@@ -134,9 +134,11 @@ public class MainActivity extends TabActivity {
             tabhost.setCurrentTabByTag("首页");
         } else if (tabId.equals("nearby")) {
             tabhost.setCurrentTabByTag("附近");
-        } else if (tabId.equals("servicedemand")) {
-            tabhost.setCurrentTabByTag("订单");
-        } else if (tabId.equals("mine")) {
+        }
+//        else if (tabId.equals("servicedemand")) {
+//            tabhost.setCurrentTabByTag("订单");
+//        }
+        else if (tabId.equals("mine")) {
             tabhost.setCurrentTabByTag("我的");
         }
     }

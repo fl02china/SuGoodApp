@@ -100,6 +100,7 @@ public class OrderSCAllFragment extends BaseFragment {
         params.put("mdKey", MD5Util.getMD5(mList.get(pos).getOrderId()+"goodsolo"));
         params.put("code", code);
         params.put("type",type);
+        Log.e("TUi", "params: " + params.toString());
         HttpUtil.post(Constant.TUIKUAN_URL, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -107,10 +108,11 @@ public class OrderSCAllFragment extends BaseFragment {
                 Log.e("TUi", "onSuccess: " + response.toString());
                 closeLoading();
                 try {
-                    if (!response.getBoolean("success")) {
+                    if (!response.getBoolean("session")) {
                         ToastUtil.setToast(getActivity(), response.getString("message"));
                     } else {
                         ToastUtil.setToast(getActivity(), "提交退款申请成功");
+                        mXRecyclerView.refresh();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -177,7 +179,8 @@ public class OrderSCAllFragment extends BaseFragment {
                                     if (!response.getBoolean("success")) {
                                         ToastUtil.setToast(getActivity(), response.getString("message"));
                                     } else {
-                                        ToastUtil.setToast(getActivity(), "提交退款申请成功");
+                                        ToastUtil.setToast(getActivity(), "取消订单申请成功");
+                                        mXRecyclerView.refresh();
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -189,7 +192,7 @@ public class OrderSCAllFragment extends BaseFragment {
                                 super.onFailure(statusCode, headers, responseString, throwable);
                                 Log.e("TUi", "onSuccess: " + responseString);
                                 closeLoading();
-                                ToastUtil.setToast(getActivity(), "提交退款申请失败");
+                                ToastUtil.setToast(getActivity(), "取消订单申请失败");
                             }
                         });
                     }
@@ -250,10 +253,10 @@ public class OrderSCAllFragment extends BaseFragment {
                             switch (order.getStatus()){
                                 case 0:
                                     cancleOrder(position,"shop");
-                                    tip("取消订单");
+                                    //tip("取消订单");
                                     break;
                                 case 1:
-                                    showtuikuan(position,"shop","");
+                                    showtuikuan(position,"goods","");
 
                                     break;
                                 case 3:

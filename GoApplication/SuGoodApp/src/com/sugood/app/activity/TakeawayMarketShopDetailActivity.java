@@ -27,6 +27,7 @@ import com.loopj.android.http.RequestParams;
 import com.sugood.app.R;
 import com.sugood.app.adapter.MarketPagerAdapter;
 import com.sugood.app.adapter.MarketTypeRvAdapter;
+import com.sugood.app.application.SugoodApplication;
 import com.sugood.app.entity.AdEntity;
 import com.sugood.app.entity.ShopList;
 import com.sugood.app.entity.ShopMain;
@@ -223,6 +224,8 @@ public class TakeawayMarketShopDetailActivity extends AppCompatActivity {
                     params.put("page", String.valueOf(page));
                     params.put("cateId", cateId);
                     params.put("pageSize", "15");
+                    params.put("lat", SugoodApplication.lat);
+                    params.put("lng", SugoodApplication.lng);
                     HttpUtil.post(Constant.TAKEAWAY_MAIN_LIST_URL, params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

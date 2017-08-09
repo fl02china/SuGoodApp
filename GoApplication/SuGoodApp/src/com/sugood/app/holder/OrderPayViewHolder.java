@@ -64,7 +64,7 @@ public class OrderPayViewHolder  extends BaseOrderViewHolder{
         ratingbar = (RatingBar) itemView.findViewById(R.id.ratingbar);
 
         count = (TextView) itemView.findViewById(R.id.count);
-       // recyclerView_list = (RecyclerView) view.findViewById(R.id.recycle_list);//待完成
+    //   recyclerView_list = (RecyclerView) itemView.findViewById(R.id.recycle_list);//待完成
         moneyTol = (TextView) itemView.findViewById(R.id.money_tol);
         moneyPeisong = (TextView) itemView.findViewById(R.id.money_num);
 
@@ -99,4 +99,6 @@ public class OrderPayViewHolder  extends BaseOrderViewHolder{
         }
         moneyTol.setText((double)order.getNeedPay()/100+"");
     }
+
+
 }

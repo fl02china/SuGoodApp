@@ -187,6 +187,8 @@ public class TakeawayMainActivity extends BaseActivity {
         }
         params.put("page", String.valueOf(page));
         params.put("pageSize", "15");
+        params.put("lat", SugoodApplication.lat);
+        params.put("lng", SugoodApplication.lng);
         HttpUtil.post(Constant.TAKEAWAY_MAIN_LIST_URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -263,6 +265,8 @@ public class TakeawayMainActivity extends BaseActivity {
                     params.put("shopName", v.getText().toString().trim());
                     params.put("page", String.valueOf(page));
                     params.put("pageSize", "15");
+                    params.put("lat", SugoodApplication.lat);
+                    params.put("lng", SugoodApplication.lng);
                     HttpUtil.post(Constant.TAKEAWAY_MAIN_LIST_URL, params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -277,9 +281,13 @@ public class TakeawayMainActivity extends BaseActivity {
                                         mShopList.clear();
 
                                         mShopList.addAll(JsonUtil.toList(result, TakeawayShop.class));
+                                        if(mShopList.size()!=0){
                                         rvAdapter.notifyDataSetChanged();
                                         closeKeyBoard();
-                                        mRecyclerView.smoothScrollBy(0, headerView.getMeasuredHeight());
+                                        mRecyclerView.smoothScrollBy(0, headerView.getMeasuredHeight());}else
+                                        {
+                                            mRecyclerView.refresh();
+                                        }
                                     }
                                 });
                             }

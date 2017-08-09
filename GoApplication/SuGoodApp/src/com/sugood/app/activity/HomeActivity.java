@@ -202,7 +202,8 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
     //上传经纬度
     private void initNetData(String lat
             , String lng, String cityName) {
-
+        SugoodApplication.lat=lat;
+        SugoodApplication.lng=lng;
         RequestParams params = new RequestParams();
         params.put("lat", lat);
         params.put("lng", lng);
@@ -299,6 +300,9 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
         params.put("page", "1");
         params.put("pageSize", "9999");
         params.put("parentId", "69");
+        params.put("lat", SugoodApplication.lat);
+        params.put("lng", SugoodApplication.lng);
+        System.out.println("params:"+params.toString());
         HttpUtil.post(Constant.GOODFOOD, params, new JsonHttpResponseHandler() {
 
             @Override
@@ -555,6 +559,8 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
         params.put("page", currentPage);
         params.put("pageSize", "40");
         params.put("parentId", "69");
+        params.put("lat", SugoodApplication.lat);
+        params.put("lng", SugoodApplication.lng);
         HttpUtil.post(Constant.GOODFOOD, params, new JsonHttpResponseHandler() {
 
             @Override
@@ -1163,6 +1169,8 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
             params.put("parentId", "69");
             params.put("page", "1");
             params.put("pageSize", "9999");
+            params.put("lat", SugoodApplication.lat);
+            params.put("lng", SugoodApplication.lng);
             HttpUtil.post(Constant.SUGOOODGOODFOOODSEARCH, params, new JsonHttpResponseHandler() {
 
                 @Override
@@ -1171,6 +1179,7 @@ public class HomeActivity extends BaseActivity implements TextView.OnEditorActio
                     Log.e("TAG", "onSuccess: " + response.toString());
                     foodList.clear();
                     foodList = (ArrayList<Food>) JsonUtil.toList(response.toString(), Food.class);
+
                    if (foodList.size()!=0){
                        mAdapter.setData(foodList);
 //                    Utility.setListViewHeightBasedOnChildren(lv_like_shop);

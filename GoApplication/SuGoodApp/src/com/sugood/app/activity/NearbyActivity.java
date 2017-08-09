@@ -104,6 +104,8 @@ public class NearbyActivity extends BaseActivity {
                     params.put("shopName", v.getText().toString().trim());
                     params.put("page", String.valueOf(page));
                     params.put("pageSize", "15");
+                    params.put("lat", SugoodApplication.lat);
+                    params.put("lng", SugoodApplication.lng);
                     HttpUtil.post(Constant.TAKEAWAY_MAIN_LIST_URL, params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -190,6 +192,8 @@ public class NearbyActivity extends BaseActivity {
         }
         params.put("page", String.valueOf(page));
         params.put("pageSize", "15");
+        params.put("lat", SugoodApplication.lat);
+        params.put("lng", SugoodApplication.lng);
         HttpUtil.post(Constant.TAKEAWAY_MAIN_LIST_URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

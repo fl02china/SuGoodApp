@@ -259,6 +259,8 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
         }else if ("ly".equals(type)) {
             params.put("parentId", "9");
         }
+        params.put("lat", SugoodApplication.lat);
+        params.put("lng", SugoodApplication.lng);
         HttpUtil.post(Constant.GOODFOOD, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -378,6 +380,8 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
             }
             params.put("page", "1");
             params.put("pageSize", "9999");
+            params.put("lat", SugoodApplication.lat);
+            params.put("lng", SugoodApplication.lng);
             HttpUtil.post(Constant.SUGOOODGOODFOOODSEARCH, params, new JsonHttpResponseHandler() {
 
                 @Override
@@ -567,6 +571,8 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
         params.put("parentId", "69");
         params.put("page", "1");
         params.put("pageSize", "9999");
+        params.put("lat", SugoodApplication.lat);
+        params.put("lng", SugoodApplication.lng);
         HttpUtil.post(Constant.GOODFOOD, params, new JsonHttpResponseHandler() {
 
             @Override
@@ -602,6 +608,8 @@ public class GoodFoodActivity extends BaseActivity implements View.OnClickListen
         params.put("parentId", "69");
         params.put("page", "1");
         params.put("pageSize", "9999");
+        params.put("lat", SugoodApplication.lat);
+        params.put("lng", SugoodApplication.lng);
         HttpUtil.post(Constant.GOODFOOD, params, new JsonHttpResponseHandler() {
 
             @Override
